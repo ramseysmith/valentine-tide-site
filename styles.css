@@ -240,7 +240,7 @@ p {
 }
 
 .field__input::placeholder {
-  color: rgba(245, 240, 232, 0.4);
+  color: rgba(245, 240, 232, 0.5);
 }
 
 .field__input:hover {
@@ -420,5 +420,102 @@ p {
 .footer__copy {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
-  color: rgba(245, 240, 232, 0.4);
+  color: rgba(245, 240, 232, 0.5);
+}
+
+/* =========================================================
+   POLISH  (Phase 5)
+   Background texture, entrance motion, skip link, motion-safety.
+   ========================================================= */
+
+/* ---------- Drifting background texture ---------- */
+/* Fixed, very faint tile that slowly drifts behind everything. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -10%; /* overscan so the drift never reveals an edge */
+  z-index: -1;
+  background-image: url("assets/tile.png");
+  background-repeat: repeat;
+  background-size: 420px;
+  opacity: 0.05;
+  pointer-events: none;
+  will-change: transform;
+  animation: drift 90s linear infinite alternate;
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-60px, -40px, 0);
+  }
+}
+
+/* ---------- Entrance fade-in ---------- */
+/* Hero content rises gently; later sections fade as a group. */
+.hero__inner {
+  animation: rise-in 1s ease-out both;
+}
+
+.signup__inner,
+.story__inner,
+.social__list,
+.footer {
+  animation: fade-in 1s ease-out both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -120%);
+  z-index: 10;
+  padding: 0.6rem 1rem;
+  background-color: var(--blood);
+  color: var(--bone);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform 0.18s ease;
+}
+
+.skip-link:focus {
+  transform: translate(-50%, 0.5rem);
+  outline: 2px solid var(--bone);
+  outline-offset: 2px;
+}
+
+/* ---------- Respect reduced-motion preferences ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

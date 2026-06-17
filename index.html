@@ -6,21 +6,29 @@
 
   <title>Valentine Tide — Surf the Shadows</title>
   <meta name="description" content="Valentine Tide. Goth and punk surf apparel. Drop 001 lands soon. Surf the shadows." />
+  <meta name="theme-color" content="#161616" />
 
   <!-- Favicon (using the dark avatar mark; swap for a dedicated favicon anytime) -->
   <link rel="icon" href="assets/avatar.png" type="image/png" />
   <link rel="apple-touch-icon" href="assets/avatar.png" />
 
   <!--
-    Open Graph block for link previews.
-    Replace the image path and url once assets/domain are final.
+    Open Graph / Twitter block for link previews.
+    Using the dark avatar (1200×1200 square) for now — for the sharpest
+    previews, drop a 1200×630 image at assets/og-image.png and point both
+    og:image and twitter:image at it.
   -->
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Valentine Tide" />
   <meta property="og:title" content="Valentine Tide — Surf the Shadows" />
   <meta property="og:description" content="Goth and punk surf apparel. Drop 001 lands soon." />
-  <meta property="og:image" content="assets/og-image.png" />
+  <meta property="og:image" content="assets/avatar.png" />
+  <meta property="og:image:alt" content="Valentine Tide" />
   <meta property="og:url" content="https://valentinetide.com" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Valentine Tide — Surf the Shadows" />
+  <meta name="twitter:description" content="Goth and punk surf apparel. Drop 001 lands soon." />
+  <meta name="twitter:image" content="assets/avatar.png" />
 
   <!-- Fonts: Pirata One (display) + Inter (body) from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,6 +41,9 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Skip link: first focusable element, jumps keyboard users to signup -->
+  <a class="skip-link" href="#signup">Skip to email signup</a>
+
   <main>
     <!-- ============================================================
          HERO
