@@ -323,3 +323,102 @@ p {
     white-space: nowrap;
   }
 }
+
+/* =========================================================
+   BRAND STORY  (Phase 4)
+   ========================================================= */
+.story {
+  padding: clamp(3rem, 12vw, 6rem) var(--gutter);
+  border-top: 1px solid var(--bone-faint);
+}
+
+.story__inner {
+  max-width: 38rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.story__heading {
+  font-size: clamp(1.75rem, 8vw, 2.75rem);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+
+.story__body {
+  margin-top: clamp(1rem, 4vw, 1.5rem);
+  font-size: clamp(0.95rem, 3.8vw, 1.0625rem);
+  line-height: 1.75;
+  color: var(--bone-dim);
+}
+
+/* =========================================================
+   SOCIAL  (Phase 4)
+   ========================================================= */
+.social {
+  padding: clamp(2.5rem, 9vw, 4rem) var(--gutter) 0;
+  text-align: center;
+}
+
+.social__list {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--bone);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.18s ease;
+}
+
+.social__link:hover {
+  color: var(--blood-bright);
+}
+
+.social__icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* =========================================================
+   FOOTER  (Phase 4)
+   ========================================================= */
+.footer {
+  padding: clamp(2.5rem, 9vw, 4rem) var(--gutter) clamp(2rem, 7vw, 3rem);
+  text-align: center;
+}
+
+.footer__home {
+  display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  transition: color 0.18s ease;
+}
+
+.footer__home:hover {
+  color: var(--bone);
+}
+
+.footer__wordmark {
+  width: min(60vw, 14rem);
+  height: auto;
+  margin: clamp(1.5rem, 6vw, 2.25rem) auto;
+  opacity: 0.85;
+}
+
+.footer__copy {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: rgba(245, 240, 232, 0.4);
+}
