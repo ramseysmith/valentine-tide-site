@@ -62,6 +62,42 @@
         <p class="hero__drop">Drop 001 lands soon.</p>
       </div>
     </header>
+
+    <!-- ============================================================
+         EMAIL CAPTURE
+         Validation + submit handled in script.js. While FORM_ENDPOINT
+         is left as its placeholder, submits are simulated so the
+         success state can be previewed without a backend.
+         ============================================================ -->
+    <section class="signup" id="signup" aria-labelledby="signup-heading">
+      <div class="signup__inner">
+        <h2 class="signup__heading" id="signup-heading">Join the cult</h2>
+        <p class="signup__sub">
+          First access to Drop 001. No noise — only the tide.
+        </p>
+
+        <form class="signup__form" id="signup-form" novalidate>
+          <label class="visually-hidden" for="email">Email address</label>
+          <div class="field">
+            <input
+              class="field__input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              inputmode="email"
+              required
+              aria-describedby="form-status"
+            />
+            <button class="btn" type="submit">Join the cult</button>
+          </div>
+
+          <!-- Live region: validation + result messages announce here -->
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
   </main>
 
   <script src="script.js"></script>

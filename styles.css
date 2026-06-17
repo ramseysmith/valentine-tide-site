@@ -185,3 +185,141 @@ p {
     width: min(80vw, 46rem);
   }
 }
+
+/* =========================================================
+   EMAIL CAPTURE  (Phase 3)
+   ========================================================= */
+.signup {
+  padding: clamp(3rem, 12vw, 6rem) var(--gutter);
+  text-align: center;
+}
+
+.signup__inner {
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+.signup__heading {
+  font-size: clamp(2rem, 9vw, 3rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bone);
+}
+
+.signup__sub {
+  margin-top: 0.75rem;
+  font-size: clamp(0.9rem, 3.6vw, 1rem);
+  color: var(--bone-dim);
+}
+
+/* ---------- Form ---------- */
+.signup__form {
+  margin-top: clamp(1.5rem, 6vw, 2.25rem);
+}
+
+/* Mobile-first: stacked. Goes inline on wider screens. */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.field__input {
+  flex: 1 1 auto;
+  width: 100%;
+  padding: 0.95rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--bone-faint);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  /* sharp, no rounded corners — per brand */
+  border-radius: 0;
+  transition: border-color 0.18s ease;
+}
+
+.field__input::placeholder {
+  color: rgba(245, 240, 232, 0.4);
+}
+
+.field__input:hover {
+  border-color: rgba(245, 240, 232, 0.32);
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--blood-bright);
+}
+
+/* Native invalid state after a failed submit */
+.field__input[aria-invalid="true"] {
+  border-color: var(--blood-bright);
+}
+
+/* ---------- Button ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.95rem 1.5rem;
+  background-color: var(--blood);
+  border: 1px solid var(--blood);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease,
+    opacity 0.18s ease;
+}
+
+.btn:hover {
+  background-color: var(--blood-bright);
+  border-color: var(--blood-bright);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: progress;
+}
+
+/* ---------- Status message ---------- */
+.form-status {
+  min-height: 1.5rem; /* reserve space so layout doesn't jump */
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.form-status[data-state="error"] {
+  color: #e66; /* legible warm red on near-black */
+}
+
+.form-status[data-state="pending"] {
+  color: var(--bone-dim);
+}
+
+.form-status[data-state="success"] {
+  color: var(--bone);
+  font-size: 1rem;
+}
+
+/* On success, retire the field and let the confirmation stand alone */
+.signup__form.is-done .field {
+  display: none;
+}
+
+/* ---------- Larger screens: inline field + button ---------- */
+@media (min-width: 30rem) {
+  .field {
+    flex-direction: row;
+  }
+
+  .btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+}
