@@ -4,3 +4,6 @@
 # Editor / OS cruft
 *.swp
 Thumbs.db
+
+# Local preview tooling (not deployed)
+.claude/

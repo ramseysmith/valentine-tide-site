@@ -7,8 +7,9 @@
   <title>Valentine Tide — Surf the Shadows</title>
   <meta name="description" content="Valentine Tide. Goth and punk surf apparel. Drop 001 lands soon. Surf the shadows." />
 
-  <!-- Favicon (drop your icon into /assets) -->
-  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <!-- Favicon (using the dark avatar mark; swap for a dedicated favicon anytime) -->
+  <link rel="icon" href="assets/avatar.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/avatar.png" />
 
   <!--
     Open Graph block for link previews.
@@ -32,14 +33,35 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!--
-    Phase 1 scaffold.
-    Sections (hero, email capture, brand story, social, footer) are built
-    out in later phases. This file currently establishes structure, fonts,
-    and the styling foundation.
-  -->
   <main>
-    <!-- Content arrives in Phase 2+ -->
+    <!-- ============================================================
+         HERO
+         Wordmark renders from the transparent PNG. If the image is
+         missing/fails, the onerror handler reveals the styled
+         Pirata One text fallback (see .wordmark--fallback in CSS).
+         ============================================================ -->
+    <header class="hero" id="top">
+      <div class="hero__inner">
+        <h1 class="wordmark">
+          <img
+            class="wordmark__img"
+            src="assets/wordmark.png"
+            alt="Valentine Tide"
+            width="2097"
+            height="331"
+            onerror="this.closest('.wordmark').classList.add('wordmark--fallback')"
+          />
+          <!-- Styled fallback (hidden unless the image fails) -->
+          <span class="wordmark__text" aria-hidden="true">
+            <span class="wordmark__valentine">Valentine</span>
+            <span class="wordmark__tide">Tide</span>
+          </span>
+        </h1>
+
+        <p class="hero__tagline">Surf the Shadows</p>
+        <p class="hero__drop">Drop 001 lands soon.</p>
+      </div>
+    </header>
   </main>
 
   <script src="script.js"></script>

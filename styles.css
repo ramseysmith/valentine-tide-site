@@ -93,3 +93,95 @@ p {
   white-space: nowrap;
   border: 0;
 }
+
+/* =========================================================
+   HERO  (Phase 2)
+   Mobile-first. Full-viewport, centered, generous negative space.
+   ========================================================= */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh; /* svh avoids mobile URL-bar jump; falls back below */
+  min-height: 100vh;
+  padding: clamp(2rem, 8vh, 6rem) var(--gutter);
+  text-align: center;
+}
+
+.hero__inner {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+/* ---------- Wordmark ---------- */
+.wordmark {
+  margin: 0 auto;
+  /* Fluid sizing: scales with the viewport, capped on large screens. */
+  width: min(90vw, 40rem);
+}
+
+.wordmark__img {
+  width: 100%;
+  height: auto;
+}
+
+/* Styled text fallback — hidden until the image fails to load. */
+.wordmark__text {
+  display: none;
+}
+
+.wordmark--fallback .wordmark__img {
+  display: none;
+}
+
+.wordmark--fallback .wordmark__text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.25em;
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 14vw, 7rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.wordmark__valentine {
+  color: var(--bone);
+}
+
+.wordmark__tide {
+  color: var(--blood);
+}
+
+/* ---------- Tagline + drop line ---------- */
+.hero__tagline {
+  margin-top: clamp(1rem, 4vw, 1.75rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 5vw, 1.9rem);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  /* letter-spacing adds trailing space; nudge back to stay optically centered */
+  text-indent: 0.42em;
+  color: var(--bone);
+}
+
+.hero__drop {
+  margin-top: clamp(1.25rem, 5vw, 2rem);
+  font-family: var(--font-body);
+  font-size: clamp(0.7rem, 3.4vw, 0.85rem);
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+}
+
+/* ---------- Larger screens ---------- */
+@media (min-width: 48rem) {
+  .wordmark {
+    width: min(80vw, 46rem);
+  }
+}
