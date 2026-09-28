@@ -51,8 +51,13 @@ const bySize = new Map(variants.map((v) => [v.size, v]));
 const missing = product.variants.filter((v) => !bySize.has(v.size)).map((v) => v.size);
 if (missing.length) console.warn(`Not offered in ${pf.color}: ${missing.join(", ")} (they will be skipped)`);
 
-// 3. Build the store product. Print sits high on the chest, about 10 inches wide.
+// 3. Work out where the print goes. catalog.json gives a width and a distance
+//    below the top of the print area in inches; Printful's printfile for this
+//    blank tells us the area size in pixels.
 const printUrl = `${SITE}/${product.printFile}`;
+const placement = pf.placement || { widthInches: 10, topInches: 1.2 };
+const position = await computePosition(blank.id, placement, product.printFile);
+console.log(`Placement: ${JSON.stringify(position)}`);
 const syncVariants = product.variants
   .filter((v) => bySize.has(v.size))
   .map((v) => ({
@@ -63,7 +68,7 @@ const syncVariants = product.variants
       {
         type: "front",
         url: printUrl,
-        position: { area_width: 1800, area_height: 2400, width: 1500, height: 378, top: 180, left: 150, limit_to_print_area: true },
+        position,
       },
     ],
   }));
@@ -91,6 +96,37 @@ for (const v of product.variants) {
 }
 await writeFile(catalogPath, JSON.stringify(catalog, null, 2) + "\n");
 console.log("catalog.json updated. Commit it and redeploy the worker (npm run deploy).");
+
+async function computePosition(productId, placement, printFile) {
+  // Default: Printful's standard 12 x 16 inch front area at 150 dpi.
+  let area = { width: 1800, height: 2400, dpi: 150 };
+  try {
+    const pfData = (await pfGet(`/mockup-generator/printfiles/${productId}`)).result;
+    const frontId = pfData.variant_printfiles?.[0]?.placements?.front;
+    const file = pfData.printfiles.find((f) => f.printfile_id === frontId);
+    if (file) area = { width: file.width, height: file.height, dpi: file.dpi || 150 };
+  } catch {
+    console.warn("Could not read the print area, using the 12 x 16 inch default");
+  }
+  const { width: imgW, height: imgH } = await pngSize(path.join(root, printFile));
+  const width = Math.min(area.width, Math.round(placement.widthInches * area.dpi));
+  const height = Math.round((width * imgH) / imgW);
+  const top = Math.min(Math.max(0, area.height - height), Math.round(placement.topInches * area.dpi));
+  return {
+    area_width: area.width,
+    area_height: area.height,
+    width,
+    height,
+    top,
+    left: Math.round((area.width - width) / 2),
+    limit_to_print_area: true,
+  };
+}
+
+async function pngSize(file) {
+  const buf = await readFile(file);
+  return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+}
 
 async function pfGet(p) {
   return pfSend("GET", p);
