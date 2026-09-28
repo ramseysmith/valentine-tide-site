@@ -37,18 +37,40 @@
   });
 
   function renderProduct(p) {
+    const gallery = p.gallery && p.gallery.length ? p.gallery : [{ src: p.image, alt: `${p.name}, ${p.subtitle}` }];
     const ready = cfg.SHOP_PREVIEW || p.variants.some((v) => v.printfulSyncVariantId);
     const el = document.createElement("article");
     el.className = "product";
     el.innerHTML = `
-      <div class="product__media">
-        <img src="${p.image}" alt="${esc(p.name)}, ${esc(p.subtitle)}" width="1200" height="1400" loading="lazy" />
+      <div class="product__gallery">
+        <div class="product__media" data-zoom>
+          <img class="product__img" src="${gallery[0].src}" alt="${esc(gallery[0].alt)}" width="1200" height="1400" />
+        </div>
+        ${
+          gallery.length > 1
+            ? `<div class="product__thumbs" role="list">
+                ${gallery
+                  .map(
+                    (g, i) => `
+                  <button class="thumb${i === 0 ? " is-active" : ""}" type="button" role="listitem" data-index="${i}" aria-label="Show ${esc(g.alt)}" ${i === 0 ? 'aria-current="true"' : ""}>
+                    <img src="${g.src}" alt="" width="1200" height="1400" loading="lazy" />
+                  </button>`
+                  )
+                  .join("")}
+              </div>`
+            : ""
+        }
       </div>
       <div class="product__info">
         <h3 class="product__name">${esc(p.name)}</h3>
         <p class="product__sub">${esc(p.subtitle)}</p>
         <p class="product__price" data-price>${money(p.priceCents)}</p>
         <p class="product__desc">${esc(p.description)}</p>
+        ${
+          p.details && p.details.length
+            ? `<ul class="product__details">${p.details.map((d) => `<li>${esc(d)}</li>`).join("")}</ul>`
+            : ""
+        }
 
         <fieldset class="sizes">
           <legend class="sizes__legend">Size</legend>
@@ -77,6 +99,8 @@
         </div>
         <p class="form-status buy__status" role="status" aria-live="polite"></p>
       </div>`;
+
+    wireGallery(el, gallery);
 
     const priceEl = el.querySelector("[data-price]");
     const status = el.querySelector(".buy__status");
@@ -120,6 +144,34 @@
     });
 
     return el;
+  }
+
+  /* Thumbnails swap the main image; on devices with a mouse, hovering zooms in
+     toward the cursor so the print texture is visible. */
+  function wireGallery(el, gallery) {
+    const main = el.querySelector(".product__img");
+    const frame = el.querySelector("[data-zoom]");
+
+    el.querySelectorAll(".thumb").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const g = gallery[Number(btn.dataset.index)];
+        main.src = g.src;
+        main.alt = g.alt;
+        el.querySelectorAll(".thumb").forEach((b) => {
+          b.classList.toggle("is-active", b === btn);
+          if (b === btn) b.setAttribute("aria-current", "true");
+          else b.removeAttribute("aria-current");
+        });
+      });
+    });
+
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    frame.addEventListener("mousemove", (e) => {
+      const r = frame.getBoundingClientRect();
+      main.style.transformOrigin = `${((e.clientX - r.left) / r.width) * 100}% ${((e.clientY - r.top) / r.height) * 100}%`;
+    });
+    frame.addEventListener("mouseenter", () => frame.classList.add("is-zoomed"));
+    frame.addEventListener("mouseleave", () => frame.classList.remove("is-zoomed"));
   }
 
   function esc(s) {
