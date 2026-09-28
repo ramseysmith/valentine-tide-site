@@ -38,7 +38,11 @@
         "catalogBrand": "Comfort Colors",
         "catalogModel": "1717",
         "color": "Black",
-        "syncProductId": null
+        "syncProductId": null,
+        "placement": {
+          "widthInches": 10,
+          "topInches": 1.2
+        }
       },
       "variants": [
         {
@@ -67,7 +71,69 @@
           "printfulSyncVariantId": null,
           "surchargeCents": 500
         }
-      ]
+      ],
+      "drop": "001",
+      "sizeHint": "Relaxed fit. Between sizes? Size down for a closer cut."
+    },
+    {
+      "sku": "vt-heartbreak-crop-black",
+      "active": true,
+      "drop": "002",
+      "name": "Heartbreak Crop Tee",
+      "subtitle": "Cropped tee in black",
+      "description": "A cracked skull in a bleeding heart, bone and blood on black, with the wordmark underneath. Cropped to sit right at a high waist.",
+      "details": [
+        "Soft cotton and poly blend",
+        "Cropped, fitted cut",
+        "Heart print about 8 inches wide"
+      ],
+      "priceCents": 3400,
+      "image": "assets/products/heartbreak-crop-front.jpg",
+      "gallery": [
+        {
+          "src": "assets/products/heartbreak-crop-front.jpg",
+          "alt": "Heartbreak Crop Tee, front"
+        },
+        {
+          "src": "assets/products/heartbreak-crop-detail.jpg",
+          "alt": "Close up of the skull and heart print"
+        }
+      ],
+      "printFile": "assets/print-heartbreak.png",
+      "printful": {
+        "catalogBrand": "Bella",
+        "catalogModel": "6681",
+        "color": "Black",
+        "syncProductId": null,
+        "placement": {
+          "widthInches": 8,
+          "topInches": 1
+        }
+      },
+      "variants": [
+        {
+          "size": "S",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "M",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "L",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "XL",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "2XL",
+          "printfulSyncVariantId": null,
+          "surchargeCents": 200
+        }
+      ],
+      "sizeHint": "Fitted and cropped. Size up for a looser fit."
     }
   ]
 }

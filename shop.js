@@ -62,6 +62,7 @@
         }
       </div>
       <div class="product__info">
+        ${p.drop ? `<p class="product__drop">Drop ${esc(p.drop)}${ready ? "" : " · Coming soon"}</p>` : ""}
         <h3 class="product__name">${esc(p.name)}</h3>
         <p class="product__sub">${esc(p.subtitle)}</p>
         <p class="product__price" data-price>${money(p.priceCents)}</p>
@@ -85,7 +86,7 @@
               )
               .join("")}
           </div>
-          <p class="sizes__hint">Relaxed fit. Between sizes? Size down for a closer cut.</p>
+          ${p.sizeHint ? `<p class="sizes__hint">${esc(p.sizeHint)}</p>` : ""}
         </fieldset>
 
         <div class="buy">
