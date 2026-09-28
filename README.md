@@ -1,10 +1,16 @@
-# Valentine Tide — Landing Page
+# Valentine Tide
 
-A standalone "coming soon" landing page for **Valentine Tide**, a goth and punk
-surf apparel brand. Dark, moody, surf-meets-gothic. Captures emails for Drop 001
-ahead of the full Shopify + Printful store.
+The storefront for **Valentine Tide**, a goth and punk
+surf apparel brand. Dark, moody, surf-meets-gothic.
 
 > **Tagline:** Surf the Shadows
+
+## Shop
+
+Products render from `catalog.json` (`shop.js`). Checkout runs through the
+Cloudflare Worker in `worker/`: Stripe Checkout takes payment, the Stripe
+webhook creates the Printful order automatically. Setup and launch checklist:
+[`worker/README.md`](worker/README.md). The worker URL goes in `config.js`.
 
 ## Stack
 

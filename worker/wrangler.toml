@@ -1,0 +1,30 @@
+name = "valentine-tide-shop"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+
+# Serve the worker at shop.valentinetide.com once the domain is on Cloudflare,
+# or use the default *.workers.dev URL and paste it into shop.js.
+# routes = [{ pattern = "shop.valentinetide.com", custom_domain = true }]
+
+[vars]
+SITE_URL = "https://valentinetide.com"
+ALLOWED_ORIGINS = "https://valentinetide.com,https://www.valentinetide.com,http://localhost:8000"
+# Printful charges your card the moment an order is confirmed. Set to "false"
+# to land orders as drafts you approve in the Printful dashboard instead.
+PRINTFUL_AUTO_CONFIRM = "true"
+# Turn on after enabling Stripe Tax (Dashboard > Tax) and registering in Colorado.
+STRIPE_AUTOMATIC_TAX = "false"
+ALLOW_UNMAPPED = "false"
+
+# Email list (landing page signups + buyers who opt in at checkout).
+# Create it with:  npx wrangler kv namespace create SUBSCRIBERS
+# then paste the id below.
+[[kv_namespaces]]
+binding = "SUBSCRIBERS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# Secrets (set with `npx wrangler secret put NAME`, never commit them):
+#   STRIPE_SECRET_KEY      sk_test_... first, sk_live_... when you launch
+#   STRIPE_WEBHOOK_SECRET  whsec_... from the webhook endpoint you create
+#   PRINTFUL_TOKEN         Printful private token
+#   PRINTFUL_STORE_ID      only needed for an account level token

@@ -15,7 +15,10 @@
  * While it is left as the placeholder below, submits are SIMULATED so the
  * success state can be previewed without a backend (see submitEmail()).
  */
-const FORM_ENDPOINT = "REPLACE_WITH_FORM_ENDPOINT";
+const API_BASE = (window.VT_CONFIG && window.VT_CONFIG.API_BASE) || "";
+const FORM_ENDPOINT = API_BASE && !API_BASE.startsWith("REPLACE")
+  ? API_BASE.replace(/\/$/, "") + "/subscribe"
+  : "REPLACE_WITH_FORM_ENDPOINT";
 const ENDPOINT_PLACEHOLDER = "REPLACE_WITH_FORM_ENDPOINT";
 
 /* Pragmatic email check — not full RFC 5322, but catches the real mistakes. */
@@ -107,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
       await submitEmail(email);
       form.reset();
       form.classList.add("is-done");
-      setStatus("You're in. Watch the horizon — Drop 001 is coming.", "success");
+      setStatus("You're in. Watch the horizon for the next drop.", "success");
     } catch (error) {
       console.error("[Valentine Tide] submit error:", error);
       button.disabled = false;

@@ -7,3 +7,11 @@ Thumbs.db
 
 # Local preview tooling (not deployed)
 .claude/
+
+# Shop worker
+node_modules/
+.wrangler/
+.dev.vars
+
+# The X agent lives in its own private repo (see x-agent/README.md)
+x-agent/
