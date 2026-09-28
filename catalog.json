@@ -1,0 +1,35 @@
+{
+  "currency": "usd",
+  "shipping": {
+    "countries": ["US"],
+    "flatRateCents": 500,
+    "freeOverCents": 7500,
+    "label": "Standard shipping"
+  },
+  "products": [
+    {
+      "sku": "vt-wordmark-tee-black",
+      "active": true,
+      "name": "Wordmark Tee",
+      "subtitle": "Heavyweight garment dyed tee in black",
+      "description": "The first wave. Bone and blood wordmark on a heavyweight, garment dyed black tee. Relaxed fit, soft hand, built to fade like salt worn rubber.",
+      "priceCents": 3800,
+      "image": "assets/products/wordmark-tee-front.jpg",
+      "printFile": "assets/print-front.png",
+      "printful": {
+        "catalogBrand": "Comfort Colors",
+        "catalogModel": "1717",
+        "color": "Black",
+        "syncProductId": null
+      },
+      "variants": [
+        { "size": "S", "printfulSyncVariantId": null },
+        { "size": "M", "printfulSyncVariantId": null },
+        { "size": "L", "printfulSyncVariantId": null },
+        { "size": "XL", "printfulSyncVariantId": null },
+        { "size": "2XL", "printfulSyncVariantId": null, "surchargeCents": 300 },
+        { "size": "3XL", "printfulSyncVariantId": null, "surchargeCents": 500 }
+      ]
+    }
+  ]
+}

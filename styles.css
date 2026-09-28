@@ -424,6 +424,210 @@ p {
 }
 
 /* =========================================================
+   SHOP  (Drop 001)
+   ========================================================= */
+.hero__cta {
+  margin-top: clamp(1.5rem, 6vw, 2.25rem);
+}
+
+.shop {
+  padding: clamp(3rem, 12vw, 6rem) var(--gutter);
+  border-top: 1px solid var(--bone-faint);
+}
+
+.shop__inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.shop__heading {
+  text-align: center;
+  font-size: clamp(2rem, 9vw, 3rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.shop__sub {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  color: var(--bone-dim);
+}
+
+.shop__grid {
+  margin-top: clamp(2rem, 7vw, 3.5rem);
+  display: grid;
+  gap: clamp(2.5rem, 8vw, 4rem);
+}
+
+.shop__empty {
+  text-align: center;
+  color: var(--bone-dim);
+}
+
+.product {
+  display: grid;
+  gap: clamp(1.5rem, 5vw, 3rem);
+  align-items: start;
+}
+
+.product__media {
+  background-color: #1e1d1c;
+  border: 1px solid var(--bone-faint);
+}
+
+.product__media img {
+  width: 100%;
+  height: auto;
+}
+
+.product__name {
+  font-size: clamp(1.9rem, 7vw, 2.6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.product__sub {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+}
+
+.product__price {
+  margin-top: 1rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.product__desc {
+  margin-top: 1rem;
+  color: var(--bone-dim);
+  line-height: 1.7;
+}
+
+.sizes {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.sizes__legend {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+}
+
+.sizes__list {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.size input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.size span {
+  display: inline-grid;
+  place-items: center;
+  min-width: 3rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--bone-faint);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.size span:hover {
+  border-color: rgba(245, 240, 232, 0.4);
+}
+
+.size input:checked + span {
+  border-color: var(--blood-bright);
+  background-color: rgba(139, 0, 0, 0.25);
+}
+
+.size input:focus-visible + span {
+  outline: 2px solid var(--blood-bright);
+  outline-offset: 2px;
+}
+
+.sizes__hint {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: rgba(245, 240, 232, 0.5);
+}
+
+.buy {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.buy__qty {
+  flex: 0 0 4.5rem;
+  padding: 0 0.75rem;
+  background-color: transparent;
+  border: 1px solid var(--bone-faint);
+  border-radius: 0;
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.buy__qty option {
+  background-color: var(--near-black);
+}
+
+.buy__btn {
+  flex: 1 1 auto;
+}
+
+@media (min-width: 48rem) {
+  .product {
+    grid-template-columns: 1.1fr 1fr;
+  }
+}
+
+/* ---------- Order confirmation page ---------- */
+.confirm {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  text-align: center;
+}
+
+.confirm__inner {
+  max-width: 32rem;
+}
+
+.confirm__heading {
+  margin-top: 2rem;
+  font-size: clamp(2rem, 9vw, 3rem);
+  text-transform: uppercase;
+}
+
+.confirm__body {
+  margin-top: 1rem;
+  color: var(--bone-dim);
+  line-height: 1.7;
+}
+
+.confirm .btn {
+  margin-top: 2rem;
+}
+
+/* =========================================================
    POLISH  (Phase 5)
    Background texture, entrance motion, skip link, motion-safety.
    ========================================================= */
@@ -460,6 +664,7 @@ body::before {
 }
 
 .signup__inner,
+.shop__inner,
 .story__inner,
 .social__list,
 .footer {

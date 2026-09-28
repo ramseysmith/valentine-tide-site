@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Valentine Tide — Surf the Shadows</title>
-  <meta name="description" content="Valentine Tide. Goth and punk surf apparel. Drop 001 lands soon. Surf the shadows." />
+  <meta name="description" content="Valentine Tide. Goth and punk surf apparel. Drop 001 is here. Surf the shadows." />
   <meta name="theme-color" content="#161616" />
 
   <!-- Favicon (using the dark avatar mark; swap for a dedicated favicon anytime) -->
@@ -21,13 +21,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Valentine Tide" />
   <meta property="og:title" content="Valentine Tide — Surf the Shadows" />
-  <meta property="og:description" content="Goth and punk surf apparel. Drop 001 lands soon." />
+  <meta property="og:description" content="Goth and punk surf apparel. Drop 001 is here." />
   <meta property="og:image" content="assets/avatar.png" />
   <meta property="og:image:alt" content="Valentine Tide" />
   <meta property="og:url" content="https://valentinetide.com" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Valentine Tide — Surf the Shadows" />
-  <meta name="twitter:description" content="Goth and punk surf apparel. Drop 001 lands soon." />
+  <meta name="twitter:description" content="Goth and punk surf apparel. Drop 001 is here." />
   <meta name="twitter:image" content="assets/avatar.png" />
 
   <!-- Fonts: Pirata One (display) + Inter (body) from Google Fonts -->
@@ -70,9 +70,25 @@
         </h1>
 
         <p class="hero__tagline">Surf the Shadows</p>
-        <p class="hero__drop">Drop 001 lands soon.</p>
+        <p class="hero__drop">Drop 001 is here.</p>
+        <a class="btn hero__cta" href="#shop">Shop the drop</a>
       </div>
     </header>
+
+    <!-- ============================================================
+         SHOP
+         Products render from catalog.json (see shop.js). Checkout runs
+         through the shop worker in /worker (Stripe + Printful).
+         ============================================================ -->
+    <section class="shop" id="shop" aria-labelledby="shop-heading">
+      <div class="shop__inner">
+        <h2 class="shop__heading" id="shop-heading">Drop 001</h2>
+        <p class="shop__sub" id="shop-shipping">Printed to order. Ships in 5 to 10 business days.</p>
+        <div class="shop__grid" id="shop-grid">
+          <p class="shop__empty">Loading the drop…</p>
+        </div>
+      </div>
+    </section>
 
     <!-- ============================================================
          EMAIL CAPTURE
@@ -84,7 +100,7 @@
       <div class="signup__inner">
         <h2 class="signup__heading" id="signup-heading">Join the cult</h2>
         <p class="signup__sub">
-          First access to Drop 001. No noise — only the tide.
+          First look at every drop, restocks, and members only codes. No noise, only the tide.
         </p>
 
         <form class="signup__form" id="signup-form" novalidate>
@@ -180,6 +196,8 @@
     <p class="footer__copy">© 2026 Graysmith Labs LLC. All rights reserved.</p>
   </footer>
 
+  <script src="config.js"></script>
   <script src="script.js"></script>
+  <script src="shop.js"></script>
 </body>
 </html>
