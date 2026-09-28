@@ -1,7 +1,9 @@
 {
   "currency": "usd",
   "shipping": {
-    "countries": ["US"],
+    "countries": [
+      "US"
+    ],
     "flatRateCents": 500,
     "freeOverCents": 7500,
     "label": "Standard shipping"
@@ -13,8 +15,24 @@
       "name": "Wordmark Tee",
       "subtitle": "Heavyweight garment dyed tee in black",
       "description": "The first wave. Bone and blood wordmark on a heavyweight, garment dyed black tee. Relaxed fit, soft hand, built to fade like salt worn rubber.",
+      "details": [
+        "6.1 oz ring spun cotton",
+        "Garment dyed for a soft, lived in feel",
+        "Relaxed, boxy fit",
+        "Chest print about 10 inches wide"
+      ],
       "priceCents": 3800,
       "image": "assets/products/wordmark-tee-front.jpg",
+      "gallery": [
+        {
+          "src": "assets/products/wordmark-tee-front.jpg",
+          "alt": "Wordmark Tee, front"
+        },
+        {
+          "src": "assets/products/wordmark-tee-detail.jpg",
+          "alt": "Close up of the bone and blood red chest print"
+        }
+      ],
       "printFile": "assets/print-front.png",
       "printful": {
         "catalogBrand": "Comfort Colors",
@@ -23,12 +41,32 @@
         "syncProductId": null
       },
       "variants": [
-        { "size": "S", "printfulSyncVariantId": null },
-        { "size": "M", "printfulSyncVariantId": null },
-        { "size": "L", "printfulSyncVariantId": null },
-        { "size": "XL", "printfulSyncVariantId": null },
-        { "size": "2XL", "printfulSyncVariantId": null, "surchargeCents": 300 },
-        { "size": "3XL", "printfulSyncVariantId": null, "surchargeCents": 500 }
+        {
+          "size": "S",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "M",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "L",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "XL",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "2XL",
+          "printfulSyncVariantId": null,
+          "surchargeCents": 300
+        },
+        {
+          "size": "3XL",
+          "printfulSyncVariantId": null,
+          "surchargeCents": 500
+        }
       ]
     }
   ]
