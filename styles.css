@@ -1587,3 +1587,68 @@ p .text-link {
     grid-template-columns: 2fr 1fr 1fr;
   }
 }
+
+/* ---------- Portrait photo splits ---------- */
+/* Tall 2:3 photos keep their shape instead of cropping to a wide strip. */
+.split--portrait .split__media img {
+  aspect-ratio: 4 / 5;
+  height: auto;
+  min-height: 0;
+  object-position: 50% 30%;
+}
+
+@media (min-width: 48rem) {
+  .split--portrait {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .split--portrait .split__media img {
+    aspect-ratio: 3 / 4;
+    max-height: 48rem;
+  }
+
+  .split--portrait .split__text {
+    padding-left: clamp(2rem, 5vw, 4rem);
+  }
+
+  .split--reverse .split__media {
+    order: 2;
+  }
+}
+
+/* ---------- Manifesto with poster ---------- */
+.manifesto__poster {
+  margin: 0 auto clamp(2rem, 6vw, 3rem);
+  max-width: 20rem;
+  border: 1px solid var(--bone-faint);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 0 6px #111, 0 0 0 7px rgba(139, 0, 0, 0.5);
+}
+
+.manifesto__poster img {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 56rem) {
+  .manifesto__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 5rem);
+    align-items: center;
+    max-width: var(--content-max);
+    text-align: left;
+  }
+
+  .manifesto__poster {
+    margin: 0;
+  }
+
+  .manifesto__text .divider {
+    margin-left: 0;
+  }
+
+  .manifesto__text .manifesto__quote::before {
+    margin-left: -0.05em;
+  }
+}
