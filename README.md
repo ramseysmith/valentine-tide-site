@@ -63,7 +63,7 @@ Drop your files into `assets/`:
 
 - `wordmark.png` — transparent wordmark (page degrades to styled Pirata One text if missing)
 - `favicon.png` — browser tab icon
-- `og-image.png` — Open Graph preview image (referenced in `index.html`)
+- `og-image.jpg` — 1200x630 link preview card used by every page (absolute URL in the meta tags)
 
 Update the `og:url` and favicon paths in `index.html` once finalized.
 
