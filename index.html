@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Valentine Tide — Surf the Shadows</title>
-  <meta name="description" content="Valentine Tide. Goth and punk surf apparel. Drop 001 is here. Surf the shadows." />
+  <title>Valentine Tide | Surf the Shadows</title>
+  <meta name="description" content="Valentine Tide. Goth and punk surf apparel. Heavyweight black tees for night surfers, printed to order. Surf the shadows." />
   <meta name="theme-color" content="#161616" />
 
   <!-- Favicon (using the dark avatar mark; swap for a dedicated favicon anytime) -->
@@ -20,13 +20,13 @@
   -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Valentine Tide" />
-  <meta property="og:title" content="Valentine Tide — Surf the Shadows" />
+  <meta property="og:title" content="Valentine Tide | Surf the Shadows" />
   <meta property="og:description" content="Goth and punk surf apparel. Drop 001 is here." />
   <meta property="og:image" content="assets/avatar.png" />
   <meta property="og:image:alt" content="Valentine Tide" />
   <meta property="og:url" content="https://valentinetide.com" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Valentine Tide — Surf the Shadows" />
+  <meta name="twitter:title" content="Valentine Tide | Surf the Shadows" />
   <meta name="twitter:description" content="Goth and punk surf apparel. Drop 001 is here." />
   <meta name="twitter:image" content="assets/avatar.png" />
 
@@ -44,6 +44,17 @@
   <!-- Skip link: first focusable element, jumps keyboard users to signup -->
   <a class="skip-link" href="#signup">Skip to email signup</a>
 
+  <nav class="nav" aria-label="Main">
+    <a class="nav__brand" href="/" aria-label="Valentine Tide home">
+      <img src="assets/wordmark.png" alt="" width="2097" height="331" />
+    </a>
+    <ul class="nav__links">
+      <li><a href="/#shop">Shop</a></li>
+      <li><a href="vision.html">Vision</a></li>
+      <li><a href="help.html">Help</a></li>
+    </ul>
+  </nav>
+
   <main>
     <!-- ============================================================
          HERO
@@ -52,6 +63,7 @@
          Pirata One text fallback (see .wordmark--fallback in CSS).
          ============================================================ -->
     <header class="hero" id="top">
+      <img class="hero__art" src="assets/illustrations/moon-tide.svg" alt="" aria-hidden="true" />
       <div class="hero__inner">
         <h1 class="wordmark">
           <img
@@ -70,10 +82,37 @@
         </h1>
 
         <p class="hero__tagline">Surf the Shadows</p>
-        <p class="hero__drop">Drop 001 is here.</p>
-        <a class="btn hero__cta" href="#shop">Shop the drop</a>
+        <p class="hero__drop">Drop 002 is here.</p>
+        <div class="hero__actions">
+          <a class="btn" href="#shop">Shop the drop</a>
+          <a class="btn btn--ghost" href="vision.html">Our vision</a>
+        </div>
       </div>
     </header>
+
+    <!-- ============================================================
+         TRUST STRIP
+         ============================================================ -->
+    <section class="trust" aria-label="Why buy from Valentine Tide">
+      <ul class="trust__list">
+        <li class="trust__item">
+          <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#truck" /></svg>
+          <span><strong>Free US shipping</strong> on orders over $75</span>
+        </li>
+        <li class="trust__item">
+          <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#print" /></svg>
+          <span><strong>Printed to order</strong> so nothing goes to waste</span>
+        </li>
+        <li class="trust__item">
+          <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#lock" /></svg>
+          <span><strong>Secure checkout</strong> through Stripe</span>
+        </li>
+        <li class="trust__item">
+          <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#return" /></svg>
+          <span><strong>Misprint or damage?</strong> Free replacement</span>
+        </li>
+      </ul>
+    </section>
 
     <!-- ============================================================
          SHOP
@@ -144,22 +183,51 @@
     </section>
 
     <!-- ============================================================
-         BRAND STORY  (placeholder copy — refine to taste)
+         HOW IT'S MADE
+         ============================================================ -->
+    <section class="process" aria-labelledby="process-heading">
+      <div class="process__inner">
+        <img class="divider" src="assets/illustrations/divider.svg" alt="" aria-hidden="true" width="320" height="32" />
+        <h2 class="section-heading" id="process-heading">From the Deep to Your Door</h2>
+        <ol class="process__steps">
+          <li class="process__step">
+            <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#pen" /></svg></span>
+            <h3 class="process__title">Original art</h3>
+            <p>Every graphic is made for Valentine Tide and nobody else. No stock art, no clip art, ever.</p>
+          </li>
+          <li class="process__step">
+            <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#print" /></svg></span>
+            <h3 class="process__title">Printed on demand</h3>
+            <p>Your piece is printed after you order it, on heavyweight blanks. No overstock, no landfill of unsold shirts.</p>
+          </li>
+          <li class="process__step">
+            <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#box" /></svg></span>
+            <h3 class="process__title">Shipped with tracking</h3>
+            <p>Out the door in 5 to 10 business days, with a tracking link sent straight to your inbox.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         VISION TEASER  (full story lives on vision.html)
          ============================================================ -->
     <section class="story" aria-labelledby="story-heading">
       <div class="story__inner">
-        <h2 class="story__heading" id="story-heading">The Tide Comes in Black</h2>
-        <p class="story__body">
-          Valentine Tide is surf for the after-hours — born where the last light
-          drowns and the water turns to ink. We make apparel for the ones who
-          paddle out under a dead moon, who find the calm somewhere past the
-          break, in the cold and the quiet and the dark.
-        </p>
-        <p class="story__body">
-          No sun-bleached clichés. No pastel postcards. Just heavy threads cut
-          for restless souls — gothic lines, salt-worn black, and a red that
-          runs like the tide. This is the first wave. Surf the shadows with us.
-        </p>
+        <img class="story__art" src="assets/illustrations/pillar-night.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
+        <div>
+          <p class="eyebrow">The vision</p>
+          <h2 class="story__heading" id="story-heading">The Tide Comes in Black</h2>
+          <p class="story__body">
+            Valentine Tide is surf for the after hours, born where the last light
+            drowns and the water turns to ink. No sun bleached clichés. No pastel
+            postcards. Just heavy threads cut for restless souls.
+          </p>
+          <a class="text-link" href="vision.html">
+            Read the vision
+            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#arrow" /></svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -199,18 +267,39 @@
        FOOTER
        ============================================================ -->
   <footer class="footer">
-    <a class="footer__home" href="https://valentinetide.com">valentinetide.com</a>
-
-    <img
-      class="footer__wordmark"
-      src="assets/wordmark.png"
-      alt="Valentine Tide"
-      width="2097"
-      height="331"
-      loading="lazy"
-    />
-
-    <p class="footer__copy">© 2026 Graysmith Labs LLC. All rights reserved.</p>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img
+          class="footer__wordmark"
+          src="assets/wordmark.png"
+          alt="Valentine Tide"
+          width="2097"
+          height="331"
+          loading="lazy"
+        />
+        <p class="footer__tag">Goth surf apparel. Surf the shadows.</p>
+      </div>
+      <nav class="footer__col" aria-label="Shop">
+        <h2 class="footer__head">Shop</h2>
+        <a href="/#shop">The drops</a>
+        <a href="vision.html">Vision</a>
+        <a href="/#signup">Join the cult</a>
+      </nav>
+      <nav class="footer__col" aria-label="Help">
+        <h2 class="footer__head">Help</h2>
+        <a href="help.html#shipping">Shipping</a>
+        <a href="help.html#returns">Returns</a>
+        <a href="help.html#sizing">Sizing</a>
+        <a href="help.html#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="footer__base">
+      <p class="footer__pay">
+        <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#lock" /></svg>
+        Secure checkout by Stripe. We never see your card number.
+      </p>
+      <p class="footer__copy">© 2026 Graysmith Labs LLC. All rights reserved.</p>
+    </div>
   </footer>
 
   <script src="config.js"></script>

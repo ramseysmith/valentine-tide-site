@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Night water: a crescent moon over still black water, seen through a gothic window. Engraving style hatching. -->
+  <defs>
+    <clipPath id="nw-win"><path d="M78 192V110A84 84 0 0 1 120 37A84 84 0 0 1 162 110V192Z"/></clipPath>
+    <radialGradient id="nw-glow" cx="128" cy="82" r="60" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#8b0000" stop-opacity=".55"/><stop offset="1" stop-color="#8b0000" stop-opacity="0"/></radialGradient>
+    <mask id="nw-halo"><rect width="240" height="240" fill="#fff"/><circle cx="128" cy="82" r="27" fill="#000"/></mask>
+    <mask id="nw-crescent"><circle cx="128" cy="82" r="19" fill="#fff"/><circle cx="137" cy="76" r="16.5" fill="#000"/></mask>
+  </defs>
+  <circle cx="120" cy="120" r="104" stroke="#f5f0e8" stroke-opacity=".14"/>
+  <circle cx="120" cy="120" r="96" stroke="#8b0000" stroke-opacity=".5" stroke-dasharray="2 7"/>
+  <g clip-path="url(#nw-win)">
+    <rect x="78" y="37" width="84" height="155" fill="#0b0b0b"/>
+    <rect x="78" y="37" width="84" height="105" fill="url(#nw-glow)"/>
+    <g stroke="#f5f0e8" stroke-width=".6" mask="url(#nw-halo)">
+      <path d="M78 39.0H162" stroke-opacity="0.34"/>
+      <path d="M78 41.3H162" stroke-opacity="0.33"/>
+      <path d="M78 43.6H162" stroke-opacity="0.32"/>
+      <path d="M78 46.0H162" stroke-opacity="0.32"/>
+      <path d="M78 48.5H162" stroke-opacity="0.31"/>
+      <path d="M78 51.0H162" stroke-opacity="0.31"/>
+      <path d="M78 53.6H162" stroke-opacity="0.30"/>
+      <path d="M78 56.3H162" stroke-opacity="0.30"/>
+      <path d="M78 59.1H162" stroke-opacity="0.29"/>
+      <path d="M78 62.0H162" stroke-opacity="0.28"/>
+      <path d="M78 65.0H162" stroke-opacity="0.28"/>
+      <path d="M78 68.0H162" stroke-opacity="0.27"/>
+      <path d="M78 71.2H162" stroke-opacity="0.26"/>
+      <path d="M78 74.4H162" stroke-opacity="0.25"/>
+      <path d="M78 77.8H162" stroke-opacity="0.25"/>
+      <path d="M78 81.2H162" stroke-opacity="0.24"/>
+      <path d="M78 84.7H162" stroke-opacity="0.23"/>
+      <path d="M78 88.4H162" stroke-opacity="0.22"/>
+      <path d="M78 92.2H162" stroke-opacity="0.21"/>
+      <path d="M78 96.0H162" stroke-opacity="0.21"/>
+      <path d="M78 100.0H162" stroke-opacity="0.20"/>
+      <path d="M78 104.2H162" stroke-opacity="0.19"/>
+      <path d="M78 108.4H162" stroke-opacity="0.18"/>
+      <path d="M78 112.8H162" stroke-opacity="0.17"/>
+      <path d="M78 117.3H162" stroke-opacity="0.16"/>
+      <path d="M78 121.9H162" stroke-opacity="0.15"/>
+      <path d="M78 126.7H162" stroke-opacity="0.13"/>
+      <path d="M78 131.7H162" stroke-opacity="0.12"/>
+      <path d="M78 136.8H162" stroke-opacity="0.11"/>
+    </g>
+    <path d="M96 67.5v5M93.5 70h5" stroke="#f5f0e8" stroke-width=".7" stroke-opacity=".7"/>
+    <path d="M104 95.5v5M101.5 98h5" stroke="#f5f0e8" stroke-width=".7" stroke-opacity=".7"/>
+    <path d="M150 107.5v5M147.5 110h5" stroke="#f5f0e8" stroke-width=".7" stroke-opacity=".7"/>
+    <path d="M142 53.5v5M139.5 56h5" stroke="#f5f0e8" stroke-width=".7" stroke-opacity=".7"/>
+    <path d="M90 117.5v5M87.5 120h5" stroke="#f5f0e8" stroke-width=".7" stroke-opacity=".7"/>
+    <circle cx="128" cy="82" r="24" stroke="#f5f0e8" stroke-opacity=".25" stroke-width=".6"/>
+    <circle cx="128" cy="82" r="21" stroke="#b30000" stroke-opacity=".6" stroke-width=".6" stroke-dasharray="1 2.5"/>
+    <rect x="108" y="62" width="40" height="40" fill="#f5f0e8" mask="url(#nw-crescent)"/>
+    <path d="M78 142V126l5-3 4 4 6-8 5 6 4-2 7 18z" fill="#050505"/>
+    <path d="M78 126l5-3 4 4 6-8 5 6 4-2" stroke="#f5f0e8" stroke-opacity=".45" stroke-width=".6"/>
+    <path d="M162 142V132l-6-4-5 5-4-2-6 11z" fill="#050505"/>
+    <path d="M162 132l-6-4-5 5-4-2" stroke="#f5f0e8" stroke-opacity=".45" stroke-width=".6"/>
+    <path d="M78 142H162" stroke="#f5f0e8" stroke-opacity=".5" stroke-width=".7"/>
+    <path d="M78.0 144.5h6.6M87.3 144.5h8.6M98.3 144.5h7.9M109.5 144.5h5.0M118.3 144.5h4.9M126.7 144.5h5.1M134.3 144.5h7.2M146.2 144.5h5.4M154.6 144.5h8.5" stroke="#f5f0e8" stroke-opacity="0.12" stroke-width=".6"/>
+    <path d="M125.4 144.5h1.3M129.8 144.5h0.8" stroke="#f5f0e8" stroke-opacity="0.82" stroke-width="0.72"/>
+    <path d="M78.0 147.2h7.2M88.0 147.2h6.2M97.6 147.2h10.4M110.9 147.2h9.0M124.2 147.2h7.7M135.9 147.2h5.8M144.4 147.2h6.7M155.5 147.2h8.0" stroke="#f5f0e8" stroke-opacity="0.13" stroke-width=".6"/>
+    <path d="M124.6 147.2h1.6M128.0 147.2h2.1" stroke="#f5f0e8" stroke-opacity="0.80" stroke-width="0.74"/>
+    <path d="M78.0 150.1h7.7M90.1 150.1h9.4M104.8 150.1h10.6M118.9 150.1h12.1M134.1 150.1h8.8M147.7 150.1h7.2M159.0 150.1h6.5" stroke="#f5f0e8" stroke-opacity="0.14" stroke-width=".6"/>
+    <path d="M124.2 150.1h1.9M129.1 150.1h1.5M133.3 150.1h0.1" stroke="#b30000" stroke-opacity="0.77" stroke-width="0.76"/>
+    <path d="M78.0 153.1h9.8M93.2 153.1h12.8M110.3 153.1h11.1M124.5 153.1h11.3M140.6 153.1h13.1M159.0 153.1h8.8" stroke="#f5f0e8" stroke-opacity="0.14" stroke-width=".6"/>
+    <path d="M123.0 153.1h1.1M126.5 153.1h1.4M129.6 153.1h1.2M133.6 153.1h0.4" stroke="#f5f0e8" stroke-opacity="0.74" stroke-width="0.79"/>
+    <path d="M78.0 156.2h10.3M94.1 156.2h8.5M107.0 156.2h11.3M124.1 156.2h12.9M142.7 156.2h9.6M156.7 156.2h10.1" stroke="#f5f0e8" stroke-opacity="0.15" stroke-width=".6"/>
+    <path d="M122.8 156.2h1.5M126.2 156.2h1.6M129.9 156.2h2.0M134.6 156.2h1.3" stroke="#f5f0e8" stroke-opacity="0.71" stroke-width="0.81"/>
+    <path d="M78.0 159.5h11.4M93.9 159.5h12.3M112.5 159.5h13.0M130.4 159.5h12.6M148.5 159.5h9.2" stroke="#f5f0e8" stroke-opacity="0.15" stroke-width=".6"/>
+    <path d="M121.2 159.5h2.8M127.2 159.5h2.0M131.6 159.5h1.5M136.0 159.5h0.4" stroke="#b30000" stroke-opacity="0.68" stroke-width="0.84"/>
+    <path d="M78.0 162.9h11.1M93.3 162.9h11.9M109.0 162.9h9.9M123.0 162.9h10.5M138.2 162.9h10.0M154.5 162.9h13.5" stroke="#f5f0e8" stroke-opacity="0.16" stroke-width=".6"/>
+    <path d="M118.6 162.9h2.1M123.1 162.9h1.7M128.2 162.9h3.1M134.0 162.9h2.0" stroke="#f5f0e8" stroke-opacity="0.64" stroke-width="0.87"/>
+    <path d="M78.0 166.5h11.5M94.5 166.5h12.5M113.4 166.5h11.8M129.2 166.5h16.6M151.3 166.5h11.7" stroke="#f5f0e8" stroke-opacity="0.17" stroke-width=".6"/>
+    <path d="M116.7 166.5h2.5M123.0 166.5h3.1M129.2 166.5h2.1M133.9 166.5h1.9" stroke="#f5f0e8" stroke-opacity="0.60" stroke-width="0.90"/>
+    <path d="M78.0 170.3h15.1M99.7 170.3h13.9M118.5 170.3h16.8M142.6 170.3h17.0" stroke="#f5f0e8" stroke-opacity="0.18" stroke-width=".6"/>
+    <path d="M117.9 170.3h3.0M123.4 170.3h2.7M128.7 170.3h1.9M132.7 170.3h2.3M137.5 170.3h2.5" stroke="#b30000" stroke-opacity="0.57" stroke-width="0.93"/>
+    <path d="M78.0 174.2h15.7M101.1 174.2h19.0M127.5 174.2h15.2M148.0 174.2h14.4" stroke="#f5f0e8" stroke-opacity="0.18" stroke-width=".6"/>
+    <path d="M114.8 174.2h3.0M121.6 174.2h3.4M128.0 174.2h3.1M134.7 174.2h2.2" stroke="#f5f0e8" stroke-opacity="0.53" stroke-width="0.96"/>
+    <path d="M78.0 178.4h19.6M104.9 178.4h18.7M129.9 178.4h15.3M152.5 178.4h16.2" stroke="#f5f0e8" stroke-opacity="0.19" stroke-width=".6"/>
+    <path d="M115.8 178.4h2.8M121.6 178.4h3.7M128.9 178.4h2.5M133.9 178.4h2.4M140.3 178.4h2.8" stroke="#f5f0e8" stroke-opacity="0.49" stroke-width="0.99"/>
+    <path d="M78.0 182.7h20.4M106.6 182.7h19.4M132.2 182.7h18.7M156.6 182.7h15.5" stroke="#f5f0e8" stroke-opacity="0.20" stroke-width=".6"/>
+    <path d="M113.4 182.7h3.2M120.7 182.7h3.1M127.8 182.7h3.7M134.3 182.7h2.8M140.1 182.7h2.8" stroke="#b30000" stroke-opacity="0.44" stroke-width="1.03"/>
+    <path d="M78.0 187.3h18.2M103.1 187.3h17.5M128.9 187.3h18.8M154.7 187.3h20.2" stroke="#f5f0e8" stroke-opacity="0.21" stroke-width=".6"/>
+    <path d="M111.3 187.3h4.1M118.8 187.3h3.4M125.7 187.3h2.6M131.7 187.3h2.9M137.2 187.3h3.9M143.9 187.3h0.4" stroke="#f5f0e8" stroke-opacity="0.40" stroke-width="1.06"/>
+  </g>
+  <path d="M78 192V110A84 84 0 0 1 120 37A84 84 0 0 1 162 110V192Z" stroke="#f5f0e8" stroke-width="1.6"/>
+  <path d="M82 192V111A80 80 0 0 1 120 44.5A80 80 0 0 1 158 111V192" stroke="#f5f0e8" stroke-opacity=".45" stroke-width=".7"/>
+  <path d="M120 25l2.2 5-2.2 5-2.2-5z" fill="#b30000"/>
+  <path d="M70 192H170M74 197H166" stroke="#f5f0e8" stroke-width="1.4"/>
+  <path d="M70 192v5h4M170 192v5h-4" stroke="#f5f0e8" stroke-width="1.4"/>
+</svg>
