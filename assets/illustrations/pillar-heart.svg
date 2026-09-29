@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bleeding heart wrapped in thorns -->
+  <circle cx="120" cy="120" r="104" stroke="#f5f0e8" stroke-opacity=".14"/>
+  <circle cx="120" cy="120" r="96" stroke="#8b0000" stroke-opacity=".5" stroke-dasharray="2 7"/>
+  <path d="M120 176s-50-30-50-66a26 26 0 0 1 50-10 26 26 0 0 1 50 10c0 36-50 66-50 66z" fill="#8b0000" stroke="#b30000" stroke-width="2"/>
+  <path d="M120 100l-8 20 12 8-8 20" stroke="#161616" stroke-width="3"/>
+  <!-- drips -->
+  <path d="M104 164v14a4 4 0 0 0 8 0v-8" fill="#8b0000"/>
+  <path d="M134 162v22a4 4 0 0 0 8 0v-28" fill="#8b0000"/>
+  <!-- thorn vine -->
+  <path d="M50 132c24-10 44 4 70 0s46-24 72-16" stroke="#f5f0e8" stroke-width="2"/>
+  <path d="M60 98c30 12 50 30 60 30s34-14 62-6" stroke="#f5f0e8" stroke-opacity=".55" stroke-width="1.6"/>
+  <g stroke="#f5f0e8" stroke-width="2">
+    <path d="M72 126l-4-9M98 131l3-9M146 124l-3-9M170 116l6-7M84 108l-8 4M160 122l2 9"/>
+  </g>
+  <!-- small stars -->
+  <g stroke="#f5f0e8" stroke-width="1.2" opacity=".6"><path d="M66 70v9M61.5 74.5h9"/><path d="M176 72v7M172.5 75.5h7"/></g>
+</svg>
