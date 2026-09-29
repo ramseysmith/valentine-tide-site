@@ -1,18 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Bleeding heart wrapped in thorns -->
+  <!-- Bleeding heart: a heart pierced by a dagger and bound in thorns. Engraving style, bone and blood on black. -->
+  <defs>
+    <clipPath id="bh-clip"><path d="M120 170C84 148 68 122 70 98C72 76 100 64 120 88C140 64 168 76 170 98C172 122 156 148 120 170Z"/></clipPath>
+    <linearGradient id="bh-shade" x1="0" y1="0" x2="1" y2="1"><stop offset=".35" stop-color="#000"/><stop offset=".85" stop-color="#fff"/></linearGradient>
+    <mask id="bh-shade-m"><rect width="240" height="240" fill="url(#bh-shade)"/></mask>
+    <mask id="bh-out"><rect width="240" height="240" fill="#fff"/><path d="M120 170C84 148 68 122 70 98C72 76 100 64 120 88C140 64 168 76 170 98C172 122 156 148 120 170Z" fill="#000"/></mask>
+    <radialGradient id="bh-fill" cx="100" cy="92" r="80" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b30000"/><stop offset="1" stop-color="#4a0000"/></radialGradient>
+  </defs>
   <circle cx="120" cy="120" r="104" stroke="#f5f0e8" stroke-opacity=".14"/>
   <circle cx="120" cy="120" r="96" stroke="#8b0000" stroke-opacity=".5" stroke-dasharray="2 7"/>
-  <path d="M120 176s-50-30-50-66a26 26 0 0 1 50-10 26 26 0 0 1 50 10c0 36-50 66-50 66z" fill="#8b0000" stroke="#b30000" stroke-width="2"/>
-  <path d="M120 100l-8 20 12 8-8 20" stroke="#161616" stroke-width="3"/>
-  <!-- drips -->
-  <path d="M104 164v14a4 4 0 0 0 8 0v-8" fill="#8b0000"/>
-  <path d="M134 162v22a4 4 0 0 0 8 0v-28" fill="#8b0000"/>
-  <!-- thorn vine -->
-  <path d="M50 132c24-10 44 4 70 0s46-24 72-16" stroke="#f5f0e8" stroke-width="2"/>
-  <path d="M60 98c30 12 50 30 60 30s34-14 62-6" stroke="#f5f0e8" stroke-opacity=".55" stroke-width="1.6"/>
-  <g stroke="#f5f0e8" stroke-width="2">
-    <path d="M72 126l-4-9M98 131l3-9M146 124l-3-9M170 116l6-7M84 108l-8 4M160 122l2 9"/>
+  <g mask="url(#bh-out)">
+    <path d="M160.9 61.1L72.3 156.9L62.0 172.0L76.6 161.1L168.1 68.0Z" fill="#161616" stroke="#f5f0e8" stroke-width="1.2"/>
+    <path d="M163.1 66.0L66.1 167.7" stroke="#f5f0e8" stroke-opacity=".5" stroke-width=".6"/>
   </g>
-  <!-- small stars -->
-  <g stroke="#f5f0e8" stroke-width="1.2" opacity=".6"><path d="M66 70v9M61.5 74.5h9"/><path d="M176 72v7M172.5 75.5h7"/></g>
+  <path d="M181.3 41.9L166.1 57.8L171.2 62.7L186.4 46.8Z" fill="#161616" stroke="#f5f0e8" stroke-width="1.2"/>
+  <path d="M179.3 44.1L182.2 51.1" stroke="#f5f0e8" stroke-opacity=".6" stroke-width=".6"/>
+  <path d="M176.5 47.0L179.5 54.0" stroke="#f5f0e8" stroke-opacity=".6" stroke-width=".6"/>
+  <path d="M173.7 49.9L176.7 56.9" stroke="#f5f0e8" stroke-opacity=".6" stroke-width=".6"/>
+  <path d="M171.0 52.8L174.0 59.8" stroke="#f5f0e8" stroke-opacity=".6" stroke-width=".6"/>
+  <path d="M168.2 55.7L171.2 62.7" stroke="#f5f0e8" stroke-opacity=".6" stroke-width=".6"/>
+  <path d="M179.5 70.6Q171.4 57.4 157.8 49.9L154.4 53.5Q168.0 61.0 176.1 74.2Z" fill="#161616" stroke="#f5f0e8" stroke-width="1.2"/>
+  <circle cx="187.3" cy="40.7" r="4.5" fill="#8b0000" stroke="#f5f0e8" stroke-width="1.2"/>
+  <path d="M120 170C84 148 68 122 70 98C72 76 100 64 120 88C140 64 168 76 170 98C172 122 156 148 120 170Z" fill="url(#bh-fill)"/>
+  <g clip-path="url(#bh-clip)"><path d="M120.0 -0.0L240.0 120.0M118.2 1.8L238.2 121.8M116.3 3.7L236.3 123.7M114.5 5.5L234.5 125.5M112.6 7.4L232.6 127.4M110.8 9.2L230.8 129.2M109.0 11.0L229.0 131.0M107.1 12.9L227.1 132.9M105.3 14.7L225.3 134.7M103.5 16.5L223.5 136.5M101.6 18.4L221.6 138.4M99.8 20.2L219.8 140.2M97.9 22.1L217.9 142.1M96.1 23.9L216.1 143.9M94.3 25.7L214.3 145.7M92.4 27.6L212.4 147.6M90.6 29.4L210.6 149.4M88.7 31.3L208.7 151.3M86.9 33.1L206.9 153.1M85.1 34.9L205.1 154.9M83.2 36.8L203.2 156.8M81.4 38.6L201.4 158.6M79.6 40.4L199.6 160.4M77.7 42.3L197.7 162.3M75.9 44.1L195.9 164.1M74.0 46.0L194.0 166.0M72.2 47.8L192.2 167.8M70.4 49.6L190.4 169.6M68.5 51.5L188.5 171.5M66.7 53.3L186.7 173.3M64.8 55.2L184.8 175.2M63.0 57.0L183.0 177.0M61.2 58.8L181.2 178.8M59.3 60.7L179.3 180.7M57.5 62.5L177.5 182.5M55.7 64.3L175.7 184.3M53.8 66.2L173.8 186.2M52.0 68.0L172.0 188.0M50.1 69.9L170.1 189.9M48.3 71.7L168.3 191.7M46.5 73.5L166.5 193.5M44.6 75.4L164.6 195.4M42.8 77.2L162.8 197.2M40.9 79.1L160.9 199.1M39.1 80.9L159.1 200.9M37.3 82.7L157.3 202.7M35.4 84.6L155.4 204.6M33.6 86.4L153.6 206.4M31.8 88.2L151.8 208.2M29.9 90.1L149.9 210.1M28.1 91.9L148.1 211.9M26.2 93.8L146.2 213.8M24.4 95.6L144.4 215.6M22.6 97.4L142.6 217.4M20.7 99.3L140.7 219.3M18.9 101.1L138.9 221.1M17.0 103.0L137.0 223.0M15.2 104.8L135.2 224.8M13.4 106.6L133.4 226.6M11.5 108.5L131.5 228.5M9.7 110.3L129.7 230.3M7.9 112.1L127.9 232.1M6.0 114.0L126.0 234.0M4.2 115.8L124.2 235.8M2.3 117.7L122.3 237.7M0.5 119.5L120.5 239.5" stroke="#0b0b0b" stroke-width=".8" stroke-opacity=".75" mask="url(#bh-shade-m)"/>
+    <path d="M-0.0 120.0L120.0 -0.0M2.4 122.4L122.4 2.4M4.8 124.8L124.8 4.8M7.2 127.2L127.2 7.2M9.6 129.6L129.6 9.6M12.0 132.0L132.0 12.0M14.4 134.4L134.4 14.4M16.8 136.8L136.8 16.8M19.2 139.2L139.2 19.2M21.6 141.6L141.6 21.6M24.0 144.0L144.0 24.0M26.4 146.4L146.4 26.4M28.8 148.8L148.8 28.8M31.3 151.3L151.3 31.3M33.7 153.7L153.7 33.7M36.1 156.1L156.1 36.1M38.5 158.5L158.5 38.5M40.9 160.9L160.9 40.9M43.3 163.3L163.3 43.3M45.7 165.7L165.7 45.7M48.1 168.1L168.1 48.1M50.5 170.5L170.5 50.5M52.9 172.9L172.9 52.9M55.3 175.3L175.3 55.3M57.7 177.7L177.7 57.7M60.1 180.1L180.1 60.1M62.5 182.5L182.5 62.5M64.9 184.9L184.9 64.9M67.3 187.3L187.3 67.3M69.7 189.7L189.7 69.7M72.1 192.1L192.1 72.1M74.5 194.5L194.5 74.5M76.9 196.9L196.9 76.9M79.3 199.3L199.3 79.3M81.7 201.7L201.7 81.7M84.1 204.1L204.1 84.1M86.5 206.5L206.5 86.5M89.0 209.0L209.0 89.0M91.4 211.4L211.4 91.4M93.8 213.8L213.8 93.8M96.2 216.2L216.2 96.2M98.6 218.6L218.6 98.6M101.0 221.0L221.0 101.0M103.4 223.4L223.4 103.4M105.8 225.8L225.8 105.8M108.2 228.2L228.2 108.2M110.6 230.6L230.6 110.6M113.0 233.0L233.0 113.0M115.4 235.4L235.4 115.4M117.8 237.8L237.8 117.8" stroke="#0b0b0b" stroke-width=".6" stroke-opacity=".5" mask="url(#bh-shade-m)"/></g>
+  <path d="M120 170C84 148 68 122 70 98C72 76 100 64 120 88C140 64 168 76 170 98C172 122 156 148 120 170Z" stroke="#f5f0e8" stroke-width="1.6"/>
+  <path d="M78 100C78 84 92 76 104 82" stroke="#f5f0e8" stroke-opacity=".8" stroke-width="1.2"/>
+  <path d="M82 108C81 100 83 94 88 90" stroke="#f5f0e8" stroke-opacity=".45" stroke-width=".8"/>
+  <path d="M58 122C80 110 98 132 120 124S156 104 184 114" stroke="#161616" stroke-width="4"/>
+  <path d="M58 122C80 110 98 132 120 124S156 104 184 114" stroke="#f5f0e8" stroke-width="1.3"/>
+  <path d="M71.5 115.5L67.9 110.4L68.5 116.5Z" fill="#f5f0e8"/>
+  <path d="M86.5 120.5L90.1 125.6L89.5 119.5Z" fill="#f5f0e8"/>
+  <path d="M105.6 126.7L103.0 121.1L102.4 127.3Z" fill="#f5f0e8"/>
+  <path d="M118.4 124.3L121.0 129.9L121.6 123.7Z" fill="#f5f0e8"/>
+  <path d="M139.6 116.3L139.0 110.1L136.4 115.7Z" fill="#f5f0e8"/>
+  <path d="M152.4 109.7L153.0 115.9L155.6 110.3Z" fill="#f5f0e8"/>
+  <path d="M171.5 110.5L172.1 104.4L168.5 109.5Z" fill="#f5f0e8"/>
+  <path d="M111.8 165V177a2.2 2.2 0 0 0 4.4 0V164" fill="#8b0000" stroke="#b30000" stroke-width=".8"/>
+  <path d="M123.8 164V184a2.2 2.2 0 0 0 4.4 0V163" fill="#8b0000" stroke="#b30000" stroke-width=".8"/>
+  <path d="M120 178a2.4 2.4 0 1 0 .01 0" fill="#8b0000"/>
+  <path d="M66 63.5v5.0M63.5 66h5.0" stroke="#f5f0e8" stroke-width=".7" stroke-opacity="0.7"/>
+  <path d="M180 158v4M178 160h4" stroke="#f5f0e8" stroke-width=".7" stroke-opacity="0.7"/>
+  <path d="M168 58v4M166 60h4" stroke="#f5f0e8" stroke-width=".7" stroke-opacity="0.7"/>
 </svg>

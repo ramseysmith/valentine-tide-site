@@ -325,43 +325,6 @@ p {
 }
 
 /* =========================================================
-   SOCIAL  (Phase 4)
-   ========================================================= */
-.social {
-  padding: clamp(2.5rem, 9vw, 4rem) var(--gutter) 0;
-  text-align: center;
-}
-
-.social__list {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.social__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--bone);
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  transition: color 0.18s ease;
-}
-
-.social__link:hover {
-  color: var(--blood-bright);
-}
-
-.social__icon {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-
-/* =========================================================
    SHOP  (Drop 001)
    ========================================================= */
 .shop {
@@ -615,40 +578,6 @@ p {
   color: var(--blood-bright);
 }
 
-/* ---------- Lifestyle band ---------- */
-.band {
-  position: relative;
-  height: clamp(22rem, 70vw, 40rem);
-  overflow: hidden;
-}
-
-.band__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 25%;
-}
-
-.band__overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: var(--gutter) var(--gutter) clamp(2rem, 6vw, 3.5rem);
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.55) 0%, rgba(22, 22, 22, 0) 30%, rgba(22, 22, 22, 0) 55%, rgba(22, 22, 22, 0.9) 100%);
-}
-
-.band__line {
-  max-width: 30rem;
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 6vw, 2.6rem);
-  line-height: 1.15;
-  color: var(--bone);
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
-}
-
 /* ---------- Order confirmation page ---------- */
 .confirm {
   min-height: 100vh;
@@ -714,13 +643,6 @@ body::before {
   animation: rise-in 1s ease-out both;
 }
 
-.signup__inner,
-.shop__inner,
-.social__list,
-.footer {
-  animation: fade-in 1s ease-out both;
-}
-
 @keyframes rise-in {
   from {
     opacity: 0;
@@ -729,15 +651,6 @@ body::before {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 
@@ -1588,27 +1501,40 @@ p .text-link {
   }
 }
 
-/* ---------- Portrait photo splits ---------- */
-/* Tall 2:3 photos keep their shape instead of cropping to a wide strip. */
-.split--portrait .split__media img {
-  aspect-ratio: 4 / 5;
+/* =========================================================
+   SQUARE MEDIA
+   Every photo and product shot shows as a square crop.
+   ========================================================= */
+.product__media,
+.thumb {
+  aspect-ratio: 1 / 1;
+}
+
+.product__img,
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.split--square .split__media {
+  align-self: center;
+}
+
+.split--square .split__media img {
+  aspect-ratio: 1 / 1;
   height: auto;
   min-height: 0;
   object-position: 50% 30%;
 }
 
 @media (min-width: 48rem) {
-  .split--portrait {
+  .split--square {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
   }
 
-  .split--portrait .split__media img {
-    aspect-ratio: 3 / 4;
-    max-height: 48rem;
-  }
-
-  .split--portrait .split__text {
+  .split--square .split__text {
     padding-left: clamp(2rem, 5vw, 4rem);
   }
 
@@ -1617,23 +1543,25 @@ p .text-link {
   }
 }
 
-/* ---------- Manifesto with poster ---------- */
+/* ---------- Manifesto with a square poster ---------- */
 .manifesto__poster {
   margin: 0 auto clamp(2rem, 6vw, 3rem);
-  max-width: 20rem;
-  border: 1px solid var(--bone-faint);
+  max-width: 22rem;
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8), 0 0 0 6px #111, 0 0 0 7px rgba(139, 0, 0, 0.5);
 }
 
 .manifesto__poster img {
   width: 100%;
   height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: 50% 52%;
 }
 
 @media (min-width: 56rem) {
   .manifesto__inner {
     display: grid;
-    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 22rem) minmax(0, 1fr);
     gap: clamp(3rem, 6vw, 5rem);
     align-items: center;
     max-width: var(--content-max);
@@ -1647,8 +1575,342 @@ p .text-link {
   .manifesto__text .divider {
     margin-left: 0;
   }
+}
 
-  .manifesto__text .manifesto__quote::before {
-    margin-left: -0.05em;
+/* =========================================================
+   MOTION
+   ========================================================= */
+
+/* ---------- Scroll reveal (motion.js adds .has-reveal) ---------- */
+.has-reveal .reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.has-reveal .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Nav shadow once scrolled ---------- */
+.nav {
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.nav.is-scrolled {
+  background-color: rgba(16, 16, 16, 0.94);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.9);
+}
+
+/* ---------- Hero scroll cue ---------- */
+.hero__cue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1rem, 4vh, 2rem);
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-left: -1.375rem;
+  border: 1px solid var(--bone-faint);
+  border-radius: 50%;
+  color: var(--bone-dim);
+  animation: cue 2.2s ease-in-out infinite;
+  transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.hero__cue:hover {
+  color: var(--bone);
+  border-color: var(--blood-bright);
+}
+
+@keyframes cue {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ---------- Ticker ---------- */
+.ticker {
+  overflow: hidden;
+  border-top: 1px solid var(--bone-faint);
+  background-color: var(--blood);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ticker__track {
+  display: flex;
+  width: max-content;
+  animation: ticker 38s linear infinite;
+}
+
+.ticker:hover .ticker__track {
+  animation-play-state: paused;
+}
+
+.ticker__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.7rem 0 0.7rem 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 3.5vw, 1.35rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--bone);
+}
+
+.ticker__item .icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: var(--near-black);
+}
+
+@keyframes ticker {
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Button shine ---------- */
+.btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(110deg, transparent 30%, rgba(245, 240, 232, 0.28) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+
+.btn:hover::after {
+  transform: translateX(120%);
+}
+
+/* ---------- Illustration hover lift ---------- */
+.pillar__art,
+.story__art,
+.signup__art,
+.help__art {
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.6s ease;
+}
+
+.pillar:hover .pillar__art,
+.story__inner:hover .story__art,
+.signup__inner:hover .signup__art {
+  transform: translateY(-6px) rotate(-2deg);
+  filter: drop-shadow(0 12px 24px rgba(139, 0, 0, 0.35));
+}
+
+/* ---------- Process icon glow on hover ---------- */
+.process__icon {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.process__step:hover .process__icon {
+  border-color: var(--blood-bright);
+  box-shadow: 0 0 0 6px rgba(139, 0, 0, 0.15), 0 0 30px rgba(179, 0, 0, 0.35);
+}
+
+/* =========================================================
+   LOOKBOOK
+   ========================================================= */
+.lookbook {
+  padding: clamp(3rem, 12vw, 6rem) var(--gutter);
+  border-top: 1px solid var(--bone-faint);
+  background-color: #111;
+}
+
+.lookbook__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.lookbook__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.lookbook .section-heading {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.lookbook__grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: clamp(2rem, 7vw, 3.5rem);
+}
+
+@media (min-width: 40rem) {
+  .lookbook__grid {
+    grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.tile {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background-color: #0b0b0b;
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85);
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.6s ease;
+}
+
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.92), rgba(10, 10, 10, 0) 55%);
+  transition: border-color 0.4s ease;
+  pointer-events: none;
+}
+
+.tile:hover img {
+  transform: scale(1.07);
+  filter: saturate(1.05);
+}
+
+.tile:hover::after {
+  border-color: var(--blood-bright);
+}
+
+.tile__cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: grid;
+  gap: 0.2rem;
+  padding: 1.25rem;
+  transform: translateY(6px);
+  transition: transform 0.5s ease;
+}
+
+.tile:hover .tile__cap {
+  transform: none;
+}
+
+.tile__kicker {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--blood-bright);
+}
+
+.tile__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 4.5vw, 1.75rem);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.lookbook__cta {
+  margin-top: clamp(2rem, 6vw, 3rem);
+  text-align: center;
+}
+
+/* =========================================================
+   SIGNUP ADDITIONS
+   ========================================================= */
+.signup {
+  border-top: 1px solid var(--bone-faint);
+  background: radial-gradient(ellipse at 50% 20%, rgba(139, 0, 0, 0.18), transparent 60%);
+}
+
+.signup__art {
+  width: clamp(9rem, 38vw, 12rem);
+  height: auto;
+  margin: 0 auto 1.25rem;
+}
+
+.perks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.5rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.82rem;
+  color: var(--bone);
+}
+
+.perks li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.perks .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--blood-bright);
+}
+
+/* ---------- Product assurance row ---------- */
+.assure {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0.5rem 0 0;
+  padding: 1rem 0 0;
+  list-style: none;
+  border-top: 1px solid var(--bone-faint);
+  font-size: 0.8rem;
+  color: var(--bone-dim);
+}
+
+.assure li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.assure .icon {
+  color: var(--blood-bright);
+}
+
+/* ---------- Footer social ---------- */
+.footer__social {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  transition: color 0.18s ease;
+}
+
+.footer__social:hover {
+  color: var(--blood-bright);
+}
+
+/* ---------- Help contact illustration ---------- */
+.help__art {
+  float: right;
+  width: clamp(7rem, 26vw, 10rem);
+  height: auto;
+  margin: 0 0 1rem 1rem;
 }

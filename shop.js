@@ -33,10 +33,10 @@
 
     const products = catalog.products.filter((p) => p.active);
     grid.innerHTML = "";
-    products.forEach((p) => grid.appendChild(renderProduct(p)));
+    products.forEach((p) => grid.appendChild(renderProduct(p, catalog.shipping)));
   });
 
-  function renderProduct(p) {
+  function renderProduct(p, shipping) {
     const gallery = p.gallery && p.gallery.length ? p.gallery : [{ src: p.image, alt: `${p.name}, ${p.subtitle}` }];
     const ready = cfg.SHOP_PREVIEW || p.variants.some((v) => v.printfulSyncVariantId);
     const el = document.createElement("article");
@@ -99,6 +99,11 @@
           </button>
         </div>
         <p class="form-status buy__status" role="status" aria-live="polite"></p>
+        <ul class="assure">
+          ${shipping && shipping.freeOverCents ? `<li>${icon("truck")}Free US shipping over ${money(shipping.freeOverCents)}</li>` : ""}
+          <li>${icon("return")}Free replacement for misprints or damage</li>
+          <li>${icon("lock")}Secure checkout through Stripe</li>
+        </ul>
       </div>`;
 
     wireGallery(el, gallery);
@@ -173,6 +178,10 @@
     });
     frame.addEventListener("mouseenter", () => frame.classList.add("is-zoomed"));
     frame.addEventListener("mouseleave", () => frame.classList.remove("is-zoomed"));
+  }
+
+  function icon(name) {
+    return `<svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#${name}" /></svg>`;
   }
 
   function esc(s) {

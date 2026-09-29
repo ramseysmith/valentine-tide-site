@@ -88,13 +88,26 @@
           <a class="btn btn--ghost" href="vision.html">Our vision</a>
         </div>
       </div>
+      <a class="hero__cue" href="#shop" aria-label="Scroll to the shop">
+        <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron" /></svg>
+      </a>
     </header>
+
+    <!-- ============================================================
+         TICKER  (decorative; the same facts appear in the trust strip)
+         ============================================================ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span class="ticker__item">Surf the Shadows<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Drop 002 live now<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Free US shipping over $75<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Printed to order<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Made for night surfers<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span>
+        <span class="ticker__item">Surf the Shadows<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Drop 002 live now<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Free US shipping over $75<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Printed to order<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Made for night surfers<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span>
+      </div>
+    </div>
 
     <!-- ============================================================
          TRUST STRIP
          ============================================================ -->
     <section class="trust" aria-label="Why buy from Valentine Tide">
-      <ul class="trust__list">
+      <ul class="trust__list" data-reveal-group>
         <li class="trust__item">
           <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#truck" /></svg>
           <span><strong>Free US shipping</strong> on orders over $75</span>
@@ -121,53 +134,120 @@
          ============================================================ -->
     <section class="shop" id="shop" aria-labelledby="shop-heading">
       <div class="shop__inner">
-        <h2 class="shop__heading" id="shop-heading">The Drops</h2>
+        <h2 class="shop__heading" id="shop-heading" data-reveal>The Drops</h2>
         <p class="shop__sub" id="shop-shipping">Printed to order. Ships in 5 to 10 business days.</p>
-        <div class="shop__grid" id="shop-grid">
+        <div class="shop__grid" id="shop-grid" data-reveal>
           <p class="shop__empty">Loading the drop…</p>
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         LOOK  (storm coast portrait)
+         HOW IT'S MADE
          ============================================================ -->
-    <section class="split split--portrait" aria-labelledby="look-heading">
-      <div class="split__media">
-        <img
-          src="assets/lifestyle/storm-coast-portrait.jpg"
-          alt="A goth woman in a black laced top, studded belts, and chains, standing on a stormy coastline"
-          width="768"
-          height="1152"
-          loading="lazy"
-        />
-      </div>
-      <div class="split__text">
-        <p class="eyebrow">The look</p>
-        <h2 class="split__heading" id="look-heading">Dressed for the Storm</h2>
-        <p>
-          Black on black, salt in your hair, wind off the water. Our tees are cut
-          to layer under lace, leather, and chains, and to hold up to cold mornings
-          on the rocks.
-        </p>
-        <a class="btn" href="#shop">Shop the drops</a>
+    <section class="process" aria-labelledby="process-heading">
+      <div class="process__inner">
+        <img class="divider" src="assets/illustrations/divider.svg" alt="" aria-hidden="true" width="320" height="32" />
+        <h2 class="section-heading" id="process-heading" data-reveal>From the Deep to Your Door</h2>
+        <ol class="process__steps" data-reveal-group>
+          <li class="process__step">
+            <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#pen" /></svg></span>
+            <h3 class="process__title">Original art</h3>
+            <p>Every graphic is made for Valentine Tide and nobody else. No stock art, no clip art, ever.</p>
+          </li>
+          <li class="process__step">
+            <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#print" /></svg></span>
+            <h3 class="process__title">Printed on demand</h3>
+            <p>Your piece is printed after you order it, on heavyweight blanks. No overstock, no landfill of unsold shirts.</p>
+          </li>
+          <li class="process__step">
+            <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#box" /></svg></span>
+            <h3 class="process__title">Shipped with tracking</h3>
+            <p>Out the door in 5 to 10 business days, with a tracking link sent straight to your inbox.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
     <!-- ============================================================
-         LIFESTYLE BAND
+         LOOKBOOK  (square tiles)
          ============================================================ -->
-    <section class="band" aria-label="Valentine Tide at the beach">
-      <img
-        class="band__img"
-        src="assets/lifestyle/beach-goth-surfer.jpg"
-        alt="A goth surfer in black and red holding a red surfboard on the beach"
-        width="1152"
-        height="864"
-        loading="lazy"
-      />
-      <div class="band__overlay">
-        <p class="band__line">Made for the ones who paddle out in black.</p>
+    <section class="lookbook" aria-labelledby="lookbook-heading">
+      <div class="lookbook__inner">
+        <p class="eyebrow lookbook__eyebrow" data-reveal>
+          <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#skull" /></svg>
+          The lookbook
+        </p>
+        <h2 class="section-heading" id="lookbook-heading" data-reveal>Made for the Ones Who Paddle Out in Black</h2>
+        <div class="lookbook__grid" data-reveal-group>
+          <figure class="tile">
+            <img
+              src="assets/lifestyle/storm-coast-portrait.jpg"
+              alt="A goth woman in a black laced top, studded belts, and chains, standing on a stormy coastline"
+              width="768"
+              height="1152"
+              loading="lazy"
+              style="object-position: 50% 18%"
+            />
+            <figcaption class="tile__cap">
+              <span class="tile__kicker">The look</span>
+              <span class="tile__title">Dressed for the Storm</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img
+              src="assets/lifestyle/beach-goth-surfer.jpg"
+              alt="A goth surfer in a skull and heart crop top holding a red surfboard on the beach"
+              width="1152"
+              height="864"
+              loading="lazy"
+              style="object-position: 50% 30%"
+            />
+            <figcaption class="tile__cap">
+              <span class="tile__kicker">On the sand</span>
+              <span class="tile__title">Heartbreak at High Tide</span>
+            </figcaption>
+          </figure>
+          <figure class="tile">
+            <img
+              src="assets/lifestyle/black-boards.jpg"
+              alt="Black and white surfboards with red filigree and a skull and crossbones, racked on black volcanic rock"
+              width="768"
+              height="1152"
+              loading="lazy"
+              style="object-position: 50% 45%"
+            />
+            <figcaption class="tile__cap">
+              <span class="tile__kicker">The world</span>
+              <span class="tile__title">Black Sand, Black Boards</span>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="lookbook__cta" data-reveal>
+          <a class="btn" href="#shop">Shop the drops</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         VISION TEASER  (full story lives on vision.html)
+         ============================================================ -->
+    <section class="story" aria-labelledby="story-heading">
+      <div class="story__inner" data-reveal>
+        <img class="story__art" src="assets/illustrations/pillar-night.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
+        <div>
+          <p class="eyebrow">The vision</p>
+          <h2 class="story__heading" id="story-heading">The Tide Comes in Black</h2>
+          <p class="story__body">
+            Valentine Tide is surf for the after hours, born where the last light
+            drowns and the water turns to ink. No sun bleached clichés. No pastel
+            postcards. Just heavy threads cut for restless souls.
+          </p>
+          <a class="text-link" href="vision.html">
+            Read the vision
+            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#arrow" /></svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -178,11 +258,17 @@
          success state can be previewed without a backend.
          ============================================================ -->
     <section class="signup" id="signup" aria-labelledby="signup-heading">
-      <div class="signup__inner">
+      <div class="signup__inner" data-reveal>
+        <img class="signup__art" src="assets/illustrations/message-bottle.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
         <h2 class="signup__heading" id="signup-heading">Join the cult</h2>
         <p class="signup__sub">
-          First look at every drop, restocks, and members only codes. No noise, only the tide.
+          Send us your email and the tide brings word back. No noise, only the drops.
         </p>
+        <ul class="perks">
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#eye" /></svg>First look at every drop</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#wave" /></svg>Restock alerts</li>
+          <li><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#heart" /></svg>Members only codes</li>
+        </ul>
 
         <form class="signup__form" id="signup-form" novalidate>
           <label class="visually-hidden" for="email">Email address</label>
@@ -207,85 +293,6 @@
       </div>
     </section>
 
-    <!-- ============================================================
-         HOW IT'S MADE
-         ============================================================ -->
-    <section class="process" aria-labelledby="process-heading">
-      <div class="process__inner">
-        <img class="divider" src="assets/illustrations/divider.svg" alt="" aria-hidden="true" width="320" height="32" />
-        <h2 class="section-heading" id="process-heading">From the Deep to Your Door</h2>
-        <ol class="process__steps">
-          <li class="process__step">
-            <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#pen" /></svg></span>
-            <h3 class="process__title">Original art</h3>
-            <p>Every graphic is made for Valentine Tide and nobody else. No stock art, no clip art, ever.</p>
-          </li>
-          <li class="process__step">
-            <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#print" /></svg></span>
-            <h3 class="process__title">Printed on demand</h3>
-            <p>Your piece is printed after you order it, on heavyweight blanks. No overstock, no landfill of unsold shirts.</p>
-          </li>
-          <li class="process__step">
-            <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#box" /></svg></span>
-            <h3 class="process__title">Shipped with tracking</h3>
-            <p>Out the door in 5 to 10 business days, with a tracking link sent straight to your inbox.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         VISION TEASER  (full story lives on vision.html)
-         ============================================================ -->
-    <section class="story" aria-labelledby="story-heading">
-      <div class="story__inner">
-        <img class="story__art" src="assets/illustrations/pillar-night.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
-        <div>
-          <p class="eyebrow">The vision</p>
-          <h2 class="story__heading" id="story-heading">The Tide Comes in Black</h2>
-          <p class="story__body">
-            Valentine Tide is surf for the after hours, born where the last light
-            drowns and the water turns to ink. No sun bleached clichés. No pastel
-            postcards. Just heavy threads cut for restless souls.
-          </p>
-          <a class="text-link" href="vision.html">
-            Read the vision
-            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#arrow" /></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         SOCIAL — X only for now (@valentinetide)
-         ============================================================ -->
-    <section class="social" aria-labelledby="social-heading">
-      <h2 class="visually-hidden" id="social-heading">Follow Valentine Tide</h2>
-      <ul class="social__list">
-        <li>
-          <a
-            class="social__link"
-            href="https://x.com/valentinetide"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <!-- X logo -->
-            <svg
-              class="social__icon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path
-                fill="currentColor"
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-              />
-            </svg>
-            <span class="social__handle">@valentinetide</span>
-          </a>
-        </li>
-      </ul>
-    </section>
   </main>
 
   <!-- ============================================================
@@ -303,6 +310,10 @@
           loading="lazy"
         />
         <p class="footer__tag">Goth surf apparel. Surf the shadows.</p>
+        <a class="footer__social" href="https://x.com/valentinetide" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#x-logo" /></svg>
+          @valentinetide
+        </a>
       </div>
       <nav class="footer__col" aria-label="Shop">
         <h2 class="footer__head">Shop</h2>
@@ -330,5 +341,6 @@
   <script src="config.js"></script>
   <script src="script.js"></script>
   <script src="shop.js"></script>
+  <script src="motion.js"></script>
 </body>
 </html>

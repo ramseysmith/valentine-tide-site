@@ -1,4 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
+  <style>
+    /* Gentle motion: glow breathes, stars twinkle, swell drifts. Off for reduced motion. */
+    .glow { animation: breathe 7s ease-in-out infinite alternate; }
+    .stars circle { animation: twinkle 4s ease-in-out infinite alternate; }
+    .stars circle:nth-child(3n) { animation-delay: -1.3s; animation-duration: 5.5s; }
+    .stars circle:nth-child(3n+1) { animation-delay: -2.6s; animation-duration: 3.2s; }
+    .swell { animation: swell 14s ease-in-out infinite alternate; }
+    .swell--slow { animation-duration: 22s; animation-direction: alternate-reverse; }
+    .curl { animation: bob 9s ease-in-out infinite alternate; }
+    @keyframes breathe { from { opacity: .7; } to { opacity: 1; } }
+    @keyframes twinkle { from { opacity: .15; } to { opacity: 1; } }
+    @keyframes swell { from { transform: translateX(-40px); } to { transform: translateX(40px); } }
+    @keyframes bob { from { transform: translateY(0); } to { transform: translateY(8px); } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
   <defs>
     <radialGradient id="glow" cx="50%" cy="24%" r="36%">
       <stop offset="0" stop-color="#8b0000" stop-opacity=".38"/>
@@ -15,10 +30,10 @@
     </linearGradient>
   </defs>
 
-  <rect width="1600" height="900" fill="url(#glow)"/>
+  <rect class="glow" width="1600" height="900" fill="url(#glow)"/>
 
   <!-- stars -->
-  <g fill="#f5f0e8" opacity=".5">
+  <g class="stars" fill="#f5f0e8" opacity=".6">
     <circle cx="210" cy="120" r="1.6"/><circle cx="380" cy="230" r="1.1"/><circle cx="520" cy="90" r="1.3"/>
     <circle cx="1090" cy="110" r="1.5"/><circle cx="1240" cy="210" r="1.1"/><circle cx="1400" cy="80" r="1.7"/>
     <circle cx="1480" cy="300" r="1.1"/><circle cx="120" cy="330" r="1.2"/><circle cx="660" cy="190" r="1"/>
@@ -47,15 +62,17 @@
 
   <!-- sea -->
   <rect y="540" width="1600" height="360" fill="url(#sea)"/>
-  <g fill="none" stroke-linecap="round">
-    <path d="M0 560c80 0 120-14 200-14s120 14 200 14 120-14 200-14 120 14 200 14 120-14 200-14 120 14 200 14 120-14 200-14 120 14 200 14" stroke="#f5f0e8" stroke-opacity=".22" stroke-width="1.5"/>
-    <path d="M-60 620c100 0 150-20 250-20s150 20 250 20 150-20 250-20 150 20 250 20 150-20 250-20 150 20 250 20 150-20 250-20" stroke="#f5f0e8" stroke-opacity=".16" stroke-width="1.5"/>
-    <path d="M0 700c130 0 200-28 330-28s200 28 330 28 200-28 330-28 200 28 330 28 200-28 330-28" stroke="#b30000" stroke-opacity=".45" stroke-width="2"/>
-    <path d="M-120 790c160 0 240-34 400-34s240 34 400 34 240-34 400-34 240 34 400 34 240-34 400-34" stroke="#f5f0e8" stroke-opacity=".1" stroke-width="1.5"/>
+  <g class="swell" fill="none" stroke-linecap="round">
+    <path d="M-200 560c80 0 120-14 200-14s120 14 200 14 120-14 200-14 120 14 200 14 120-14 200-14 120 14 200 14 120-14 200-14 120 14 200 14 120-14 200-14 120 14 200 14 120-14 200-14" stroke="#f5f0e8" stroke-opacity=".22" stroke-width="1.5"/>
+    <path d="M-200 700c130 0 200-28 330-28s200 28 330 28 200-28 330-28 200 28 330 28 200-28 330-28 200 28 330 28 200-28 330-28" stroke="#b30000" stroke-opacity=".45" stroke-width="2"/>
+  </g>
+  <g class="swell swell--slow" fill="none" stroke-linecap="round">
+    <path d="M-260 620c100 0 150-20 250-20s150 20 250 20 150-20 250-20 150 20 250 20 150-20 250-20 150 20 250 20 150-20 250-20 150 20 250 20 150-20 250-20" stroke="#f5f0e8" stroke-opacity=".16" stroke-width="1.5"/>
+    <path d="M-320 790c160 0 240-34 400-34s240 34 400 34 240-34 400-34 240 34 400 34 240-34 400-34 240 34 400 34 240-34 400-34" stroke="#f5f0e8" stroke-opacity=".1" stroke-width="1.5"/>
   </g>
 
   <!-- curling wave, left, in woodcut strokes -->
-  <g fill="none" stroke="#f5f0e8" stroke-linecap="round" opacity=".28" stroke-width="1.6">
+  <g class="curl" fill="none" stroke="#f5f0e8" stroke-linecap="round" opacity=".28" stroke-width="1.6">
     <path d="M0 640c90-10 170-80 190-170 12-54-20-92-66-86-44 6-54 60-20 74"/>
     <path d="M0 668c110-14 205-94 222-196"/>
     <path d="M0 696c128-18 236-108 250-226"/>

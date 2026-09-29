@@ -63,7 +63,7 @@
          ============================================================ -->
     <section class="manifesto" aria-labelledby="manifesto-heading">
       <div class="manifesto__inner">
-        <figure class="manifesto__poster">
+        <figure class="manifesto__poster" data-reveal>
           <img
             src="assets/lifestyle/poster-wanderer.jpg"
             alt="Valentine Tide, gothic surf clothing: a cloaked figure in a wide brim hat standing in crashing night waves"
@@ -72,7 +72,7 @@
             loading="lazy"
           />
         </figure>
-        <div class="manifesto__text">
+        <div class="manifesto__text" data-reveal>
         <h2 class="visually-hidden" id="manifesto-heading">Manifesto</h2>
         <blockquote class="manifesto__quote">
           The ocean was never pastel. It is cold, deep, and older than any of us.
@@ -100,8 +100,8 @@
          ============================================================ -->
     <section class="pillars" aria-labelledby="pillars-heading">
       <div class="pillars__inner">
-        <h2 class="section-heading" id="pillars-heading">What We Stand On</h2>
-        <div class="pillars__grid">
+        <h2 class="section-heading" id="pillars-heading" data-reveal>What We Stand On</h2>
+        <div class="pillars__grid" data-reveal-group>
           <article class="pillar">
             <img class="pillar__art" src="assets/illustrations/pillar-night.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
             <h3 class="pillar__title">Night Water</h3>
@@ -134,47 +134,19 @@
     </section>
 
     <!-- ============================================================
-         BOARDS SPLIT
-         ============================================================ -->
-    <section class="split split--portrait split--reverse" aria-labelledby="boards-heading">
-      <div class="split__media">
-        <img
-          src="assets/lifestyle/black-boards.jpg"
-          alt="Black and white surfboards with red filigree and a skull and crossbones, racked on black volcanic rock by the sea"
-          width="768"
-          height="1152"
-          loading="lazy"
-        />
-      </div>
-      <div class="split__text">
-        <p class="eyebrow">The world</p>
-        <h2 class="split__heading" id="boards-heading">Black Sand, Black Boards</h2>
-        <p>
-          Red filigree, skulls, and crossbones. Boards racked on volcanic rock
-          while the swell comes in grey. This is the coast we design for: moody,
-          rugged, and a little dangerous.
-        </p>
-        <p>
-          Every graphic we print draws on the same world, so what you wear looks
-          like it belongs in the water with you.
-        </p>
-      </div>
-    </section>
-
-    <!-- ============================================================
          LIFESTYLE SPLIT
          ============================================================ -->
-    <section class="split" aria-labelledby="split-heading">
-      <div class="split__media">
+    <section class="split split--square" aria-labelledby="split-heading">
+      <div class="split__media" data-reveal>
         <img
           src="assets/lifestyle/beach-goth-surfer.jpg"
-          alt="A goth surfer in the Heartbreak Crop Tee holding a red surfboard on the beach"
+          alt="A goth surfer in a skull and heart crop top holding a red surfboard on the beach"
           width="1152"
           height="864"
           loading="lazy"
         />
       </div>
-      <div class="split__text">
+      <div class="split__text" data-reveal>
         <p class="eyebrow">Who it is for</p>
         <h2 class="split__heading" id="split-heading">Made for the ones who paddle out in black</h2>
         <p>
@@ -192,9 +164,9 @@
          ============================================================ -->
     <section class="code" aria-labelledby="code-heading">
       <div class="code__inner">
-        <h2 class="section-heading" id="code-heading">The Code</h2>
+        <h2 class="section-heading" id="code-heading" data-reveal>The Code</h2>
         <p class="section-sub">Four promises we make with every drop.</p>
-        <ul class="code__list">
+        <ul class="code__list" data-reveal-group>
           <li class="code__item">
             <span class="code__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#pen" /></svg></span>
             <div>
@@ -228,10 +200,38 @@
     </section>
 
     <!-- ============================================================
+         BOARDS SPLIT
+         ============================================================ -->
+    <section class="split split--square split--reverse" aria-labelledby="boards-heading">
+      <div class="split__media" data-reveal>
+        <img
+          src="assets/lifestyle/black-boards.jpg"
+          alt="Black and white surfboards with red filigree and a skull and crossbones, racked on black volcanic rock by the sea"
+          width="768"
+          height="1152"
+          loading="lazy"
+        />
+      </div>
+      <div class="split__text" data-reveal>
+        <p class="eyebrow">The world</p>
+        <h2 class="split__heading" id="boards-heading">Black Sand, Black Boards</h2>
+        <p>
+          Red filigree, skulls, and crossbones. Boards racked on volcanic rock
+          while the swell comes in grey. This is the coast we design for: moody,
+          rugged, and a little dangerous.
+        </p>
+        <p>
+          Every graphic we print draws on the same world, so what you wear looks
+          like it belongs in the water with you.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
          CTA
          ============================================================ -->
     <section class="cta" aria-labelledby="cta-heading">
-      <div class="cta__inner">
+      <div class="cta__inner" data-reveal>
         <svg class="icon icon--lg cta__icon" aria-hidden="true"><use href="assets/icons.svg#moon" /></svg>
         <h2 class="section-heading" id="cta-heading">The Tide Is Coming In</h2>
         <p class="section-sub">Two drops live now. Printed to order and shipped with tracking.</p>
@@ -255,6 +255,10 @@
           loading="lazy"
         />
         <p class="footer__tag">Goth surf apparel. Surf the shadows.</p>
+        <a class="footer__social" href="https://x.com/valentinetide" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#x-logo" /></svg>
+          @valentinetide
+        </a>
       </div>
       <nav class="footer__col" aria-label="Shop">
         <h2 class="footer__head">Shop</h2>
@@ -278,5 +282,6 @@
       <p class="footer__copy">© 2026 Graysmith Labs LLC. All rights reserved.</p>
     </div>
   </footer>
+  <script src="motion.js"></script>
 </body>
 </html>

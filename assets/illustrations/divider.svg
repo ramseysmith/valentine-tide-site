@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 32" fill="none" stroke-linecap="round">
-  <!-- Ornamental rule: waves either side of a small heart -->
+  <!-- Ornamental rule: waves either side of a small heart that beats slowly -->
+  <style>
+    .beat { transform-box: fill-box; transform-origin: center; animation: beat 2.4s ease-in-out infinite; }
+    @keyframes beat { 0%, 60%, 100% { transform: scale(1); } 15% { transform: scale(1.18); } 30% { transform: scale(.96); } 45% { transform: scale(1.1); } }
+    @media (prefers-reduced-motion: reduce) { .beat { animation: none; } }
+  </style>
   <path d="M4 16c10 0 10-5 20-5s10 5 20 5 10-5 20-5 10 5 20 5 10-5 20-5 10 5 20 5" stroke="#f5f0e8" stroke-opacity=".35" stroke-width="1.5"/>
   <path d="M196 16c10 0 10-5 20-5s10 5 20 5 10-5 20-5 10 5 20 5 10-5 20-5 10 5 20 5" stroke="#f5f0e8" stroke-opacity=".35" stroke-width="1.5"/>
-  <path d="M160 25s-11-6.5-11-13.5a5.5 5.5 0 0 1 11-2 5.5 5.5 0 0 1 11 2c0 7-11 13.5-11 13.5z" fill="#8b0000"/>
+  <path class="beat" d="M160 25s-11-6.5-11-13.5a5.5 5.5 0 0 1 11-2 5.5 5.5 0 0 1 11 2c0 7-11 13.5-11 13.5z" fill="#8b0000"/>
   <path d="M140 16h-6M180 16h6" stroke="#8b0000" stroke-width="1.5"/>
 </svg>

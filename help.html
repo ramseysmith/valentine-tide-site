@@ -45,7 +45,7 @@
 
     <div class="help">
       <!-- Jump links -->
-      <ul class="help__toc" aria-label="On this page">
+      <ul class="help__toc" aria-label="On this page" data-reveal-group>
         <li><a href="#shipping"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#truck" /></svg>Shipping</a></li>
         <li><a href="#returns"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#return" /></svg>Returns</a></li>
         <li><a href="#sizing"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#ruler" /></svg>Sizing</a></li>
@@ -54,7 +54,7 @@
         <li><a href="#contact"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#mail" /></svg>Contact</a></li>
       </ul>
 
-      <section class="help__section" id="shipping" aria-labelledby="shipping-heading">
+      <section class="help__section" data-reveal id="shipping" aria-labelledby="shipping-heading">
         <h2 class="help__heading" id="shipping-heading">Shipping</h2>
         <p>
           Every piece is printed to order, then shipped. Most orders leave within
@@ -69,7 +69,7 @@
         <p>International shipping is on the way. Join the list on the home page to hear when it opens.</p>
       </section>
 
-      <section class="help__section" id="returns" aria-labelledby="returns-heading">
+      <section class="help__section" data-reveal id="returns" aria-labelledby="returns-heading">
         <h2 class="help__heading" id="returns-heading">Returns and replacements</h2>
         <p>
           Because each piece is printed just for you, we cannot take returns for
@@ -84,7 +84,7 @@
         </p>
       </section>
 
-      <section class="help__section" id="sizing" aria-labelledby="sizing-heading">
+      <section class="help__section" data-reveal id="sizing" aria-labelledby="sizing-heading">
         <h2 class="help__heading" id="sizing-heading">Sizing and fit</h2>
         <div class="help__cards">
           <div class="help__card">
@@ -105,7 +105,7 @@
         </p>
       </section>
 
-      <section class="help__section" id="care" aria-labelledby="care-heading">
+      <section class="help__section" data-reveal id="care" aria-labelledby="care-heading">
         <h2 class="help__heading" id="care-heading">Care</h2>
         <ul class="help__list">
           <li>Turn it inside out and wash cold with darks.</li>
@@ -115,7 +115,7 @@
         </ul>
       </section>
 
-      <section class="help__section" id="privacy" aria-labelledby="privacy-heading">
+      <section class="help__section" data-reveal id="privacy" aria-labelledby="privacy-heading">
         <h2 class="help__heading" id="privacy-heading">Privacy</h2>
         <p>
           Payments run through Stripe Checkout, so we never see or store your card
@@ -125,7 +125,8 @@
         </p>
       </section>
 
-      <section class="help__section" id="contact" aria-labelledby="contact-heading">
+      <section class="help__section" data-reveal id="contact" aria-labelledby="contact-heading">
+        <img class="help__art" src="assets/illustrations/message-bottle.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
         <h2 class="help__heading" id="contact-heading">Contact</h2>
         <p>Questions about an order, fit, or a collab? Reach us here and a real person will answer.</p>
         <ul class="help__contact">
@@ -159,6 +160,10 @@
           loading="lazy"
         />
         <p class="footer__tag">Goth surf apparel. Surf the shadows.</p>
+        <a class="footer__social" href="https://x.com/valentinetide" target="_blank" rel="noopener noreferrer">
+          <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#x-logo" /></svg>
+          @valentinetide
+        </a>
       </div>
       <nav class="footer__col" aria-label="Shop">
         <h2 class="footer__head">Shop</h2>
@@ -182,5 +187,6 @@
       <p class="footer__copy">© 2026 Graysmith Labs LLC. All rights reserved.</p>
     </div>
   </footer>
+  <script src="motion.js"></script>
 </body>
 </html>
