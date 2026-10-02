@@ -38,7 +38,7 @@
         "catalogBrand": "Comfort Colors",
         "catalogModel": "1717",
         "color": "Black",
-        "syncProductId": null,
+        "syncProductId": 477461445,
         "placement": {
           "widthInches": 10,
           "topInches": 1.2
@@ -47,28 +47,28 @@
       "variants": [
         {
           "size": "S",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5531889731
         },
         {
           "size": "M",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5531889744
         },
         {
           "size": "L",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5531889774
         },
         {
           "size": "XL",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5531889798
         },
         {
           "size": "2XL",
-          "printfulSyncVariantId": null,
+          "printfulSyncVariantId": 5531889834,
           "surchargeCents": 300
         },
         {
           "size": "3XL",
-          "printfulSyncVariantId": null,
+          "printfulSyncVariantId": 5531889835,
           "surchargeCents": 500
         }
       ],
@@ -105,7 +105,7 @@
         "catalogBrand": "Bella + Canvas",
         "catalogModel": "6882GD",
         "color": "Washed Black",
-        "syncProductId": null,
+        "syncProductId": 477461690,
         "placement": {
           "widthInches": 8,
           "topInches": 1
@@ -114,23 +114,23 @@
       "variants": [
         {
           "size": "S",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5531894191
         },
         {
           "size": "M",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5531894193
         },
         {
           "size": "L",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5531894194
         },
         {
           "size": "XL",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5531894195
         },
         {
           "size": "2XL",
-          "printfulSyncVariantId": null,
+          "printfulSyncVariantId": 5531894197,
           "surchargeCents": 200
         }
       ],
