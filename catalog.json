@@ -80,11 +80,12 @@
       "active": true,
       "drop": "002",
       "name": "Heartbreak Crop Tee",
-      "subtitle": "Cropped tee in black",
+      "subtitle": "Garment dyed cropped tee in washed black",
       "description": "A cracked skull in a bleeding heart, bone and blood on black, with the wordmark underneath. Cropped to sit right at a high waist.",
       "details": [
-        "Soft cotton and poly blend",
-        "Cropped, fitted cut",
+        "100% ring spun cotton, 6.5 oz heavyweight",
+        "Garment dyed for a soft, lived in feel",
+        "Cropped, boxy fit with oversized sleeves",
         "Heart print about 8 inches wide"
       ],
       "priceCents": 3400,
@@ -101,9 +102,9 @@
       ],
       "printFile": "assets/print-heartbreak.png",
       "printful": {
-        "catalogBrand": "Bella",
-        "catalogModel": "6681",
-        "color": "Black",
+        "catalogBrand": "Bella + Canvas",
+        "catalogModel": "6882GD",
+        "color": "Washed Black",
         "syncProductId": null,
         "placement": {
           "widthInches": 8,
@@ -133,7 +134,7 @@
           "surchargeCents": 200
         }
       ],
-      "sizeHint": "Fitted and cropped. Size up for a looser fit."
+      "sizeHint": "Boxy and cropped. Take your usual size for a relaxed fit."
     }
   ]
 }

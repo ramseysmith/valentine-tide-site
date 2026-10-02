@@ -83,8 +83,15 @@ if (dryRun) {
   process.exit(0);
 }
 
-const created = (await pfSend("POST", "/store/products", payload)).result;
-console.log(`Created store product #${created.id}`);
+// Re-runs are safe: reuse the product if it already exists in the store.
+let created = await pfTry(`/store/products/@${product.sku}`);
+if (created) {
+  created = created.sync_product;
+  console.log(`Store product #${created.id} already exists, reusing it`);
+} else {
+  created = (await pfSend("POST", "/store/products", payload)).result;
+  console.log(`Created store product #${created.id}`);
+}
 
 // 4. Read back the sync variant IDs and save them.
 const full = (await pfGet(`/store/products/${created.id}`)).result;
@@ -126,6 +133,12 @@ async function computePosition(productId, placement, printFile) {
 async function pngSize(file) {
   const buf = await readFile(file);
   return { width: buf.readUInt32BE(16), height: buf.readUInt32BE(20) };
+}
+
+async function pfTry(p) {
+  const res = await fetch(API + p, { headers });
+  if (!res.ok) return null;
+  return (await res.json()).result;
 }
 
 async function pfGet(p) {

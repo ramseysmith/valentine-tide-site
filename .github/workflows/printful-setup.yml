@@ -1,0 +1,42 @@
+name: Printful setup
+
+# Creates the Printful products for catalog.json and saves their variant IDs
+# back into catalog.json. Needs a PRINTFUL_TOKEN repo secret (a Printful
+# private token scoped to the Valentine Tide store). Safe to re-run.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Only show what would be created"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PRINTFUL_TOKEN: ${{ secrets.PRINTFUL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Create products
+        run: |
+          [ -n "$PRINTFUL_TOKEN" ] || { echo "::error title=Missing secret::Add PRINTFUL_TOKEN in repo settings"; exit 1; }
+          for sku in $(node -e "console.log(require('./catalog.json').products.filter(p=>p.active).map(p=>p.sku).join(' '))"); do
+            node worker/scripts/setup-printful-product.mjs "$sku" ${{ inputs.dry_run && '--dry-run' || '' }}
+          done
+      - name: Save variant IDs
+        if: ${{ !inputs.dry_run }}
+        run: |
+          git diff --quiet catalog.json && { echo "catalog.json unchanged"; exit 0; }
+          git config user.name "Ramsey Graysmith"
+          git config user.email "smith.s.ramsey@gmail.com"
+          git commit -am "Save Printful variant IDs to catalog.json"
+          git push
