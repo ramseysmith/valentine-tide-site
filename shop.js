@@ -38,7 +38,8 @@
 
   function renderProduct(p, shipping) {
     const gallery = p.gallery && p.gallery.length ? p.gallery : [{ src: p.image, alt: `${p.name}, ${p.subtitle}` }];
-    const ready = cfg.SHOP_PREVIEW || p.variants.some((v) => v.printfulSyncVariantId);
+    // Sellable only when checkout is connected and Printful knows the product.
+    const ready = !!API && (cfg.SHOP_PREVIEW || p.variants.some((v) => v.printfulSyncVariantId));
     const el = document.createElement("article");
     el.className = "product";
     el.innerHTML = `
@@ -94,8 +95,8 @@
           <select class="buy__qty" id="qty-${p.sku}">
             ${[1, 2, 3, 4, 5].map((n) => `<option value="${n}">${n}</option>`).join("")}
           </select>
-          <button class="btn buy__btn" type="button" ${ready ? "" : "disabled"}>
-            ${ready ? "Buy now" : "Dropping soon"}
+<button class="btn buy__btn${ready ? "" : " buy__btn--notify"}" type="button">
+            ${ready ? "Buy now" : "Notify me when it drops"}
           </button>
         </div>
         <p class="form-status buy__status" role="status" aria-live="polite"></p>
@@ -122,7 +123,24 @@
     };
     el.querySelectorAll(`input[name="size-${p.sku}"]`).forEach((r) => r.addEventListener("change", updatePrice));
 
+    if (!ready) qty.hidden = true;
+
     btn.addEventListener("click", async () => {
+      // Not live yet: capture the interest instead of a dead button.
+      if (!ready) {
+        const field = document.getElementById("signup-interest");
+        const note = document.getElementById("signup-interest-note");
+        if (field) field.value = `${p.name} (${selectedVariant().size})`;
+        if (note) {
+          note.innerHTML = `We'll email you when the <strong>${esc(p.name)}</strong> drops.`;
+          note.hidden = false;
+        }
+        const signup = document.getElementById("signup");
+        if (signup) signup.scrollIntoView({ behavior: "smooth", block: "center" });
+        const input = document.getElementById("email");
+        if (input) setTimeout(() => input.focus({ preventScroll: true }), 500);
+        return;
+      }
       if (!API) {
         status.dataset.state = "error";
         status.textContent = "Checkout isn't connected yet.";

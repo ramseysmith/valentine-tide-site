@@ -6,6 +6,10 @@ compatibility_date = "2026-09-01"
 # or use the default *.workers.dev URL and paste it into shop.js.
 # routes = [{ pattern = "shop.valentinetide.com", custom_domain = true }]
 
+# Every 30 minutes the worker nudges the X agent (only if AGENT_DISPATCH_TOKEN is set).
+[triggers]
+crons = ["*/30 * * * *"]
+
 [vars]
 SITE_URL = "https://valentinetide.com"
 ALLOWED_ORIGINS = "https://valentinetide.com,https://www.valentinetide.com,http://localhost:8000"
@@ -28,3 +32,5 @@ id = "REPLACE_WITH_KV_NAMESPACE_ID"
 #   STRIPE_WEBHOOK_SECRET  whsec_... from the webhook endpoint you create
 #   PRINTFUL_TOKEN         Printful private token
 #   PRINTFUL_STORE_ID      only needed for an account level token
+#   AGENT_DISPATCH_TOKEN   optional: GitHub fine grained token (Actions read and write on
+#                          valentine-tide-agent) so the X agent runs on time

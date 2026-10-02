@@ -53,3 +53,10 @@ Swap in `sk_live_...` and the live webhook secret, redeploy. Done: every paid or
 - `npm run export:subscribers` lists the email list (landing page signups plus buyers who opted in at checkout).
 - New product: add an entry to `catalog.json`, run the setup script with its sku, push. The site and checkout pick it up automatically.
 - Sales tax: once you're registered in Colorado, enable Stripe Tax and set `STRIPE_AUTOMATIC_TAX = "true"`.
+
+## Keep the X agent on time (optional, recommended)
+
+GitHub skips many scheduled runs. Once this worker is deployed it can nudge the agent every 30 minutes:
+1. GitHub, Settings, Developer settings, Fine grained tokens: new token, only `valentine-tide-agent`, permission **Actions: Read and write**.
+2. `npx wrangler secret put AGENT_DISPATCH_TOKEN` and paste it. The cron in `wrangler.toml` does the rest.
+

@@ -1914,3 +1914,30 @@ p .text-link {
   height: auto;
   margin: 0 0 1rem 1rem;
 }
+
+/* ---------- Live vs coming soon copy (set by status.js) ---------- */
+html:not([data-shop="live"]) [data-when="live"],
+html[data-shop="live"] [data-when="soon"] {
+  display: none !important;
+}
+
+/* ---------- Notify me (drop not live yet) ---------- */
+.buy__btn--notify {
+  background-color: transparent;
+  border-color: var(--blood-bright);
+  color: var(--bone);
+}
+
+.buy__btn--notify:hover {
+  background-color: var(--blood);
+}
+
+.signup__interest {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--bone-dim);
+}
+
+.signup__interest strong {
+  color: var(--bone);
+}
