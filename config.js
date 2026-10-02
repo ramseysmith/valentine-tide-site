@@ -8,5 +8,5 @@ window.VT_CONFIG = {
   SHOP_PREVIEW: false,
   // Until the worker is live, signups are emailed here through FormSubmit
   // (formsubmit.co). The first signup triggers a one time activation email.
-  SIGNUP_FALLBACK_EMAIL: "hello@valentinetide.com",
+  SIGNUP_FALLBACK_EMAIL: "graysmithlabs@gmail.com",
 };
