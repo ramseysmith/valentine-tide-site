@@ -1,0 +1,25 @@
+name: Printful orders check
+
+# Lists the store's latest Printful orders (status, items, totals; no customer
+# details) on the run page. Uses the PRINTFUL_TOKEN repo secret.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PRINTFUL_TOKEN: ${{ secrets.PRINTFUL_TOKEN }}
+    steps:
+      - name: List recent orders
+        run: |
+          node -e '
+          (async () => {
+            const res = await fetch("https://api.printful.com/orders?limit=10", { headers: { Authorization: "Bearer " + process.env.PRINTFUL_TOKEN } });
+            const data = await res.json();
+            if (!res.ok) { console.log(`::error title=Printful ${res.status}::${JSON.stringify(data.error || data).slice(0, 500)}`); process.exit(1); }
+            const rows = (data.result || []).map((o) => `#${o.id} ${o.status} ext=${o.external_id} ${new Date(o.created * 1000).toISOString()} ${(o.items || []).map((i) => i.quantity + "x " + i.name).join("; ")} total=${o.costs && o.costs.total}`);
+            console.log(`::notice title=Printful orders (${rows.length})::${rows.join(" || ").slice(0, 3000) || "none"}`);
+          })();'
