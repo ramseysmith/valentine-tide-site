@@ -15,7 +15,7 @@ SITE_URL = "https://valentinetide.com"
 ALLOWED_ORIGINS = "https://valentinetide.com,https://www.valentinetide.com,http://localhost:8000"
 # Printful charges your card the moment an order is confirmed. Set to "false"
 # to land orders as drafts you approve in the Printful dashboard instead.
-PRINTFUL_AUTO_CONFIRM = "true"
+PRINTFUL_AUTO_CONFIRM = "false"
 # Turn on after enabling Stripe Tax (Dashboard > Tax) and registering in Colorado.
 STRIPE_AUTOMATIC_TAX = "false"
 ALLOW_UNMAPPED = "false"
