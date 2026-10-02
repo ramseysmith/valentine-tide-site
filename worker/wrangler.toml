@@ -21,6 +21,9 @@ ALLOWED_ORIGINS = "https://valentinetide.com,https://www.valentinetide.com,http:
 PRINTFUL_AUTO_CONFIRM = "false"
 # Turn on after enabling Stripe Tax (Dashboard > Tax) and registering in Colorado.
 STRIPE_AUTOMATIC_TAX = "false"
+# Ask buyers to opt into marketing emails at checkout. Accept Stripe's checkout
+# terms first (Dashboard > Settings > Checkout), then set to "true".
+STRIPE_PROMO_CONSENT = "false"
 ALLOW_UNMAPPED = "false"
 
 # Email list (optional). Without it the worker still sells; the site keeps

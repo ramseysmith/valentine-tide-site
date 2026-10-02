@@ -60,7 +60,9 @@ test("falls back to legacy shipping_details", () => {
 });
 
 test("unmapped variants are refused", () => {
-  assert.equal(buildPrintfulOrder(session, catalog), null);
+  const unmapped = structuredClone(catalog);
+  unmapped.products.forEach((p) => p.variants.forEach((v) => (v.printfulSyncVariantId = null)));
+  assert.equal(buildPrintfulOrder(session, unmapped), null);
 });
 
 test("printful duplicate external_id counts as success", async () => {

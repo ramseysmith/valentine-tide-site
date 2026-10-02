@@ -10,7 +10,9 @@ export async function createCheckoutSession(secretKey, o) {
   p.set("allow_promotion_codes", "true");
   p.set("billing_address_collection", "auto");
   p.set("phone_number_collection[enabled]", "true");
-  p.set("consent_collection[promotions]", "auto");
+  // Marketing opt in at checkout needs Stripe's checkout terms accepted first
+  // (Dashboard > Settings > Checkout). Off unless STRIPE_PROMO_CONSENT=true.
+  if (o.promoConsent) p.set("consent_collection[promotions]", "auto");
 
   p.set("line_items[0][quantity]", String(o.quantity));
   p.set("line_items[0][price_data][currency]", o.currency);

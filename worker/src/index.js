@@ -84,6 +84,7 @@ async function handleCheckout(request, env, cors) {
     shippingLabel: catalog.shipping.label,
     site,
     automaticTax: env.STRIPE_AUTOMATIC_TAX === "true",
+    promoConsent: env.STRIPE_PROMO_CONSENT === "true",
   });
 
   return json({ url: session.url }, 200, cors);
