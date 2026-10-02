@@ -48,7 +48,10 @@ export default {
       return json({ error: "not_found" }, 404, cors);
     } catch (err) {
       console.error("[worker] unhandled", err && err.stack ? err.stack : err);
-      return json({ error: "server_error" }, 500, cors);
+      // Stripe and Printful error messages never contain keys; surfacing them
+      // turns "server_error" into something fixable.
+      const detail = String((err && err.message) || err).replace(/(sk|rk|whsec)_(live|test)?_?[A-Za-z0-9]+/g, "[redacted]").slice(0, 300);
+      return json({ error: "server_error", detail }, 500, cors);
     }
   },
 };
