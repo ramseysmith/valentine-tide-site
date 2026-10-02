@@ -152,5 +152,6 @@ async function pfSend(method, p, body) {
 }
 function die(msg) {
   console.error(msg);
+  if (process.env.GITHUB_ACTIONS) console.log(`::error title=Printful setup::${String(msg).replace(/\s+/g, " ").slice(0, 900)}`);
   process.exit(1);
 }
