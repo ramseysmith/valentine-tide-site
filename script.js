@@ -31,8 +31,9 @@ async function submitEmail(email, interest) {
       headers: { Accept: "application/json", "Content-Type": "application/json" },
       body: JSON.stringify({ email, interest }),
     });
-    if (!response.ok) throw new Error(`Submit failed with status ${response.status}`);
-    return;
+    if (response.ok) return;
+    // 503 means the worker has no email storage set up; use the fallback.
+    if (response.status !== 503 || !FALLBACK_EMAIL) throw new Error(`Submit failed with status ${response.status}`);
   }
 
   if (FALLBACK_EMAIL) {
