@@ -14,6 +14,26 @@ import { createCheckoutSession, getCheckoutSession, verifyStripeSignature } from
 import { buildPrintfulOrder, createPrintfulOrder } from "./printful.js";
 
 export default {
+  /* Cron heartbeat for the X agent. GitHub drops many scheduled runs, so the
+     worker nudges the agent's workflow every 30 minutes when a token is set.
+     AGENT_DISPATCH_TOKEN: fine grained GitHub token with Actions read and
+     write on ramseysmith/valentine-tide-agent. */
+  async scheduled(event, env, ctx) {
+    if (!env.AGENT_DISPATCH_TOKEN) return;
+    const repo = env.AGENT_REPO || "ramseysmith/valentine-tide-agent";
+    const res = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/x-agent.yml/dispatches`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.AGENT_DISPATCH_TOKEN}`,
+        Accept: "application/vnd.github+json",
+        "Content-Type": "application/json",
+        "User-Agent": "valentine-tide-shop",
+      },
+      body: JSON.stringify({ ref: "main", inputs: { job: "tick", dry_run: false } }),
+    });
+    if (!res.ok) console.error("[cron] agent dispatch failed", res.status, await res.text());
+  },
+
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const cors = corsHeaders(request, env);
@@ -109,7 +129,8 @@ async function handleSubscribe(request, env, cors) {
     return json({ error: "invalid_email" }, 400, cors);
   }
   if (!env.SUBSCRIBERS) return json({ error: "not_configured" }, 503, cors);
-  await saveSubscriber(env, email, "landing");
+  const interest = String(body.interest || "").slice(0, 80);
+  await saveSubscriber(env, email, interest ? `notify: ${interest}` : "landing");
   return json({ ok: true }, 200, cors);
 }
 

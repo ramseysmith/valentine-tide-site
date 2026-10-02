@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-shop="soon">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,7 +16,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Valentine Tide" />
   <meta property="og:title" content="Valentine Tide | Surf the Shadows" />
-  <meta property="og:description" content="Gothic surf clothing. Drop 002 is here: heavyweight black tees printed to order, free US shipping over $75." />
+  <meta property="og:description" content="Gothic surf clothing. Heavyweight black tees for night surfers, printed to order. Free US shipping over $75." />
   <meta property="og:url" content="https://valentinetide.com/" />
   <meta property="og:image" content="https://valentinetide.com/assets/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -25,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@valentinetide" />
   <meta name="twitter:title" content="Valentine Tide | Surf the Shadows" />
-  <meta name="twitter:description" content="Gothic surf clothing. Drop 002 is here: heavyweight black tees printed to order, free US shipping over $75." />
+  <meta name="twitter:description" content="Gothic surf clothing. Heavyweight black tees for night surfers, printed to order. Free US shipping over $75." />
   <meta name="twitter:image" content="https://valentinetide.com/assets/og-image.jpg" />
   <meta name="twitter:image:alt" content="Valentine Tide, gothic surf clothing. Surf the Shadows." />
 
@@ -38,6 +38,20 @@
   />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Valentine Tide",
+      "url": "https://valentinetide.com/",
+      "logo": "https://valentinetide.com/assets/avatar.png",
+      "slogan": "Surf the Shadows",
+      "description": "Gothic surf clothing. Heavyweight black tees for night surfers, printed to order.",
+      "sameAs": ["https://x.com/valentinetide"],
+      "parentOrganization": { "@type": "Organization", "name": "Graysmith Labs LLC" }
+    }
+  </script>
 </head>
 <body>
   <!-- Skip link: first focusable element, jumps keyboard users to signup -->
@@ -81,9 +95,9 @@
         </h1>
 
         <p class="hero__tagline">Surf the Shadows</p>
-        <p class="hero__drop">Drop 002 is here.</p>
+        <p class="hero__drop"><span data-when="live">Drop 002 is here.</span><span data-when="soon">Drops 001 and 002 land soon.</span></p>
         <div class="hero__actions">
-          <a class="btn" href="#shop">Shop the drop</a>
+          <a class="btn" href="#shop"><span data-when="live">Shop the drop</span><span data-when="soon">See the drops</span></a>
           <a class="btn btn--ghost" href="vision.html">Our vision</a>
         </div>
       </div>
@@ -97,8 +111,8 @@
          ============================================================ -->
     <div class="ticker" aria-hidden="true">
       <div class="ticker__track">
-        <span class="ticker__item">Surf the Shadows<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Drop 002 live now<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Free US shipping over $75<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Printed to order<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Made for night surfers<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span>
-        <span class="ticker__item">Surf the Shadows<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Drop 002 live now<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Free US shipping over $75<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Printed to order<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Made for night surfers<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span>
+        <span class="ticker__item">Surf the Shadows<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item"><span data-when="live">Drop 002 live now</span><span data-when="soon">Drops landing soon</span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Free US shipping over $75<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Printed to order<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Made for night surfers<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span>
+        <span class="ticker__item">Surf the Shadows<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item"><span data-when="live">Drop 002 live now</span><span data-when="soon">Drops landing soon</span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Free US shipping over $75<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Printed to order<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Made for night surfers<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span>
       </div>
     </div>
 
@@ -252,9 +266,9 @@
 
     <!-- ============================================================
          EMAIL CAPTURE
-         Validation + submit handled in script.js. While FORM_ENDPOINT
-         is left as its placeholder, submits are simulated so the
-         success state can be previewed without a backend.
+         Validation + submit handled in script.js: the shop worker's
+         /subscribe when API_BASE is set, otherwise FormSubmit to
+         SIGNUP_FALLBACK_EMAIL (config.js).
          ============================================================ -->
     <section class="signup" id="signup" aria-labelledby="signup-heading">
       <div class="signup__inner" data-reveal>
@@ -286,6 +300,8 @@
             <button class="btn" type="submit">Join the cult</button>
           </div>
 
+          <input type="hidden" name="interest" id="signup-interest" value="" />
+          <p class="signup__interest" id="signup-interest-note" hidden></p>
           <!-- Live region: validation + result messages announce here -->
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
@@ -338,6 +354,7 @@
   </footer>
 
   <script src="config.js"></script>
+  <script src="status.js"></script>
   <script src="script.js"></script>
   <script src="shop.js"></script>
   <script src="motion.js"></script>

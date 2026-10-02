@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-shop="soon">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -244,7 +244,7 @@
       <div class="cta__inner" data-reveal>
         <svg class="icon icon--lg cta__icon" aria-hidden="true"><use href="assets/icons.svg#moon" /></svg>
         <h2 class="section-heading" id="cta-heading">The Tide Is Coming In</h2>
-        <p class="section-sub">Two drops live now. Printed to order and shipped with tracking.</p>
+        <p class="section-sub"><span data-when="live">Two drops live now.</span><span data-when="soon">Two drops landing soon.</span> Printed to order and shipped with tracking.</p>
         <div class="hero__actions">
           <a class="btn" href="/#shop">Shop the drops</a>
           <a class="btn btn--ghost" href="/#signup">Join the cult</a>
@@ -292,6 +292,8 @@
       <p class="footer__copy">© 2026 Graysmith Labs LLC. All rights reserved.</p>
     </div>
   </footer>
+  <script src="config.js"></script>
+  <script src="status.js"></script>
   <script src="motion.js"></script>
 </body>
 </html>
