@@ -1,6 +1,9 @@
 name = "valentine-tide-shop"
 main = "src/index.js"
 compatibility_date = "2026-09-01"
+# Keep variables and secrets added in the Cloudflare dashboard when GitHub
+# pushes redeploy the worker (otherwise dashboard text variables are wiped).
+keep_vars = true
 
 # Serve the worker at shop.valentinetide.com once the domain is on Cloudflare,
 # or use the default *.workers.dev URL and paste it into config.js (API_BASE).
