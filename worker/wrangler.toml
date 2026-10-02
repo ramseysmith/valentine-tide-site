@@ -3,7 +3,7 @@ main = "src/index.js"
 compatibility_date = "2026-09-01"
 
 # Serve the worker at shop.valentinetide.com once the domain is on Cloudflare,
-# or use the default *.workers.dev URL and paste it into shop.js.
+# or use the default *.workers.dev URL and paste it into config.js (API_BASE).
 # routes = [{ pattern = "shop.valentinetide.com", custom_domain = true }]
 
 # Every 30 minutes the worker nudges the X agent (only if AGENT_DISPATCH_TOKEN is set).
@@ -20,12 +20,12 @@ PRINTFUL_AUTO_CONFIRM = "true"
 STRIPE_AUTOMATIC_TAX = "false"
 ALLOW_UNMAPPED = "false"
 
-# Email list (landing page signups + buyers who opt in at checkout).
-# Create it with:  npx wrangler kv namespace create SUBSCRIBERS
-# then paste the id below.
-[[kv_namespaces]]
-binding = "SUBSCRIBERS"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+# Email list (optional). Without it the worker still sells; the site keeps
+# sending signups through FormSubmit. To store signups here instead, create
+# the namespace (npx wrangler kv namespace create SUBSCRIBERS) and uncomment:
+# [[kv_namespaces]]
+# binding = "SUBSCRIBERS"
+# id = "PASTE_THE_ID_HERE"
 
 # Secrets (set with `npx wrangler secret put NAME`, never commit them):
 #   STRIPE_SECRET_KEY      sk_test_... first, sk_live_... when you launch
