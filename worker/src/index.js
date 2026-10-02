@@ -45,6 +45,7 @@ export default {
       if (url.pathname === "/checkout" && request.method === "POST") return await handleCheckout(request, env, cors);
       if (url.pathname === "/webhook" && request.method === "POST") return await handleWebhook(request, env, ctx);
       if (url.pathname === "/subscribe" && request.method === "POST") return await handleSubscribe(request, env, cors);
+      if (url.pathname === "/order" && request.method === "GET") return await handleOrder(url, env, cors);
       return json({ error: "not_found" }, 404, cors);
     } catch (err) {
       console.error("[worker] unhandled", err && err.stack ? err.stack : err);
@@ -123,6 +124,27 @@ async function handleWebhook(request, env) {
     return new Response("printful error", { status: 500 }); // Stripe retries
   }
   return new Response("ok", { status: 200 });
+}
+
+/* ---------- Order summary for the confirmation page ---------- */
+async function handleOrder(url, env, cors) {
+  const id = url.searchParams.get("session_id") || "";
+  if (!/^cs_(test|live)_[A-Za-z0-9]+$/.test(id)) return json({ error: "bad_session" }, 400, cors);
+  const s = await getCheckoutSession(env.STRIPE_SECRET_KEY, id);
+  const email = (s.customer_details && s.customer_details.email) || "";
+  const masked = email.replace(/^(.)(.*)(@.*)$/, (_, a, b, c) => a + "*".repeat(Math.min(b.length, 6)) + c);
+  return json(
+    {
+      paid: s.payment_status === "paid",
+      items: ((s.line_items && s.line_items.data) || []).map((li) => ({ name: li.description, quantity: li.quantity, amount: li.amount_total })),
+      shipping: (s.total_details && s.total_details.amount_shipping) || 0,
+      total: s.amount_total,
+      currency: s.currency,
+      email: masked,
+    },
+    200,
+    { ...cors, "Cache-Control": "no-store" }
+  );
 }
 
 /* ---------- Email capture ---------- */

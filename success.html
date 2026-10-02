@@ -15,8 +15,16 @@
 <body>
   <main class="confirm">
     <div class="confirm__inner">
-      <img src="assets/wordmark.png" alt="Valentine Tide" width="2097" height="331" style="width:min(80vw,22rem);margin:0 auto" />
+      <a href="/" class="confirm__brand"><img src="assets/wordmark.png" alt="Valentine Tide" width="2097" height="331" /></a>
       <h1 class="confirm__heading">You caught the wave</h1>
+      <div class="receipt" id="receipt" hidden>
+        <ul class="receipt__items" id="receipt-items"></ul>
+        <dl class="receipt__totals">
+          <div><dt>Shipping</dt><dd id="receipt-shipping"></dd></div>
+          <div class="receipt__total"><dt>Total</dt><dd id="receipt-total"></dd></div>
+        </dl>
+        <p class="receipt__email" id="receipt-email"></p>
+      </div>
       <p class="confirm__body">
         Your order is in. Every piece is printed to order, so give it a few days to
         surface. A receipt is on its way to your inbox, and tracking follows as soon
@@ -26,8 +34,41 @@
         Wear it out after dark and tag <a href="https://x.com/valentinetide" style="color:var(--bone);text-decoration:underline">@valentinetide</a>.
         We share the best ones.
       </p>
-      <a class="btn" href="/">Back to the tide</a>
+      <div class="confirm__actions">
+        <a class="btn" href="/#shop">Keep browsing</a>
+        <a class="btn btn--ghost" id="share-x" href="https://x.com/intent/tweet?text=Just%20caught%20the%20wave%20%F0%9F%96%A4%20%40valentinetide" target="_blank" rel="noopener noreferrer">Share on X</a>
+      </div>
     </div>
   </main>
+  <script src="config.js"></script>
+  <script>
+    /* Fills in what was bought, from the shop worker. Quietly does nothing if
+       the worker isn't reachable; the thank you copy stands on its own. */
+    (async function () {
+      var cfg = window.VT_CONFIG || {};
+      var id = new URLSearchParams(location.search).get("session_id");
+      if (!id || !cfg.API_BASE || cfg.API_BASE.indexOf("REPLACE") === 0) return;
+      try {
+        var res = await fetch(cfg.API_BASE.replace(/\/$/, "") + "/order?session_id=" + encodeURIComponent(id));
+        if (!res.ok) return;
+        var o = await res.json();
+        var money = function (c) { return "$" + (c / 100).toFixed(2); };
+        var list = document.getElementById("receipt-items");
+        o.items.forEach(function (i) {
+          var li = document.createElement("li");
+          var name = document.createElement("span");
+          name.textContent = (i.quantity > 1 ? i.quantity + " × " : "") + i.name;
+          var amt = document.createElement("span");
+          amt.textContent = money(i.amount);
+          li.append(name, amt);
+          list.appendChild(li);
+        });
+        document.getElementById("receipt-shipping").textContent = o.shipping ? money(o.shipping) : "Free";
+        document.getElementById("receipt-total").textContent = money(o.total);
+        if (o.email) document.getElementById("receipt-email").textContent = "Receipt sent to " + o.email;
+        document.getElementById("receipt").hidden = false;
+      } catch (e) {}
+    })();
+  </script>
 </body>
 </html>

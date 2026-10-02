@@ -603,8 +603,76 @@ p {
   line-height: 1.7;
 }
 
+.confirm__brand {
+  display: block;
+  width: min(80vw, 22rem);
+  margin: 0 auto;
+}
+
+.confirm__brand img {
+  width: 100%;
+  height: auto;
+}
+
+.receipt {
+  margin: 2rem auto 0;
+  padding: 1.25rem 1.5rem;
+  max-width: 26rem;
+  border: 1px solid var(--bone-faint);
+  text-align: left;
+}
+
+.receipt__items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.receipt__items li,
+.receipt__totals div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+}
+
+.receipt__totals {
+  margin: 0.75rem 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--bone-faint);
+  color: var(--bone-dim);
+}
+
+.receipt__totals dt,
+.receipt__totals dd {
+  margin: 0;
+}
+
+.receipt__total {
+  color: var(--bone);
+  font-weight: 600;
+}
+
+.receipt__email {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--bone-dim);
+}
+
+.confirm__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
 .confirm .btn {
   margin-top: 2rem;
+}
+
+.confirm .confirm__actions .btn {
+  margin-top: 0;
 }
 
 /* =========================================================
