@@ -56,7 +56,8 @@ if (missing.length) console.warn(`Not offered in ${pf.color}: ${missing.join(", 
 //    blank tells us the area size in pixels.
 const printUrl = `${SITE}/${product.printFile}`;
 const placement = pf.placement || { widthInches: 10, topInches: 1.2 };
-const position = await computePosition(blank.id, placement, product.printFile);
+const { position, placementType } = await computePosition(blank.id, placement, product.printFile);
+console.log(`Front placement for this blank: ${placementType}`);
 console.log(`Placement: ${JSON.stringify(position)}`);
 const syncVariants = product.variants
   .filter((v) => bySize.has(v.size))
@@ -66,7 +67,7 @@ const syncVariants = product.variants
     retail_price: ((product.priceCents + (v.surchargeCents || 0)) / 100).toFixed(2),
     files: [
       {
-        type: "front",
+        type: placementType,
         url: printUrl,
         position,
       },
@@ -107,10 +108,15 @@ console.log("catalog.json updated. Commit it and redeploy the worker (npm run de
 async function computePosition(productId, placement, printFile) {
   // Default: Printful's standard 12 x 16 inch front area at 150 dpi.
   let area = { width: 1800, height: 2400, dpi: 150 };
+  // Printful names the front differently per print method ("front" for DTG,
+  // "front_dtf" for DTF), so use whichever front placement this blank offers.
+  let placementType = "front";
   try {
     const pfData = (await pfGet(`/mockup-generator/printfiles/${productId}`)).result;
-    const frontId = pfData.variant_printfiles?.[0]?.placements?.front;
-    const file = pfData.printfiles.find((f) => f.printfile_id === frontId);
+    const placements = pfData.variant_printfiles?.[0]?.placements || {};
+    const offered = Object.keys(placements);
+    placementType = ["front", "front_dtf", "front_large"].find((k) => offered.includes(k)) || offered.find((k) => k.startsWith("front")) || "front";
+    const file = pfData.printfiles.find((f) => f.printfile_id === placements[placementType]);
     if (file) area = { width: file.width, height: file.height, dpi: file.dpi || 150 };
   } catch {
     console.warn("Could not read the print area, using the 12 x 16 inch default");
@@ -120,13 +126,16 @@ async function computePosition(productId, placement, printFile) {
   const height = Math.round((width * imgH) / imgW);
   const top = Math.min(Math.max(0, area.height - height), Math.round(placement.topInches * area.dpi));
   return {
-    area_width: area.width,
-    area_height: area.height,
-    width,
-    height,
-    top,
-    left: Math.round((area.width - width) / 2),
-    limit_to_print_area: true,
+    placementType,
+    position: {
+      area_width: area.width,
+      area_height: area.height,
+      width,
+      height,
+      top,
+      left: Math.round((area.width - width) / 2),
+      limit_to_print_area: true,
+    },
   };
 }
 
