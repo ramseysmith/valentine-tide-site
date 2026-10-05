@@ -3,7 +3,7 @@
    (e.g. https://valentine-tide-shop.<you>.workers.dev or https://shop.valentinetide.com).
    Once it is set, checkout, signups and the live/coming soon copy all switch on. */
 window.VT_CONFIG = {
-  API_BASE: "REPLACE_WITH_WORKER_URL",
+  API_BASE: "https://valentine-tide-shop.graysmithlabs.workers.dev",
   // true = show Buy buttons even before Printful IDs are in catalog.json (use with Stripe test keys only)
   SHOP_PREVIEW: false,
   // Until the worker is live, signups are emailed here through FormSubmit
