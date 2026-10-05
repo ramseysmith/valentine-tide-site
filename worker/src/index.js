@@ -118,7 +118,10 @@ async function handleWebhook(request, env) {
     return new Response("unmappable order", { status: 200 }); // don't make Stripe retry forever
   }
 
-  const result = await createPrintfulOrder(env, order, env.PRINTFUL_AUTO_CONFIRM === "true");
+  // Confirming a Printful order charges the card on file, so only real (live
+  // mode) payments are confirmed. Test checkouts always land as drafts.
+  const confirm = env.PRINTFUL_AUTO_CONFIRM === "true" && session.livemode === true;
+  const result = await createPrintfulOrder(env, order, confirm);
   if (!result.ok) {
     console.error("[webhook] printful failed", result.status, result.body);
     return new Response("printful error", { status: 500 }); // Stripe retries
