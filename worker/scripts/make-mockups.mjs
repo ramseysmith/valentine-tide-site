@@ -43,6 +43,8 @@ for (const product of products) {
   }
   console.log(`${product.sku}: blank #${blankId}, placement ${printFile.type}, styles: ${optionGroups.join(", ") || "default"}`);
 
+  if (!printFile.position) printFile.position = await positionFor(product, info, printFile.type);
+
   const task = (
     await pf("POST", `/mockup-generator/create-task/${blankId}`, {
       variant_ids: [sv.product.variant_id],
@@ -82,6 +84,22 @@ for (const product of products) {
   await sleep(15000); // the mockup generator is rate limited
 }
 if (process.env.GITHUB_ACTIONS) console.log(`::notice title=Mockups::${summary.join(" | ")}`);
+
+/* Same placement maths as setup-printful-product.mjs: catalog width and top
+   offset in inches, scaled to this blank's print area. */
+async function positionFor(product, info, placementType) {
+  let area = { width: 1800, height: 2400, dpi: 150 };
+  const id = info.variant_printfiles?.[0]?.placements?.[placementType];
+  const file = (info.printfiles || []).find((f) => f.printfile_id === id);
+  if (file) area = { width: file.width, height: file.height, dpi: file.dpi || 150 };
+  const buf = await readFile(path.join(root, product.printFile));
+  const imgW = buf.readUInt32BE(16), imgH = buf.readUInt32BE(20);
+  const place = product.printful.placement || { widthInches: 10, topInches: 1.2 };
+  const width = Math.min(area.width, Math.round(place.widthInches * area.dpi));
+  const height = Math.round((width * imgH) / imgW);
+  const top = Math.min(Math.max(0, area.height - height), Math.round(place.topInches * area.dpi));
+  return { area_width: area.width, area_height: area.height, width, height, top, left: Math.round((area.width - width) / 2) };
+}
 
 async function pf(method, p, body) {
   const res = await fetch(API + p, { method, headers, body: body ? JSON.stringify(body) : undefined });
