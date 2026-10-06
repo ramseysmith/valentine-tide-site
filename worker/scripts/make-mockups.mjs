@@ -35,6 +35,12 @@ for (const product of products) {
 
   const info = (await pf("GET", `/mockup-generator/printfiles/${blankId}`)).result;
   const optionGroups = info.option_groups || [];
+  // Store products report the main print as "default"; the mockup generator
+  // wants the blank's real front placement (front, front_dtf, ...).
+  const offered = Object.keys(info.available_placements || {});
+  if (!offered.includes(printFile.type)) {
+    printFile.type = ["front", "front_dtf", "front_large"].find((k) => offered.includes(k)) || offered.find((k) => k.startsWith("front")) || printFile.type;
+  }
   console.log(`${product.sku}: blank #${blankId}, placement ${printFile.type}, styles: ${optionGroups.join(", ") || "default"}`);
 
   const task = (
