@@ -400,7 +400,9 @@ p {
 }
 
 .thumb {
-  flex: 0 0 5.5rem;
+  /* Up to 5.5rem each, shrinking so any number of thumbs fits a phone. */
+  flex: 0 1 5.5rem;
+  min-width: 0;
   padding: 0;
   background: none;
   border: 1px solid var(--bone-faint);

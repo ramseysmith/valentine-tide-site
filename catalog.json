@@ -29,6 +29,14 @@
           "alt": "Wordmark Tee, front"
         },
         {
+          "src": "assets/products/wordmark-tee-model-1.jpg",
+          "alt": "Wordmark Tee worn, front"
+        },
+        {
+          "src": "assets/products/wordmark-tee-model-2.jpg",
+          "alt": "Wordmark Tee worn with jeans"
+        },
+        {
           "src": "assets/products/wordmark-tee-detail.jpg",
           "alt": "Close up of the bone and blood red chest print"
         }
@@ -96,8 +104,12 @@
           "alt": "Heartbreak Crop Tee, front"
         },
         {
-          "src": "assets/products/heartbreak-crop-detail.jpg",
-          "alt": "Close up of the skull and heart print"
+          "src": "assets/products/heartbreak-crop-model.jpg",
+          "alt": "Heartbreak Crop Tee worn with high waist jeans"
+        },
+        {
+          "src": "assets/products/heartbreak-crop-back.jpg",
+          "alt": "Heartbreak Crop Tee, back, showing the cropped length"
         }
       ],
       "printFile": "assets/print-heartbreak.png",

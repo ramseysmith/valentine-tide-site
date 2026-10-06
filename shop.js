@@ -45,7 +45,7 @@
     el.innerHTML = `
       <div class="product__gallery">
         <div class="product__media" data-zoom>
-          <img class="product__img" src="${gallery[0].src}" alt="${esc(gallery[0].alt)}" width="1200" height="1400" />
+          <img class="product__img" src="${gallery[0].src}" alt="${esc(gallery[0].alt)}" width="1200" height="1200" />
         </div>
         ${
           gallery.length > 1
@@ -54,7 +54,7 @@
                   .map(
                     (g, i) => `
                   <button class="thumb${i === 0 ? " is-active" : ""}" type="button" role="listitem" data-index="${i}" aria-label="Show ${esc(g.alt)}" ${i === 0 ? 'aria-current="true"' : ""}>
-                    <img src="${g.src}" alt="" width="1200" height="1400" loading="lazy" />
+                    <img src="${g.src}" alt="" width="1200" height="1200" loading="lazy" />
                   </button>`
                   )
                   .join("")}
