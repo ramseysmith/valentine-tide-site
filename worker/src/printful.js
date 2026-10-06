@@ -46,7 +46,7 @@ export function buildPrintfulOrder(session, catalog) {
     },
     items: lines.map((l) => ({ sync_variant_id: l.variant.printfulSyncVariantId, quantity: l.quantity })),
     packing_slip: {
-      message: "Thanks for riding the first wave. Surf the shadows. valentinetide.com",
+      message: "Thanks for riding with us. 10% of this order's profit goes to suicide prevention. Struggling? Call or text 988. Surf the shadows.",
     },
   };
 }

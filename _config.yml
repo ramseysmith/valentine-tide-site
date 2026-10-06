@@ -1,0 +1,7 @@
+# GitHub Pages build settings. Keep internal files off the public site.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - worker
+  - x-agent
+  - mockups

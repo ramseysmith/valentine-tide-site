@@ -13,6 +13,8 @@ export async function createCheckoutSession(secretKey, o) {
   // Marketing opt in at checkout needs Stripe's checkout terms accepted first
   // (Dashboard > Settings > Checkout). Off unless STRIPE_PROMO_CONSENT=true.
   if (o.promoConsent) p.set("consent_collection[promotions]", "auto");
+  // Shown just above the Pay button.
+  p.set("custom_text[submit][message]", "10% of the profit from this order goes to the American Foundation for Suicide Prevention.");
 
   o.lines.forEach((l, i) => {
     const k = `line_items[${i}]`;

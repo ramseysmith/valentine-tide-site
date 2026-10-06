@@ -2296,3 +2296,192 @@ html[data-shop="live"] [data-when="soon"] {
 .tile--art::after {
   background: none;
 }
+
+/* An odd number of promises: the last one spans the full row. */
+@media (min-width: 48rem) {
+  .code__item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* =========================================================
+   SHOP PICKER  (every piece at a glance, top of the shop)
+   ========================================================= */
+.picker {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.picker__item {
+  flex: 1 1 8rem;
+  max-width: 12rem;
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.5rem 0.5rem 0.75rem;
+  border: 1px solid var(--bone-faint);
+  color: var(--bone);
+  text-decoration: none;
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.picker__item:hover,
+.picker__item:focus-visible {
+  border-color: var(--blood-bright);
+}
+
+.picker__item img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin-bottom: 0.4rem;
+}
+
+.picker__name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.picker__price {
+  font-size: 0.8rem;
+  color: var(--bone-dim);
+}
+
+.product {
+  scroll-margin-top: 5rem;
+}
+
+/* =========================================================
+   SIZE CHART
+   ========================================================= */
+.sizechart {
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--bone-dim);
+}
+
+.sizechart summary {
+  cursor: pointer;
+  color: var(--bone);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.sizechart__scroll {
+  margin-top: 0.75rem;
+  overflow-x: auto;
+}
+
+.sizechart table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.sizechart th,
+.sizechart td {
+  padding: 0.45rem 0.5rem;
+  border-bottom: 1px solid var(--bone-faint);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.sizechart tbody th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--bone);
+}
+
+.sizechart__note {
+  margin-top: 0.5rem;
+  color: rgba(245, 240, 232, 0.5);
+}
+
+.assure a {
+  color: var(--bone);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* =========================================================
+   THE 10% PROMISE
+   ========================================================= */
+.giving {
+  padding: clamp(3rem, 12vw, 6rem) var(--gutter);
+  border-top: 1px solid var(--bone-faint);
+  background: radial-gradient(ellipse at 50% 0%, rgba(139, 0, 0, 0.18), transparent 65%);
+  text-align: center;
+}
+
+.giving__inner {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.giving .eyebrow {
+  margin-bottom: 0.75rem;
+}
+
+.giving__mark {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 auto 1rem;
+}
+
+.giving__body {
+  margin: 1.25rem 0 1rem;
+  font-size: clamp(1rem, 4vw, 1.125rem);
+  line-height: 1.75;
+  color: var(--bone);
+}
+
+.giving__body a,
+.giving__help a {
+  color: var(--bone);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.giving__help {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--bone-faint);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--bone-dim);
+}
+
+/* Help line in every footer */
+.footer__help {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+.footer__help a {
+  color: var(--bone);
+  font-weight: 600;
+}
+
+/* Order confirmation giving line */
+.confirm__giving {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.confirm__giving img {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex: 0 0 auto;
+}
+
+.confirm__giving a {
+  color: var(--bone);
+  text-decoration: underline;
+}

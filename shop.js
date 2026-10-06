@@ -33,8 +33,10 @@
 
     const products = catalog.products.filter((p) => p.active);
     grid.innerHTML = "";
+    if (products.length > 1) grid.before(renderPicker(products));
     products.forEach((p) => grid.appendChild(renderProduct(p, catalog.shipping)));
     if (API) Bag.init(catalog);
+    addProductData(products, catalog.currency);
   });
 
   function renderProduct(p, shipping) {
@@ -43,6 +45,7 @@
     const ready = !!API && (cfg.SHOP_PREVIEW || p.variants.some((v) => v.printfulSyncVariantId));
     const el = document.createElement("article");
     el.className = "product";
+    el.id = p.sku;
     el.innerHTML = `
       <div class="product__gallery">
         <div class="product__media" data-zoom>
@@ -89,6 +92,7 @@
               .join("")}
           </div>
           ${p.sizeHint ? `<p class="sizes__hint">${esc(p.sizeHint)}</p>` : ""}
+          ${sizeChart(p)}
         </fieldset>
 
         <div class="buy">
@@ -106,6 +110,7 @@
           ${shipping && shipping.freeOverCents ? `<li>${icon("truck")}Free US shipping over ${money(shipping.freeOverCents)}</li>` : ""}
           <li>${icon("return")}Free replacement for misprints or damage</li>
           <li>${icon("lock")}Secure checkout through Stripe</li>
+          <li>${icon("heart")}<span>10% of profits go to the <a href="help.html#giving">American Foundation for Suicide Prevention</a></span></li>
         </ul>
       </div>`;
 
@@ -185,6 +190,80 @@
     });
 
     return el;
+  }
+
+  /* A row of small cards at the top of the shop, so phone visitors see every
+     piece at once and can jump straight to one. */
+  function renderPicker(products) {
+    const nav = document.createElement("nav");
+    nav.className = "picker";
+    nav.setAttribute("aria-label", "Pieces in this drop");
+    nav.innerHTML = products
+      .map(
+        (p) => `
+        <a class="picker__item" href="#${p.sku}">
+          <img src="${p.image}" alt="" width="160" height="160" loading="lazy" />
+          <span class="picker__name">${esc(p.name)}</span>
+          <span class="picker__price">${money(p.priceCents)}</span>
+        </a>`
+      )
+      .join("");
+    return nav;
+  }
+
+  const LABELS = { Width: "Chest (flat)", Length: "Length", "Sleeve length": "Sleeve" };
+  /* "26.62" and "17 1/2" both become one tidy number like 26.6 or 17.5. */
+  function inches(v) {
+    if (v == null || v === "") return "";
+    const m = String(v).trim().match(/^(\d+(?:\.\d+)?)(?:\s+(\d+)\/(\d+))?$/);
+    if (!m) return String(v);
+    const n = Number(m[1]) + (m[2] ? Number(m[2]) / Number(m[3]) : 0);
+    return String(Math.round(n * 10) / 10);
+  }
+
+  /* Garment measurements from Printful (catalog.json sizeChart), in a
+     collapsible table under the size buttons. */
+  function sizeChart(p) {
+    const c = p.sizeChart;
+    if (!c || !c.rows || !c.rows.length) return "";
+    const sizes = p.variants.map((v) => v.size).filter((sz) => c.rows.some((r) => r.values[sz]));
+    return `
+      <details class="sizechart">
+        <summary>Size chart (${esc(c.unit)})</summary>
+        <div class="sizechart__scroll">
+          <table>
+            <thead><tr><th scope="col"></th>${sizes.map((sz) => `<th scope="col">${esc(sz)}</th>`).join("")}</tr></thead>
+            <tbody>
+              ${c.rows.map((r) => `<tr><th scope="row">${esc(LABELS[r.label] || r.label)}</th>${sizes.map((sz) => `<td>${esc(inches(r.values[sz]))}</td>`).join("")}</tr>`).join("")}
+            </tbody>
+          </table>
+        </div>
+        <p class="sizechart__note">Measured flat on the shirt and may vary by up to 2 inches. Compare with a tee you already own.</p>
+      </details>`;
+  }
+
+  /* Product data for search engines (Google reads it after the page runs). */
+  function addProductData(products, currency) {
+    const data = products.map((p) => ({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: `Valentine Tide ${p.name}`,
+      description: p.description,
+      image: [location.origin + "/" + p.image],
+      sku: p.sku,
+      brand: { "@type": "Brand", name: "Valentine Tide" },
+      offers: {
+        "@type": "Offer",
+        url: `${location.origin}/#${p.sku}`,
+        priceCurrency: String(currency || "usd").toUpperCase(),
+        price: (p.priceCents / 100).toFixed(2),
+        availability: API ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+      },
+    }));
+    const tag = document.createElement("script");
+    tag.type = "application/ld+json";
+    tag.textContent = JSON.stringify(data);
+    document.head.appendChild(tag);
   }
 
   /* Thumbnails swap the main image; on devices with a mouse, hovering zooms in
