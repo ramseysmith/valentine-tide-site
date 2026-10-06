@@ -1,0 +1,33 @@
+name: Printful mockups
+
+# Renders photo mockups of every store product with Printful's mockup
+# generator and commits them to the "mockups" branch (not main, so the live
+# site is untouched) for picking the best ones.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mockups:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PRINTFUL_TOKEN: ${{ secrets.PRINTFUL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Render mockups
+        run: node worker/scripts/make-mockups.mjs
+      - name: Commit to the mockups branch
+        run: |
+          git config user.name "Ramsey Graysmith"
+          git config user.email "smith.s.ramsey@gmail.com"
+          git checkout -B mockups
+          git add mockups
+          git commit -m "Printful mockups for picking product photos"
+          git push -f origin mockups
