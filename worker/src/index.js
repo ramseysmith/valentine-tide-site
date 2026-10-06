@@ -9,7 +9,7 @@
    ========================================================= */
 
 import catalog from "../../catalog.json";
-import { findProduct, priceFor, shippingFor } from "./catalog.js";
+import { encodeItems, resolveItems, shippingFor } from "./catalog.js";
 import { createCheckoutSession, getCheckoutSession, verifyStripeSignature } from "./stripe.js";
 import { buildPrintfulOrder, createPrintfulOrder } from "./printful.js";
 
@@ -60,26 +60,19 @@ export default {
 /* ---------- Checkout ---------- */
 async function handleCheckout(request, env, cors) {
   const body = await readJson(request);
-  const sku = String(body.sku || "");
-  const size = String(body.size || "");
-  const quantity = Math.max(1, Math.min(5, parseInt(body.quantity, 10) || 1));
-
-  const found = findProduct(catalog, sku, size);
-  if (!found) return json({ error: "unknown_product" }, 400, cors);
-  if (!found.variant.printfulSyncVariantId && env.ALLOW_UNMAPPED !== "true") {
+  const { lines, error } = resolveItems(catalog, body);
+  if (error) return json({ error }, 400, cors);
+  if (lines.some((l) => !l.variant.printfulSyncVariantId) && env.ALLOW_UNMAPPED !== "true") {
     return json({ error: "not_ready" }, 409, cors);
   }
 
-  const unitCents = priceFor(found.product, found.variant);
-  const shippingCents = shippingFor(catalog, unitCents * quantity);
+  const subtotal = lines.reduce((s, l) => s + l.unitCents * l.quantity, 0);
   const site = env.SITE_URL || "https://valentinetide.com";
 
   const session = await createCheckoutSession(env.STRIPE_SECRET_KEY, {
-    product: found.product,
-    variant: found.variant,
-    quantity,
-    unitCents,
-    shippingCents,
+    lines,
+    itemsMeta: encodeItems(lines),
+    shippingCents: shippingFor(catalog, subtotal),
     currency: catalog.currency,
     countries: catalog.shipping.countries,
     shippingLabel: catalog.shipping.label,

@@ -14,13 +14,16 @@ export async function createCheckoutSession(secretKey, o) {
   // (Dashboard > Settings > Checkout). Off unless STRIPE_PROMO_CONSENT=true.
   if (o.promoConsent) p.set("consent_collection[promotions]", "auto");
 
-  p.set("line_items[0][quantity]", String(o.quantity));
-  p.set("line_items[0][price_data][currency]", o.currency);
-  p.set("line_items[0][price_data][unit_amount]", String(o.unitCents));
-  p.set("line_items[0][price_data][product_data][name]", `${o.product.name} (${o.variant.size})`);
-  p.set("line_items[0][price_data][product_data][description]", o.product.subtitle);
-  p.set("line_items[0][price_data][product_data][images][0]", `${o.site}/${o.product.image}`);
-  if (o.automaticTax) p.set("line_items[0][price_data][tax_behavior]", "exclusive");
+  o.lines.forEach((l, i) => {
+    const k = `line_items[${i}]`;
+    p.set(`${k}[quantity]`, String(l.quantity));
+    p.set(`${k}[price_data][currency]`, o.currency);
+    p.set(`${k}[price_data][unit_amount]`, String(l.unitCents));
+    p.set(`${k}[price_data][product_data][name]`, `${l.product.name} (${l.variant.size})`);
+    p.set(`${k}[price_data][product_data][description]`, l.product.subtitle);
+    p.set(`${k}[price_data][product_data][images][0]`, `${o.site}/${l.product.image}`);
+    if (o.automaticTax) p.set(`${k}[price_data][tax_behavior]`, "exclusive");
+  });
 
   o.countries.forEach((c, i) => p.set(`shipping_address_collection[allowed_countries][${i}]`, c));
   p.set("shipping_options[0][shipping_rate_data][type]", "fixed_amount");
@@ -37,9 +40,7 @@ export async function createCheckoutSession(secretKey, o) {
   }
 
   // The webhook reads these to know exactly what to print.
-  p.set("metadata[sku]", o.product.sku);
-  p.set("metadata[size]", o.variant.size);
-  p.set("metadata[quantity]", String(o.quantity));
+  p.set("metadata[items]", o.itemsMeta);
 
   const res = await fetch(`${API}/checkout/sessions`, {
     method: "POST",

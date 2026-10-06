@@ -3,11 +3,12 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { verifyStripeSignature } from "../src/stripe.js";
 import { buildPrintfulOrder, createPrintfulOrder } from "../src/printful.js";
-import { findProduct, priceFor, shippingFor } from "../src/catalog.js";
+import { decodeItems, encodeItems, findProduct, priceFor, resolveItems, shippingFor } from "../src/catalog.js";
 
 const catalog = JSON.parse(readFileSync(new URL("../../catalog.json", import.meta.url)));
 const mapped = structuredClone(catalog);
 mapped.products[0].variants.forEach((v, i) => (v.printfulSyncVariantId = 1000 + i));
+mapped.products[1].variants.forEach((v, i) => (v.printfulSyncVariantId = 2000 + i));
 
 async function sign(payload, secret, t) {
   const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
@@ -75,4 +76,43 @@ test("printful duplicate external_id counts as success", async () => {
   } finally {
     globalThis.fetch = realFetch;
   }
+});
+
+test("bag: lines are priced, merged, and capped", () => {
+  const { lines } = resolveItems(catalog, {
+    items: [
+      { sku: "vt-wordmark-tee-black", size: "M", quantity: 1 },
+      { sku: "vt-heartbreak-crop-black", size: "S", quantity: 1 },
+      { sku: "vt-wordmark-tee-black", size: "M", quantity: 2 },
+    ],
+  });
+  assert.equal(lines.length, 2);
+  assert.equal(lines[0].quantity, 3);
+  assert.equal(lines[1].unitCents, 3400);
+  const subtotal = lines.reduce((s, l) => s + l.unitCents * l.quantity, 0);
+  assert.equal(subtotal, 3 * 3800 + 3400);
+  assert.equal(shippingFor(catalog, subtotal), 0);
+  assert.equal(resolveItems(catalog, { items: [{ sku: "nope", size: "M" }] }).error, "unknown_product");
+  assert.equal(resolveItems(catalog, { items: [] }).error, "empty");
+  const many = Array.from({ length: 3 }, (_, i) => ({ sku: "vt-wordmark-tee-black", size: ["S", "M", "L"][i], quantity: 5 }));
+  assert.equal(resolveItems(catalog, { items: many }).error, "too_many");
+  // The older single item shape still works.
+  assert.equal(resolveItems(catalog, { sku: "vt-wordmark-tee-black", size: "XL", quantity: 2 }).lines[0].quantity, 2);
+});
+
+test("bag: metadata round trips and builds a multi item Printful order", () => {
+  const { lines } = resolveItems(mapped, {
+    items: [
+      { sku: "vt-wordmark-tee-black", size: "L", quantity: 1 },
+      { sku: "vt-heartbreak-crop-black", size: "M", quantity: 2 },
+    ],
+  });
+  const meta = encodeItems(lines);
+  assert.ok(meta.length < 500);
+  assert.equal(decodeItems(mapped, meta).length, 2);
+  const o = buildPrintfulOrder({ ...session, metadata: { items: meta }, line_items: { data: [{ quantity: 1 }, { quantity: 2 }] } }, mapped);
+  assert.deepEqual(o.items, [
+    { sync_variant_id: 1002, quantity: 1 },
+    { sync_variant_id: 2001, quantity: 2 },
+  ]);
 });

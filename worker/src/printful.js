@@ -1,18 +1,24 @@
 /* Turns a paid Stripe Checkout Session into a Printful order. */
 
-import { findProduct } from "./catalog.js";
+import { decodeItems, findProduct } from "./catalog.js";
 
 const API = "https://api.printful.com";
 
 export function buildPrintfulOrder(session, catalog) {
   const md = session.metadata || {};
-  const found = findProduct(catalog, md.sku, md.size);
-  if (!found || !found.variant.printfulSyncVariantId) return null;
-
-  const quantity =
-    (session.line_items && session.line_items.data && session.line_items.data[0] && session.line_items.data[0].quantity) ||
-    parseInt(md.quantity, 10) ||
-    1;
+  let lines;
+  if (md.items) {
+    lines = decodeItems(catalog, md.items);
+  } else {
+    // Orders placed before the bag existed carry a single sku and size.
+    const found = findProduct(catalog, md.sku, md.size);
+    const quantity =
+      (session.line_items && session.line_items.data && session.line_items.data[0] && session.line_items.data[0].quantity) ||
+      parseInt(md.quantity, 10) ||
+      1;
+    lines = found ? [{ ...found, quantity }] : null;
+  }
+  if (!lines || lines.some((l) => !l.variant.printfulSyncVariantId)) return null;
 
   // Newer Stripe API versions nest shipping under collected_information.
   const ship =
@@ -38,7 +44,7 @@ export function buildPrintfulOrder(session, catalog) {
       email: cust.email || undefined,
       phone: cust.phone || undefined,
     },
-    items: [{ sync_variant_id: found.variant.printfulSyncVariantId, quantity }],
+    items: lines.map((l) => ({ sync_variant_id: l.variant.printfulSyncVariantId, quantity: l.quantity })),
     packing_slip: {
       message: "Thanks for riding the first wave. Surf the shadows. valentinetide.com",
     },
