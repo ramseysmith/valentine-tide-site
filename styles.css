@@ -2293,3 +2293,9 @@ html[data-shop="live"] [data-when="soon"] {
     transition: none;
   }
 }
+
+.bag-mark {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex: 0 0 auto;
+}

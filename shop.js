@@ -100,7 +100,7 @@
             ${ready ? "Buy now" : "Notify me when it drops"}
           </button>
         </div>
-        ${ready ? `<button class="btn btn--ghost buy__bag" type="button">${icon("bag")}Add to bag</button>` : ""}
+        ${ready ? `<button class="btn btn--ghost buy__bag" type="button">${MARK}Add to bag</button>` : ""}
         <p class="form-status buy__status" role="status" aria-live="polite"></p>
         <ul class="assure">
           ${shipping && shipping.freeOverCents ? `<li>${icon("truck")}Free US shipping over ${money(shipping.freeOverCents)}</li>` : ""}
@@ -220,6 +220,8 @@
      trip to Stripe and back. Prices shown here are for display; the worker
      prices every line again from catalog.json. */
   const BAG_KEY = "vt_bag";
+  // The skull in heart from the Heartbreak print is the bag's mark (it's also the Stripe checkout icon).
+  const MARK = '<img class="bag-mark" src="assets/skull-heart.png" alt="" width="48" height="48" />';
   const MAX_UNITS = 10;
   const Bag = (() => {
     let items = [];
@@ -336,7 +338,7 @@
     function render() {
       const n = units();
       fab.hidden = n === 0;
-      fab.innerHTML = `${icon("bag")}<span>Bag</span><span class="bag-fab__count">${n}</span>`;
+      fab.innerHTML = `${MARK}<span>Bag</span><span class="bag-fab__count">${n}</span>`;
       fab.setAttribute("aria-label", `Open bag, ${n} item${n === 1 ? "" : "s"}`);
 
       if (!items.length) {
