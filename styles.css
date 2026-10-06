@@ -1146,14 +1146,6 @@ p .text-link {
   color: var(--bone);
 }
 
-.manifesto__quote::before {
-  content: "\201C";
-  display: block;
-  font-size: 3em;
-  line-height: 0.6;
-  color: var(--blood-bright);
-}
-
 .manifesto__body {
   margin-bottom: 1.25rem;
   font-size: clamp(0.95rem, 3.8vw, 1.0625rem);
