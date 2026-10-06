@@ -102,8 +102,15 @@ async function positionFor(product, info, placementType) {
 }
 
 async function pf(method, p, body) {
-  const res = await fetch(API + p, { method, headers, body: body ? JSON.stringify(body) : undefined });
-  const data = await res.json().catch(() => ({}));
+  let res, data;
+  for (let attempt = 0; attempt < 6; attempt++) {
+    res = await fetch(API + p, { method, headers, body: body ? JSON.stringify(body) : undefined });
+    data = await res.json().catch(() => ({}));
+    if (res.status !== 429) break;
+    const wait = Number((JSON.stringify(data).match(/after (\d+) seconds/) || [])[1] || 30);
+    console.log(`Rate limited, waiting ${wait + 5}s`);
+    await sleep((wait + 5) * 1000);
+  }
   if (!res.ok) die(`Printful ${method} ${p} failed ${res.status}: ${JSON.stringify(data.error || data.result || data)}`);
   return data;
 }
