@@ -2409,27 +2409,36 @@ html[data-shop="live"] [data-when="soon"] {
 
 /* =========================================================
    THE 10% PROMISE
+   Phones: stacked and centered. Wider screens: one framed panel,
+   the skull in heart on the left, the promise on the right.
    ========================================================= */
 .giving {
   padding: clamp(3rem, 12vw, 6rem) var(--gutter);
   border-top: 1px solid var(--bone-faint);
   background: radial-gradient(ellipse at 50% 0%, rgba(139, 0, 0, 0.18), transparent 65%);
-  text-align: center;
 }
 
 .giving__inner {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
   max-width: 36rem;
   margin: 0 auto;
+  text-align: center;
+}
+
+.giving__mark {
+  display: block;
+  width: 6rem;
+  height: auto;
 }
 
 .giving .eyebrow {
   margin-bottom: 0.75rem;
 }
 
-.giving__mark {
-  width: 4.5rem;
-  height: 4.5rem;
-  margin: 0 auto 1rem;
+.giving__heading {
+  margin: 0;
 }
 
 .giving__body {
@@ -2453,6 +2462,40 @@ html[data-shop="live"] [data-when="soon"] {
   font-size: 0.9rem;
   line-height: 1.7;
   color: var(--bone-dim);
+}
+
+@media (min-width: 56rem) {
+  .giving__inner {
+    grid-template-columns: minmax(14rem, 22rem) 1fr;
+    align-items: center;
+    justify-items: stretch;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+    max-width: var(--content-max);
+    padding: clamp(2.5rem, 4vw, 3.5rem);
+    border: 1px solid rgba(179, 0, 0, 0.35);
+    background: linear-gradient(135deg, rgba(139, 0, 0, 0.12), rgba(22, 22, 22, 0.6) 60%);
+    text-align: left;
+  }
+
+  .giving__art {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1 / 1;
+    background: radial-gradient(circle, rgba(179, 0, 0, 0.28), transparent 68%);
+  }
+
+  .giving__mark {
+    width: 78%;
+    filter: drop-shadow(0 0 2.5rem rgba(179, 0, 0, 0.35));
+  }
+
+  .giving__heading {
+    text-align: left;
+  }
+
+  .giving__help {
+    max-width: 34rem;
+  }
 }
 
 /* Help line in every footer */

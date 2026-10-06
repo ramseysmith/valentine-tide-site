@@ -35,3 +35,10 @@ word to. Code, class names, and file names keep whatever punctuation they need.
 
 Prefer the smallest change that fixes the issue. Confirm before any larger visual
 redesign of surrounding sections.
+
+## Cache busting
+
+Pages load `styles.css` and the scripts with a `?v=` stamp so visitors never
+see new HTML with old styles. When you change `styles.css` or any `.js` file,
+bump the stamp in every page (`index.html`, `vision.html`, `help.html`,
+`success.html`, `404.html`) to the current date and time.
