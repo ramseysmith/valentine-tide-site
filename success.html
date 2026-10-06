@@ -45,6 +45,10 @@
     /* Fills in what was bought, from the shop worker. Quietly does nothing if
        the worker isn't reachable; the thank you copy stands on its own. */
     (async function () {
+      // A bag checkout went through, so empty the bag (a single Buy now leaves it alone).
+      try {
+        if (localStorage.getItem("vt_bag_pending")) { localStorage.removeItem("vt_bag"); localStorage.removeItem("vt_bag_pending"); }
+      } catch (e) {}
       var cfg = window.VT_CONFIG || {};
       var id = new URLSearchParams(location.search).get("session_id");
       if (!id || !cfg.API_BASE || cfg.API_BASE.indexOf("REPLACE") === 0) return;

@@ -2011,3 +2011,285 @@ html[data-shop="live"] [data-when="soon"] {
 .signup__interest strong {
   color: var(--bone);
 }
+
+/* =========================================================
+   BAG
+   Add to bag button, floating bag button, and slide out bag.
+   ========================================================= */
+.buy__bag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
+.buy__bag .icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.bag-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.1rem;
+  background-color: var(--near-black);
+  border: 1px solid var(--blood-bright);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.bag-fab[hidden] {
+  display: none;
+}
+
+.bag-fab:hover {
+  background-color: var(--blood);
+}
+
+.bag-fab .icon {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.bag-fab__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.3rem;
+  background-color: var(--blood);
+  border-radius: 999px;
+  letter-spacing: 0;
+}
+
+.bag-is-open {
+  overflow: hidden;
+}
+
+.bag {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+.bag[hidden] {
+  display: none;
+}
+
+.bag__scrim {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.bag__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 26rem);
+  background-color: var(--near-black);
+  border-left: 1px solid var(--bone-faint);
+  color: var(--bone);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+.bag.is-open .bag__scrim {
+  opacity: 1;
+}
+
+.bag.is-open .bag__panel {
+  transform: none;
+}
+
+.bag__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--bone-faint);
+}
+
+.bag__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.bag__close {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: 1px solid var(--bone-faint);
+  color: var(--bone);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.bag__close:hover {
+  border-color: var(--bone);
+}
+
+.bag__lines {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0 1.25rem;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.bag__empty {
+  padding: 2rem 0;
+  color: var(--bone-dim);
+}
+
+.bag__line {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr auto;
+  gap: 0.9rem;
+  align-items: start;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--bone-faint);
+}
+
+.bag__img {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: cover;
+}
+
+.bag__name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.bag__meta {
+  margin: 0.2rem 0 0.6rem;
+  font-size: 0.85rem;
+  color: var(--bone-dim);
+}
+
+.bag__qty {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bag__qty button {
+  min-width: 2rem;
+  height: 2rem;
+  background: none;
+  border: 1px solid var(--bone-faint);
+  color: var(--bone);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.bag__qty button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.bag__qty span {
+  min-width: 1.25rem;
+  text-align: center;
+}
+
+.bag__qty .bag__remove {
+  margin-left: 0.25rem;
+  padding: 0 0.25rem;
+  border: 0;
+  color: var(--bone-dim);
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
+.bag__line-total {
+  margin: 0;
+  font-weight: 600;
+}
+
+.bag__foot {
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--bone-faint);
+}
+
+.bag__nudge {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  color: var(--bone-dim);
+}
+
+.bag__meter {
+  height: 3px;
+  margin-bottom: 1rem;
+  background-color: var(--bone-faint);
+}
+
+.bag__meter span {
+  display: block;
+  height: 100%;
+  background-color: var(--blood-bright);
+  transition: width 0.3s ease;
+}
+
+.bag__totals {
+  margin: 0 0 1rem;
+}
+
+.bag__totals div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.2rem 0;
+  font-size: 0.95rem;
+  color: var(--bone-dim);
+}
+
+.bag__totals dd {
+  margin: 0;
+}
+
+.bag__totals .bag__total {
+  margin-top: 0.3rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--bone-faint);
+  color: var(--bone);
+  font-weight: 600;
+}
+
+.bag__checkout {
+  width: 100%;
+}
+
+.bag__status {
+  margin-top: 0.5rem;
+  min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bag__panel,
+  .bag__scrim {
+    transition: none;
+  }
+}
