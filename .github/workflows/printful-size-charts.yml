@@ -1,0 +1,31 @@
+name: Printful size charts
+
+# Saves each product's garment measurements from Printful's size guide into
+# catalog.json (sizeChart) so the shop can show a size chart.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sizes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      PRINTFUL_TOKEN: ${{ secrets.PRINTFUL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Fetch size charts
+        run: node worker/scripts/fetch-size-charts.mjs
+      - name: Save to catalog.json
+        run: |
+          git diff --quiet catalog.json && { echo "catalog.json unchanged"; exit 0; }
+          git config user.name "Ramsey Graysmith"
+          git config user.email "smith.s.ramsey@gmail.com"
+          git commit -am "Save Printful size charts to catalog.json"
+          git push
