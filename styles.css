@@ -2299,3 +2299,8 @@ html[data-shop="live"] [data-when="soon"] {
   height: 1.5rem;
   flex: 0 0 auto;
 }
+
+/* Artwork tiles carry their own lettering, so no caption or fade. */
+.tile--art::after {
+  background: none;
+}
