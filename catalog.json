@@ -81,7 +81,46 @@
         }
       ],
       "drop": "001",
-      "sizeHint": "Relaxed fit. Between sizes? Size down for a closer cut."
+      "sizeHint": "Relaxed fit. Between sizes? Size down for a closer cut.",
+      "sizeChart": {
+        "unit": "inches",
+        "note": "Measurements are provided by suppliers. Product measurements may vary by up to 2\" (5 cm). Pro tip! Measure one of your products at home and compare with the measurements you see in this guide.",
+        "rows": [
+          {
+            "label": "Length",
+            "values": {
+              "S": "26.62",
+              "M": "28",
+              "L": "29.37",
+              "XL": "30.75",
+              "2XL": "31.62",
+              "3XL": "32.5"
+            }
+          },
+          {
+            "label": "Width",
+            "values": {
+              "S": "18.25",
+              "M": "20.25",
+              "L": "22",
+              "XL": "24",
+              "2XL": "26",
+              "3XL": "27.75"
+            }
+          },
+          {
+            "label": "Sleeve length",
+            "values": {
+              "S": "16.25",
+              "M": "17.75",
+              "L": "19",
+              "XL": "20.5",
+              "2XL": "21.75",
+              "3XL": "23.25"
+            }
+          }
+        ]
+      }
     },
     {
       "sku": "vt-heartbreak-crop-black",
@@ -146,7 +185,33 @@
           "surchargeCents": 200
         }
       ],
-      "sizeHint": "Boxy and cropped. Take your usual size for a relaxed fit."
+      "sizeHint": "Boxy and cropped. Take your usual size for a relaxed fit.",
+      "sizeChart": {
+        "unit": "inches",
+        "note": "Measurements are provided by our suppliers. Product measurements may vary by up to 2\" (5 cm).",
+        "rows": [
+          {
+            "label": "Length",
+            "values": {
+              "S": "17 1/2",
+              "M": "18 1/4",
+              "L": "19 3/4",
+              "XL": "21 1/4",
+              "2XL": "22 1/4"
+            }
+          },
+          {
+            "label": "Width",
+            "values": {
+              "S": "20",
+              "M": "22 1/8",
+              "L": "23 5/8",
+              "XL": "23 5/8",
+              "2XL": "27 5/8"
+            }
+          }
+        ]
+      }
     }
   ]
 }
