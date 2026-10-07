@@ -6,6 +6,7 @@
    Positions are measured on Printful's 3000 px templates and
    mapped onto each canvas (the template's print area covers the
    whole canvas). Re-run after any design change:
+     cd design/drop003/art && python3 cut.py crest-source-x4.jpg && cd ../../..
      node design/drop003/render.mjs
    Needs Playwright with Chromium.
    ========================================================= */
@@ -17,7 +18,8 @@ import { chromium } from "playwright";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "../..");
-const out = path.join(root, "assets/prints/drop003");
+// New folder per artwork, so Printful fetches fresh files instead of reusing cached ones.
+const out = path.join(root, "assets/prints/drop003/crest");
 const url = (p) => "file://" + path.join(root, p);
 
 const BASE = "#121212";
@@ -27,14 +29,16 @@ const BONE = "#f5f0e8";
 const RASH = { canvas: [4200, 5400], area: { left: 334, top: 0, width: 2332, height: 3000 } };
 const SWIM = { canvas: [3750, 5250], area: { left: 429, top: 0, width: 2143, height: 3000 } };
 
-/* Each panel lists graphics in template coordinates: cx, cy = center, w = width. */
+/* Each panel lists graphics in template coordinates: cx, cy = center, w = width.
+   "art" pieces are cut from the Surf the Shadows crest by design/drop003/art/cut.py. */
+const ART = (name) => `design/drop003/art/crest-${name}.png`;
 const PANELS = [
-  { name: "rash-front", spec: RASH, items: [{ kind: "mark", cx: 1500, cy: 1150, w: 430 }] },
-  { name: "rash-back", spec: RASH, items: [{ kind: "wordmark", cx: 1500, cy: 930, w: 860 }, { kind: "tag", text: "Surf the Shadows", cx: 1500, cy: 1090, size: 52 }] },
+  { name: "rash-front", spec: RASH, items: [{ kind: "art", src: ART("emblem"), cx: 1500, cy: 1180, w: 600 }] },
+  { name: "rash-back", spec: RASH, items: [{ kind: "art", src: ART("full"), cx: 1500, cy: 1500, w: 1220 }] },
   { name: "rash-sleeve-left", spec: RASH, items: [{ kind: "vtext", text: "Surf the Shadows", cx: 1500, cy: 1850, size: 120 }] },
-  { name: "rash-sleeve-right", spec: RASH, items: [{ kind: "mark", cx: 1500, cy: 2350, w: 230 }] },
-  { name: "swim-front", spec: SWIM, items: [{ kind: "mark", cx: 1800, cy: 1720, w: 260 }] },
-  { name: "swim-back", spec: SWIM, items: [{ kind: "wordmark", cx: 1500, cy: 1980, w: 820 }] },
+  { name: "rash-sleeve-right", spec: RASH, items: [{ kind: "art", src: ART("rose"), cx: 1500, cy: 2330, w: 300 }] },
+  { name: "swim-front", spec: SWIM, items: [{ kind: "art", src: ART("emblem"), cx: 1500, cy: 1400, w: 760 }] },
+  { name: "swim-back", spec: SWIM, items: [{ kind: "art", src: ART("lettering"), cx: 1500, cy: 1990, w: 900 }] },
 ];
 
 /* Tonal thorns and wave crests, with a few blood red thorn tips. */
@@ -71,6 +75,10 @@ function html(panel) {
         const src = it.kind === "mark" ? url("design/drop003/skull-heart-print.png") : url("assets/wordmark.png");
         const w = it.w * sx;
         return `<img src="${src}" style="position:absolute;width:${w}px;left:${X(it.cx) - w / 2}px;top:${Y(it.cy)}px;transform:translateY(-50%)">`;
+      }
+      if (it.kind === "art") {
+        const w = it.w * sx;
+        return `<img src="${url(it.src)}" style="position:absolute;width:${w}px;left:${X(it.cx) - w / 2}px;top:${Y(it.cy)}px;transform:translateY(-50%)">`;
       }
       if (it.kind === "tag") {
         return `<div style="position:absolute;left:0;width:${W}px;top:${Y(it.cy)}px;transform:translateY(-50%);text-align:center;font:${it.size * sx}px Pirata;letter-spacing:.3em;color:${BONE};text-transform:uppercase">${it.text}</div>`;

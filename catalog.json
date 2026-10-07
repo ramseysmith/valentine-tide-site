@@ -222,7 +222,7 @@
       "drop": "003",
       "name": "Night Session Rash Guard",
       "subtitle": "Men's long sleeve rash guard in black",
-      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern, the skull in heart on the chest, the wordmark across the back, and Surf the Shadows down the left sleeve.",
+      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern, the full Surf the Shadows crest across the back: a blood moon over a breaking wave, ringed in thorns and roses. The wave emblem sits on the chest, a red rose on the right sleeve, and Surf the Shadows runs down the left.",
       "details": [
         "Four way stretch, 78% polyester, 22% elastane",
         "Long sleeves and a longer body for sun and wind",
@@ -253,10 +253,10 @@
         "catalogProductId": 301,
         "type": "aop",
         "files": {
-          "front": "assets/prints/drop003/rash-front.png",
-          "back": "assets/prints/drop003/rash-back.png",
-          "sleeve_left": "assets/prints/drop003/rash-sleeve-left.png",
-          "sleeve_right": "assets/prints/drop003/rash-sleeve-right.png"
+          "front": "assets/prints/drop003/crest/rash-front.png",
+          "back": "assets/prints/drop003/crest/rash-back.png",
+          "sleeve_left": "assets/prints/drop003/crest/rash-sleeve-left.png",
+          "sleeve_right": "assets/prints/drop003/crest/rash-sleeve-right.png"
         },
         "options": {
           "stitch_color": "black"
@@ -348,7 +348,7 @@
       "drop": "003",
       "name": "Night Session Rash Guard",
       "subtitle": "Women's long sleeve rash guard in black",
-      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern, the skull in heart on the chest, the wordmark across the back, and Surf the Shadows down the left sleeve.",
+      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern, the full Surf the Shadows crest across the back: a blood moon over a breaking wave, ringed in thorns and roses. The wave emblem sits on the chest, a red rose on the right sleeve, and Surf the Shadows runs down the left.",
       "details": [
         "Four way stretch, 78% polyester, 22% elastane",
         "Long sleeves and a longer body for sun and wind",
@@ -379,10 +379,10 @@
         "catalogProductId": 302,
         "type": "aop",
         "files": {
-          "front": "assets/prints/drop003/rash-front.png",
-          "back": "assets/prints/drop003/rash-back.png",
-          "sleeve_left": "assets/prints/drop003/rash-sleeve-left.png",
-          "sleeve_right": "assets/prints/drop003/rash-sleeve-right.png"
+          "front": "assets/prints/drop003/crest/rash-front.png",
+          "back": "assets/prints/drop003/crest/rash-back.png",
+          "sleeve_left": "assets/prints/drop003/crest/rash-sleeve-left.png",
+          "sleeve_right": "assets/prints/drop003/crest/rash-sleeve-right.png"
         },
         "options": {
           "stitch_color": "black"
@@ -474,7 +474,7 @@
       "drop": "003",
       "name": "Night Session One Piece",
       "subtitle": "Scoop back one piece swimsuit in black",
-      "description": "The rash guard's other half. Near black with the same thorn and wave pattern, a small skull in heart at the hip, and the wordmark across the low back.",
+      "description": "The rash guard's other half. Near black with the same thorn and wave pattern, the blood moon wave emblem on the front, and the Valentine Tide lettering across the low back.",
       "details": [
         "Four way stretch, chlorine resistant",
         "Double layer front",
@@ -505,8 +505,8 @@
         "catalogProductId": 272,
         "type": "aop",
         "files": {
-          "front": "assets/prints/drop003/swim-front.png",
-          "back": "assets/prints/drop003/swim-back.png"
+          "front": "assets/prints/drop003/crest/swim-front.png",
+          "back": "assets/prints/drop003/crest/swim-back.png"
         },
         "options": {
           "stitch_color": "black"

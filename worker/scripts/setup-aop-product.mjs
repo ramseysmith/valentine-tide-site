@@ -4,7 +4,8 @@
    (cut and sew) catalog entry: every size gets every panel
    file from catalog.json printful.files, plus any options
    (black stitching). Saves the sync IDs back to catalog.json.
-   Safe to re-run: an existing store product is reused.
+   Safe to re-run: an existing store product is reused, and its
+   panel files are swapped when catalog.json points at new ones.
 
    Usage (repo root):
      PRINTFUL_TOKEN=xxx node worker/scripts/setup-aop-product.mjs <sku> [--dry-run]
@@ -66,7 +67,24 @@ if (created) {
   console.log(`Created store product #${created.id}`);
 }
 
-const full = (await pfSend("GET", `/store/products/${created.id}`)).result;
+let full = (await pfSend("GET", `/store/products/${created.id}`)).result;
+
+// New artwork: when a size's panel files differ from catalog.json, swap them in place.
+const wantFiles = (sv) => {
+  const have = new Map((sv.files || []).filter((f) => f.type !== "preview").map((f) => [f.type, f.url]));
+  return files.some((f) => have.get(f.type) !== f.url) || have.size !== files.length;
+};
+let updated = 0;
+for (const sv of full.sync_variants) {
+  if (!wantFiles(sv)) continue;
+  await pfSend("PUT", `/store/variants/${sv.id}`, { files, options });
+  updated++;
+}
+if (updated) {
+  console.log(`Updated print files on ${updated} sizes`);
+  await pfSend("PUT", `/store/products/${created.id}`, { sync_product: { thumbnail: `${SITE}/${pf.files.front}` } });
+  full = (await pfSend("GET", `/store/products/${created.id}`)).result;
+}
 const idByExternal = new Map(full.sync_variants.map((sv) => [sv.external_id, sv.id]));
 pf.syncProductId = created.id;
 for (const v of product.variants) {
