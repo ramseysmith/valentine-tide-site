@@ -234,6 +234,9 @@
     const c = p.sizeChart;
     if (!c || !c.rows || !c.rows.length) return "";
     const sizes = p.variants.map((v) => v.size).filter((sz) => c.rows.some((r) => r.values[sz]));
+    const ORDER = ["Chest", "Width", "Waist", "Hips", "Length", "Sleeve length"];
+    const rank = (r) => (ORDER.indexOf(r.label) + 1 || 99);
+    c.rows = [...c.rows].sort((a, b) => rank(a) - rank(b));
     return `
       <details class="sizechart">
         <summary>${c.kind === "body" ? "Body size chart" : "Size chart"} (${esc(c.unit)})</summary>
