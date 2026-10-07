@@ -294,7 +294,73 @@
         }
       ],
       "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit.",
-      "pickerName": "Rash Guard, Men's"
+      "pickerName": "Rash Guard, Men's",
+      "sizeChart": {
+        "unit": "inches",
+        "note": "This size guide shows product measurements taken when products are laid flat. Actual product measurements may vary by up to 1\" because they&rsquo;re custom-made by hand.",
+        "rows": [
+          {
+            "label": "A",
+            "values": {
+              "XS": "16.93",
+              "S": "17.72",
+              "M": "18.50",
+              "L": "20.08",
+              "XL": "21.65",
+              "2XL": "23.23",
+              "3XL": "24.80"
+            }
+          },
+          {
+            "label": "B",
+            "values": {
+              "XS": "14.17",
+              "S": "14.96",
+              "M": "15.75",
+              "L": "17.32",
+              "XL": "18.90",
+              "2XL": "20.47",
+              "3XL": "22.05"
+            }
+          },
+          {
+            "label": "C",
+            "values": {
+              "XS": "27.17",
+              "S": "27.56",
+              "M": "27.95",
+              "L": "28.35",
+              "XL": "28.74",
+              "2XL": "29.13",
+              "3XL": "29.53"
+            }
+          },
+          {
+            "label": "D",
+            "values": {
+              "XS": "6.69",
+              "S": "7.09",
+              "M": "7.48",
+              "L": "8.27",
+              "XL": "9.06",
+              "2XL": "9.84",
+              "3XL": "10.63"
+            }
+          },
+          {
+            "label": "E",
+            "values": {
+              "XS": "28.74",
+              "S": "29.13",
+              "M": "29.53",
+              "L": "29.92",
+              "XL": "30.31",
+              "2XL": "30.71",
+              "3XL": "31.1"
+            }
+          }
+        ]
+      }
     },
     {
       "sku": "vt-night-session-rash-womens",
@@ -377,7 +443,73 @@
         }
       ],
       "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit.",
-      "pickerName": "Rash Guard, Women's"
+      "pickerName": "Rash Guard, Women's",
+      "sizeChart": {
+        "unit": "inches",
+        "note": "This size guide shows product measurements taken when products are laid flat. Actual product measurements may vary by up to 1\" because they&rsquo;re custom-made by hand.",
+        "rows": [
+          {
+            "label": "A",
+            "values": {
+              "XS": "14.57",
+              "S": "15.35",
+              "M": "16.14",
+              "L": "17.72",
+              "XL": "19.29",
+              "2XL": "20.87",
+              "3XL": "22.44"
+            }
+          },
+          {
+            "label": "B",
+            "values": {
+              "XS": "13.78",
+              "S": "14.57",
+              "M": "15.35",
+              "L": "16.93",
+              "XL": "18.50",
+              "2XL": "20.08",
+              "3XL": "21.65"
+            }
+          },
+          {
+            "label": "C",
+            "values": {
+              "XS": "26.38",
+              "S": "26.77",
+              "M": "27.17",
+              "L": "27.56",
+              "XL": "27.95",
+              "2XL": "28.35",
+              "3XL": "28.74"
+            }
+          },
+          {
+            "label": "D",
+            "values": {
+              "XS": "5.12",
+              "S": "5.51",
+              "M": "5.91",
+              "L": "6.69",
+              "XL": "7.48",
+              "2XL": "8.27",
+              "3XL": "9.06"
+            }
+          },
+          {
+            "label": "E",
+            "values": {
+              "XS": "27.95",
+              "S": "28.35",
+              "M": "28.74",
+              "L": "29.13",
+              "XL": "29.53",
+              "2XL": "29.92",
+              "3XL": "30.31"
+            }
+          }
+        ]
+      }
     },
     {
       "sku": "vt-night-session-one-piece",
@@ -458,7 +590,49 @@
         }
       ],
       "sizeHint": "Cheeky cut with four way stretch. Take your usual swim size.",
-      "pickerName": "One Piece"
+      "pickerName": "One Piece",
+      "sizeChart": {
+        "unit": "inches",
+        "note": "This size guide shows product measurements taken when products are laid flat. Actual product measurements may vary by up to 1\" because they&rsquo;re custom-made by hand.",
+        "rows": [
+          {
+            "label": "A",
+            "values": {
+              "XS": "12.20",
+              "S": "12.99",
+              "M": "13.78",
+              "L": "14.57",
+              "XL": "16.14",
+              "2XL": "17.72",
+              "3XL": "19.29"
+            }
+          },
+          {
+            "label": "B",
+            "values": {
+              "XS": "13.58",
+              "S": "14.37",
+              "M": "15.16",
+              "L": "15.94",
+              "XL": "17.52",
+              "2XL": "19.09",
+              "3XL": "20.67"
+            }
+          },
+          {
+            "label": "C",
+            "values": {
+              "XS": "25.79",
+              "S": "26.18",
+              "M": "26.57",
+              "L": "26.97",
+              "XL": "27.76",
+              "2XL": "28.54",
+              "3XL": "29.33"
+            }
+          }
+        ]
+      }
     }
   ]
 }
