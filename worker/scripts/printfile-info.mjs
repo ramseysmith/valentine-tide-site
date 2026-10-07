@@ -14,6 +14,7 @@ for (const id of ids) {
   const templates = await pf(`/mockup-generator/templates/${id}`).then((r) => r.result).catch(() => null);
   out[id] = {
     title: prod.product.title,
+    description: prod.product.description,
     techniques: prod.product.techniques,
     files: prod.product.files,
     options: prod.product.options,
