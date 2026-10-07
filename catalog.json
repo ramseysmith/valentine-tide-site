@@ -234,15 +234,15 @@
       "gallery": [
         {
           "src": "assets/products/drop003/rash-mens-front.jpg",
-          "alt": "Night Session Rash Guard, men's, front"
+          "alt": "Night Session Rash Guard, men's, back with the Surf the Shadows crest"
         },
         {
           "src": "assets/products/drop003/rash-mens-model-front.jpg",
-          "alt": "Worn, front, with the skull in heart on the chest"
+          "alt": "Worn, front, with the wave emblem on the chest"
         },
         {
           "src": "assets/products/drop003/rash-mens-beach.jpg",
-          "alt": "On the beach with a board, wordmark across the back"
+          "alt": "On the beach with a board, crest across the back"
         },
         {
           "src": "assets/products/drop003/rash-mens-model-back.jpg",
@@ -360,15 +360,15 @@
       "gallery": [
         {
           "src": "assets/products/drop003/rash-womens-front.jpg",
-          "alt": "Night Session Rash Guard, women's, front"
+          "alt": "Night Session Rash Guard, women's, back with the Surf the Shadows crest"
         },
         {
           "src": "assets/products/drop003/rash-womens-model-front.jpg",
-          "alt": "Worn, front"
+          "alt": "Worn, front, with the wave emblem on the chest"
         },
         {
           "src": "assets/products/drop003/rash-womens-model-back.jpg",
-          "alt": "Worn, back, wordmark across the shoulders"
+          "alt": "Worn, back, crest across the shoulders"
         },
         {
           "src": "assets/products/drop003/rash-womens-sleeve.jpg",
@@ -486,11 +486,11 @@
       "gallery": [
         {
           "src": "assets/products/drop003/one-piece-front.jpg",
-          "alt": "Night Session One Piece, front"
+          "alt": "Night Session One Piece, front with the blood moon wave emblem"
         },
         {
           "src": "assets/products/drop003/one-piece-model-front.jpg",
-          "alt": "Worn, front, skull in heart at the hip"
+          "alt": "Worn, front"
         },
         {
           "src": "assets/products/drop003/one-piece-beach.jpg",
@@ -498,7 +498,7 @@
         },
         {
           "src": "assets/products/drop003/one-piece-model-back.jpg",
-          "alt": "Worn, low scoop back with the wordmark"
+          "alt": "Worn, low scoop back with the Valentine Tide lettering"
         }
       ],
       "printful": {
