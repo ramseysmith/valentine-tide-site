@@ -23,7 +23,17 @@ for (const id of ids) {
   };
   await new Promise((r) => setTimeout(r, 1500));
 }
-await mkdir("research", { recursive: true });
+await mkdir("research/templates", { recursive: true });
+// Save each template outline image so panels can be designed against it.
+for (const v of Object.values(out)) {
+  for (const t of v.templates?.templates || []) {
+    for (const [kind, url] of [["outline", t.image_url], ["background", t.background_url]]) {
+      if (!url) continue;
+      const res = await fetch(url);
+      if (res.ok) await writeFile(`research/templates/${t.template_id}-${kind}.png`, Buffer.from(await res.arrayBuffer()));
+    }
+  }
+}
 await writeFile("research/printfiles.json", JSON.stringify(out, null, 1));
 console.log(`::notice title=Printfiles::${Object.entries(out).map(([k, v]) => `${k} ${v.title}`).join(" | ")}`);
 
