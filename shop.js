@@ -42,7 +42,8 @@
   function renderProduct(p, shipping) {
     const gallery = p.gallery && p.gallery.length ? p.gallery : [{ src: p.image, alt: `${p.name}, ${p.subtitle}` }];
     // Sellable only when checkout is connected and Printful knows the product.
-    const ready = !!API && (cfg.SHOP_PREVIEW || p.variants.some((v) => v.printfulSyncVariantId));
+    // A coming soon piece (samples not approved yet) shows "Notify me" instead.
+    const ready = !!API && !p.comingSoon && (cfg.SHOP_PREVIEW || p.variants.some((v) => v.printfulSyncVariantId));
     const el = document.createElement("article");
     el.className = "product";
     el.id = p.sku;
@@ -85,7 +86,7 @@
               .map(
                 (v, i) => `
               <label class="size">
-                <input type="radio" name="size-${p.sku}" value="${v.size}" ${i === 1 ? "checked" : ""} />
+                <input type="radio" name="size-${p.sku}" value="${v.size}" ${v.size === defaultSize(p) ? "checked" : ""} />
                 <span>${v.size}</span>
               </label>`
               )
@@ -192,6 +193,12 @@
     return el;
   }
 
+  /* M when offered, otherwise the second size. */
+  function defaultSize(p) {
+    const sizes = p.variants.map((v) => v.size);
+    return sizes.includes("M") ? "M" : sizes[Math.min(1, sizes.length - 1)];
+  }
+
   /* A row of small cards at the top of the shop, so phone visitors see every
      piece at once and can jump straight to one. */
   function renderPicker(products) {
@@ -203,8 +210,8 @@
         (p) => `
         <a class="picker__item" href="#${p.sku}">
           <img src="${p.image}" alt="" width="160" height="160" loading="lazy" />
-          <span class="picker__name">${esc(p.name)}</span>
-          <span class="picker__price">${money(p.priceCents)}</span>
+          <span class="picker__name">${esc(p.pickerName || p.name)}</span>
+          <span class="picker__price">${p.comingSoon ? "Coming soon" : money(p.priceCents)}</span>
         </a>`
       )
       .join("");
@@ -257,7 +264,7 @@
         url: `${location.origin}/#${p.sku}`,
         priceCurrency: String(currency || "usd").toUpperCase(),
         price: (p.priceCents / 100).toFixed(2),
-        availability: API ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+        availability: API && !p.comingSoon ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
       },
     }));
     const tag = document.createElement("script");

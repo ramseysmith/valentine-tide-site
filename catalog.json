@@ -215,7 +215,7 @@
     },
     {
       "sku": "vt-night-session-rash-mens",
-      "active": false,
+      "active": true,
       "comingSoon": true,
       "drop": "003",
       "name": "Night Session Rash Guard",
@@ -229,7 +229,24 @@
       ],
       "priceCents": 6400,
       "image": "assets/products/drop003/rash-mens-front.jpg",
-      "gallery": [],
+      "gallery": [
+        {
+          "src": "assets/products/drop003/rash-mens-front.jpg",
+          "alt": "Night Session Rash Guard, men's, front"
+        },
+        {
+          "src": "assets/products/drop003/rash-mens-model-front.jpg",
+          "alt": "Worn, front, with the skull in heart on the chest"
+        },
+        {
+          "src": "assets/products/drop003/rash-mens-beach.jpg",
+          "alt": "On the beach with a board, wordmark across the back"
+        },
+        {
+          "src": "assets/products/drop003/rash-mens-model-back.jpg",
+          "alt": "Worn, back"
+        }
+      ],
       "printful": {
         "catalogProductId": 301,
         "type": "aop",
@@ -276,11 +293,12 @@
           "surchargeCents": 400
         }
       ],
-      "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit."
+      "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit.",
+      "pickerName": "Rash Guard, Men's"
     },
     {
       "sku": "vt-night-session-rash-womens",
-      "active": false,
+      "active": true,
       "comingSoon": true,
       "drop": "003",
       "name": "Night Session Rash Guard",
@@ -294,7 +312,24 @@
       ],
       "priceCents": 6400,
       "image": "assets/products/drop003/rash-womens-front.jpg",
-      "gallery": [],
+      "gallery": [
+        {
+          "src": "assets/products/drop003/rash-womens-front.jpg",
+          "alt": "Night Session Rash Guard, women's, front"
+        },
+        {
+          "src": "assets/products/drop003/rash-womens-model-front.jpg",
+          "alt": "Worn, front"
+        },
+        {
+          "src": "assets/products/drop003/rash-womens-model-back.jpg",
+          "alt": "Worn, back, wordmark across the shoulders"
+        },
+        {
+          "src": "assets/products/drop003/rash-womens-sleeve.jpg",
+          "alt": "Surf the Shadows down the left sleeve"
+        }
+      ],
       "printful": {
         "catalogProductId": 302,
         "type": "aop",
@@ -341,11 +376,12 @@
           "surchargeCents": 400
         }
       ],
-      "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit."
+      "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit.",
+      "pickerName": "Rash Guard, Women's"
     },
     {
       "sku": "vt-night-session-one-piece",
-      "active": false,
+      "active": true,
       "comingSoon": true,
       "drop": "003",
       "name": "Night Session One Piece",
@@ -359,7 +395,24 @@
       ],
       "priceCents": 5800,
       "image": "assets/products/drop003/one-piece-front.jpg",
-      "gallery": [],
+      "gallery": [
+        {
+          "src": "assets/products/drop003/one-piece-front.jpg",
+          "alt": "Night Session One Piece, front"
+        },
+        {
+          "src": "assets/products/drop003/one-piece-model-front.jpg",
+          "alt": "Worn, front, skull in heart at the hip"
+        },
+        {
+          "src": "assets/products/drop003/one-piece-beach.jpg",
+          "alt": "On the beach"
+        },
+        {
+          "src": "assets/products/drop003/one-piece-model-back.jpg",
+          "alt": "Worn, low scoop back with the wordmark"
+        }
+      ],
       "printful": {
         "catalogProductId": 272,
         "type": "aop",
@@ -404,7 +457,8 @@
           "surchargeCents": 400
         }
       ],
-      "sizeHint": "Cheeky cut with four way stretch. Take your usual swim size."
+      "sizeHint": "Cheeky cut with four way stretch. Take your usual swim size.",
+      "pickerName": "One Piece"
     }
   ]
 }

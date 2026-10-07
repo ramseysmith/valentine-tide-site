@@ -32,6 +32,8 @@ export function resolveItems(catalog, body) {
   for (const it of raw) {
     const found = findProduct(catalog, String((it && it.sku) || ""), String((it && it.size) || ""));
     if (!found) return { error: "unknown_product" };
+    // Shown on the site, but not for sale until its samples are approved.
+    if (found.product.comingSoon) return { error: "coming_soon" };
     const quantity = Math.max(1, Math.min(5, parseInt(it.quantity, 10) || 1));
     const key = `${found.product.sku}|${found.variant.size}`;
     const prev = merged.get(key);

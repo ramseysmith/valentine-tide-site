@@ -116,3 +116,9 @@ test("bag: metadata round trips and builds a multi item Printful order", () => {
     { sync_variant_id: 2001, quantity: 2 },
   ]);
 });
+
+test("coming soon pieces can't be bought", () => {
+  const soon = structuredClone(catalog);
+  soon.products[0].comingSoon = true;
+  assert.equal(resolveItems(soon, { items: [{ sku: soon.products[0].sku, size: "M", quantity: 1 }] }).error, "coming_soon");
+});
