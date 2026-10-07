@@ -69,7 +69,8 @@ for (const product of products) {
       width: 1600,
       option_groups: optionGroups,
       files: mockFiles,
-      ...(product.printful.options?.stitch_color ? { options: [{ id: "stitch_color", value: product.printful.options.stitch_color }] } : {}),
+      // Garment settings (black stitching) go in product_options; "options" means photo styles.
+      ...(product.printful.options ? { product_options: product.printful.options } : {}),
     })
   ).result;
 
