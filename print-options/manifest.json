@@ -1,0 +1,46 @@
+[
+  {
+    "name": "one-piece-arch",
+    "sku": "vt-night-session-one-piece",
+    "files": {
+      "front": "print-options/one-piece-arch/swim-front.png",
+      "back": "print-options/one-piece-arch/swim-back.png"
+    }
+  },
+  {
+    "name": "one-piece-rose",
+    "sku": "vt-night-session-one-piece",
+    "files": {
+      "front": "print-options/one-piece-rose/swim-front.png",
+      "back": "print-options/one-piece-rose/swim-back.png"
+    }
+  },
+  {
+    "name": "one-piece-wave",
+    "sku": "vt-night-session-one-piece",
+    "files": {
+      "front": "print-options/one-piece-wave/swim-front.png",
+      "back": "print-options/one-piece-wave/swim-back.png"
+    }
+  },
+  {
+    "name": "rash-arch-mens",
+    "sku": "vt-night-session-rash-mens",
+    "files": {
+      "front": "print-options/rash-arch/rash-front.png",
+      "back": "print-options/rash-arch/rash-back.png",
+      "sleeve_left": "print-options/rash-arch/rash-sleeve-left.png",
+      "sleeve_right": "print-options/rash-arch/rash-sleeve-right.png"
+    }
+  },
+  {
+    "name": "rash-arch-womens",
+    "sku": "vt-night-session-rash-womens",
+    "files": {
+      "front": "print-options/rash-arch/rash-front.png",
+      "back": "print-options/rash-arch/rash-back.png",
+      "sleeve_left": "print-options/rash-arch/rash-sleeve-left.png",
+      "sleeve_right": "print-options/rash-arch/rash-sleeve-right.png"
+    }
+  }
+]
