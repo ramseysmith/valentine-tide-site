@@ -1,0 +1,36 @@
+name: Printful print templates
+
+# Saves print templates for catalog product IDs to the "research" branch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      ids:
+        description: "Printful catalog product IDs, space separated"
+        required: true
+        default: "301 302 272"
+
+permissions:
+  contents: write
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PRINTFUL_TOKEN: ${{ secrets.PRINTFUL_TOKEN }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - run: node worker/scripts/printfile-info.mjs ${{ inputs.ids }}
+      - name: Commit to the research branch
+        run: |
+          git config user.name "Ramsey Graysmith"
+          git config user.email "smith.s.ramsey@gmail.com"
+          git fetch origin research || true
+          git checkout -B research
+          git add research
+          git commit -m "Printful print templates"
+          git push -f origin research
