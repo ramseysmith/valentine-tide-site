@@ -1,0 +1,1285 @@
+{
+ "272": {
+  "title": "All-Over Print One-Piece Swimsuit",
+  "description": "This one-piece swimsuit for all figures will bring out your best features. Enjoy the smooth fabric and the flattering design, and show it off by the sea or pool!\n\n• 78% polyester, 22% elastane for fulfillment in the US\n• 84% polyester, 16% elastane for fulfillment in EU\n• Fabric weight: 8.56 oz./yd.² (290 g/m²) in the US\n• Fabric weight: 6.78 oz./yd.² (230 g/m²) in EU\n• Chlorine-resistant fabric\n• Cheeky fit with a scoop neckline and a low scoop back\n• Zig-zag stitching\n• Double-layer front \n• Four-way stretch material stretches and recovers on the cross and lengthwise grains\n• Blank product components sourced from Mexico and China",
+  "techniques": [
+   {
+    "key": "CUT-SEW",
+    "display_name": "All-over synthetic",
+    "is_default": true
+   }
+  ],
+  "files": [
+   {
+    "id": "default",
+    "type": "front",
+    "title": "Front print",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "back",
+    "type": "back",
+    "title": "Back print",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "label_inside",
+    "type": "label_inside",
+    "title": "Inside label",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "preview",
+    "type": "mockup",
+    "title": "Mockup",
+    "additional_price": null,
+    "options": []
+   }
+  ],
+  "options": [
+   {
+    "id": "stitch_color",
+    "title": "Stitch color",
+    "type": "radio",
+    "values": {
+     "white": "White",
+     "black": "Black"
+    },
+    "additional_price": null,
+    "additional_price_breakdown": []
+   },
+   {
+    "id": "notes",
+    "title": "Printing notes",
+    "type": "text",
+    "values": null,
+    "additional_price": null,
+    "additional_price_breakdown": []
+   },
+   {
+    "id": "license_type",
+    "title": "License type",
+    "type": "multi_select",
+    "values": {
+     "CLC": "Collegiate Licensing Company",
+     "AFFINITY": "Affinity",
+     "BR": "BR",
+     "EX": "EX",
+     "NCAA": "NCAA",
+     "FAN": "Fan",
+     "BCOMPLY": "BrandComply",
+     "TAG": "Tag",
+     "DLH": "DLH",
+     "CORE81": "Core81"
+    },
+    "additional_price": null,
+    "additional_price_breakdown": []
+   }
+  ],
+  "variants": [
+   {
+    "id": 9019,
+    "size": "2XL",
+    "color": "White",
+    "price": "27.96",
+    "in_stock": true
+   },
+   {
+    "id": 9020,
+    "size": "3XL",
+    "color": "White",
+    "price": "29.96",
+    "in_stock": true
+   },
+   {
+    "id": 9017,
+    "size": "L",
+    "color": "White",
+    "price": "25.96",
+    "in_stock": true
+   },
+   {
+    "id": 9016,
+    "size": "M",
+    "color": "White",
+    "price": "25.96",
+    "in_stock": true
+   },
+   {
+    "id": 9015,
+    "size": "S",
+    "color": "White",
+    "price": "25.96",
+    "in_stock": true
+   },
+   {
+    "id": 9018,
+    "size": "XL",
+    "color": "White",
+    "price": "25.96",
+    "in_stock": true
+   },
+   {
+    "id": 9014,
+    "size": "XS",
+    "color": "White",
+    "price": "25.96",
+    "in_stock": true
+   }
+  ],
+  "printfiles": {
+   "product_id": 272,
+   "available_placements": {
+    "front": "Front print",
+    "back": "Back print",
+    "label_inside": "Inside label"
+   },
+   "printfiles": [
+    {
+     "printfile_id": 64,
+     "width": 375,
+     "height": 150,
+     "dpi": 150,
+     "fill_mode": "fit",
+     "can_rotate": false
+    },
+    {
+     "printfile_id": 123,
+     "width": 3750,
+     "height": 5250,
+     "dpi": 150,
+     "fill_mode": "cover",
+     "can_rotate": false
+    }
+   ],
+   "variant_printfiles": [
+    {
+     "variant_id": 9014,
+     "placements": {
+      "front": 123,
+      "back": 123,
+      "label_inside": 64
+     }
+    },
+    {
+     "variant_id": 9015,
+     "placements": {
+      "front": 123,
+      "back": 123,
+      "label_inside": 64
+     }
+    },
+    {
+     "variant_id": 9016,
+     "placements": {
+      "front": 123,
+      "back": 123,
+      "label_inside": 64
+     }
+    },
+    {
+     "variant_id": 9017,
+     "placements": {
+      "front": 123,
+      "back": 123,
+      "label_inside": 64
+     }
+    },
+    {
+     "variant_id": 9018,
+     "placements": {
+      "front": 123,
+      "back": 123,
+      "label_inside": 64
+     }
+    },
+    {
+     "variant_id": 9019,
+     "placements": {
+      "front": 123,
+      "back": 123,
+      "label_inside": 64
+     }
+    },
+    {
+     "variant_id": 9020,
+     "placements": {
+      "front": 123,
+      "back": 123,
+      "label_inside": 64
+     }
+    }
+   ],
+   "option_groups": [
+    "Default",
+    "Flat",
+    "Flat Lifestyle",
+    "Flat Lifestyle 2",
+    "Ghost",
+    "Labels",
+    "Lifestyle 1",
+    "Lifestyle 2",
+    "Spring/summer vibes",
+    "Women's 2",
+    "Women's 3"
+   ],
+   "options": [
+    "Back",
+    "Back 2",
+    "Front",
+    "Front 2",
+    "Inside label",
+    "Left",
+    "Left Back",
+    "Right",
+    "Right Back"
+   ]
+  },
+  "templates": {
+   "version": 100,
+   "variant_mapping": [
+    {
+     "variant_id": 9014,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 4266
+      },
+      {
+       "placement": "back",
+       "template_id": 4268
+      },
+      {
+       "placement": "label_inside",
+       "template_id": 47454
+      }
+     ]
+    },
+    {
+     "variant_id": 9015,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 4266
+      },
+      {
+       "placement": "back",
+       "template_id": 4268
+      },
+      {
+       "placement": "label_inside",
+       "template_id": 47454
+      }
+     ]
+    },
+    {
+     "variant_id": 9016,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 4266
+      },
+      {
+       "placement": "back",
+       "template_id": 4268
+      },
+      {
+       "placement": "label_inside",
+       "template_id": 47454
+      }
+     ]
+    },
+    {
+     "variant_id": 9017,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 4266
+      },
+      {
+       "placement": "back",
+       "template_id": 4268
+      },
+      {
+       "placement": "label_inside",
+       "template_id": 47454
+      }
+     ]
+    },
+    {
+     "variant_id": 9018,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 4266
+      },
+      {
+       "placement": "back",
+       "template_id": 4268
+      },
+      {
+       "placement": "label_inside",
+       "template_id": 47454
+      }
+     ]
+    },
+    {
+     "variant_id": 9019,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 4266
+      },
+      {
+       "placement": "back",
+       "template_id": 4268
+      },
+      {
+       "placement": "label_inside",
+       "template_id": 47454
+      }
+     ]
+    },
+    {
+     "variant_id": 9020,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 4266
+      },
+      {
+       "placement": "back",
+       "template_id": 4268
+      },
+      {
+       "placement": "label_inside",
+       "template_id": 47454
+      }
+     ]
+    }
+   ],
+   "templates": [
+    {
+     "template_id": 4266,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/72/728b2de85cbad282956e34195d82b0f5?v=1714030705",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2143,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 429
+    },
+    {
+     "template_id": 4268,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/46/46946593784f250093a312e98a437d48?v=1714030687",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2143,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 429
+    },
+    {
+     "template_id": 47454,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/a6/a63e79b2c633bec621ef66cacace04de?v=1736246767",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 1656,
+     "print_area_height": 662,
+     "print_area_top": 1169,
+     "print_area_left": 672
+    }
+   ]
+  }
+ },
+ "301": {
+  "title": "All-Over Print Men's Rash Guard",
+  "description": "Don’t let sunburn, wind, sand, or other elements ruin your day! This smooth and versatile long-sleeve rash guard will protect you while you have fun doing sports. It is slim-fitted with flat ergonomic seams, and a bit longer than your casual tee for extra comfort and protection.\n\n• 78% polyester, 22% elastane for fulfillment in the US\n• 84% polyester, 16% elastane for fulfillment in EU\n• Fabric weight: 8.56 oz./yd.² (290 g/m²) in the US\n• Fabric weight: 6.78 oz./yd.² (230 g/m²) in EU\n• Very soft four-way stretch fabric that stretches and recovers on the cross and lengthwise grains\n• Comfortable longer body and sleeves\n• Flat seam and coverstitch\n• Blank product components sourced from Mexico and China\n\nDisclaimer: To make your rash guard last longer, thoroughly rinse it off after each use and get rid of any chlorine/salt residue. This product runs small and is quite fitted. For a more comfortable fit, we suggest choosing one size up.",
+  "techniques": [
+   {
+    "key": "CUT-SEW",
+    "display_name": "All-over synthetic",
+    "is_default": true
+   }
+  ],
+  "files": [
+   {
+    "id": "default",
+    "type": "front",
+    "title": "Front print",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "back",
+    "type": "back",
+    "title": "Back print",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "sleeve_left",
+    "type": "sleeve_left",
+    "title": "Left sleeve",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "sleeve_right",
+    "type": "sleeve_right",
+    "title": "Right sleeve",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "preview",
+    "type": "mockup",
+    "title": "Mockup",
+    "additional_price": null,
+    "options": []
+   }
+  ],
+  "options": [
+   {
+    "id": "stitch_color",
+    "title": "Stitch color",
+    "type": "radio",
+    "values": {
+     "white": "White",
+     "black": "Black"
+    },
+    "additional_price": null,
+    "additional_price_breakdown": []
+   },
+   {
+    "id": "notes",
+    "title": "Printing notes",
+    "type": "text",
+    "values": null,
+    "additional_price": null,
+    "additional_price_breakdown": []
+   },
+   {
+    "id": "license_type",
+    "title": "License type",
+    "type": "multi_select",
+    "values": {
+     "CLC": "Collegiate Licensing Company",
+     "AFFINITY": "Affinity",
+     "BR": "BR",
+     "EX": "EX",
+     "NCAA": "NCAA",
+     "FAN": "Fan",
+     "BCOMPLY": "BrandComply",
+     "TAG": "Tag",
+     "DLH": "DLH",
+     "CORE81": "Core81"
+    },
+    "additional_price": null,
+    "additional_price_breakdown": []
+   }
+  ],
+  "variants": [
+   {
+    "id": 9331,
+    "size": "2XL",
+    "color": "White",
+    "price": "37.32",
+    "in_stock": true
+   },
+   {
+    "id": 9332,
+    "size": "3XL",
+    "color": "White",
+    "price": "39.32",
+    "in_stock": true
+   },
+   {
+    "id": 9329,
+    "size": "L",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   },
+   {
+    "id": 9328,
+    "size": "M",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   },
+   {
+    "id": 9327,
+    "size": "S",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   },
+   {
+    "id": 9330,
+    "size": "XL",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   },
+   {
+    "id": 9326,
+    "size": "XS",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   }
+  ],
+  "printfiles": {
+   "product_id": 301,
+   "available_placements": {
+    "front": "Front print",
+    "back": "Back print",
+    "sleeve_left": "Left sleeve",
+    "sleeve_right": "Right sleeve"
+   },
+   "printfiles": [
+    {
+     "printfile_id": 94,
+     "width": 4200,
+     "height": 5400,
+     "dpi": 150,
+     "fill_mode": "cover",
+     "can_rotate": false
+    }
+   ],
+   "variant_printfiles": [
+    {
+     "variant_id": 9326,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9327,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9328,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9329,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9330,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9331,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9332,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    }
+   ],
+   "option_groups": [
+    "Default",
+    "Flat",
+    "Flat 2",
+    "Flat Lifestyle",
+    "Lifestyle",
+    "Lifestyle 2",
+    "Men's 2",
+    "Men's 3",
+    "On Hanger",
+    "On Model"
+   ],
+   "options": [
+    "Back",
+    "Front",
+    "Left",
+    "Left Sleeve",
+    "Right",
+    "Right Sleeve"
+   ]
+  },
+  "templates": {
+   "version": 100,
+   "variant_mapping": [
+    {
+     "variant_id": 9326,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5955
+      },
+      {
+       "placement": "back",
+       "template_id": 5956
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5958
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5957
+      }
+     ]
+    },
+    {
+     "variant_id": 9327,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5955
+      },
+      {
+       "placement": "back",
+       "template_id": 5956
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5958
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5957
+      }
+     ]
+    },
+    {
+     "variant_id": 9328,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5955
+      },
+      {
+       "placement": "back",
+       "template_id": 5956
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5958
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5957
+      }
+     ]
+    },
+    {
+     "variant_id": 9329,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5955
+      },
+      {
+       "placement": "back",
+       "template_id": 5956
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5958
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5957
+      }
+     ]
+    },
+    {
+     "variant_id": 9330,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5955
+      },
+      {
+       "placement": "back",
+       "template_id": 5956
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5958
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5957
+      }
+     ]
+    },
+    {
+     "variant_id": 9331,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5955
+      },
+      {
+       "placement": "back",
+       "template_id": 5956
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5958
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5957
+      }
+     ]
+    },
+    {
+     "variant_id": 9332,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5955
+      },
+      {
+       "placement": "back",
+       "template_id": 5956
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5958
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5957
+      }
+     ]
+    }
+   ],
+   "templates": [
+    {
+     "template_id": 5955,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/c0/c011289ad62aa986cc3875b3c0635f22?v=1714050912",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2332,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 334
+    },
+    {
+     "template_id": 5956,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/2d/2d8da13997acc3c30c91202ee8d4df91?v=1714050855",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2332,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 334
+    },
+    {
+     "template_id": 5958,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/36/36796fc02bbe91a853e670c15e2aeb32?v=1714050991",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2332,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 334
+    },
+    {
+     "template_id": 5957,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/a3/a39177a927a2f5e1f51e66cfd9bc63bd?v=1714051055",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2332,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 334
+    }
+   ]
+  }
+ },
+ "302": {
+  "title": "All-Over Print Women's Rash Guard",
+  "description": "Don't be afraid to be your most active self in this smooth and versatile long-sleeve rash guard! It protects you from the sun, wind, and other elements while doing sports, and the slim fit, flat ergonomic seams, and the longer body gives extra comfort.\n\n• 78% polyester, 22% elastane for fulfillment in the US\n• 84% polyester, 16% elastane for fulfillment in EU\n• Fabric weight: 8.56 oz./yd.² (290 g/m²) in the US\n• Fabric weight: 6.78 oz./yd.² (230 g/m²) in EU\n• Very soft four-way stretch fabric that stretches and recovers on the cross and lengthwise grains\n• Fitted design\n• Comfortable longer body and sleeves \n• Flatseam and coverstitch\n• Blank product components sourced from Mexico and China\n\nDisclaimer: To make your rash guard last longer, thoroughly rinse it off after each use and get rid of any chlorine/salt residue. This product runs small and is quite fitted. For a more comfortable fit, we suggest choosing one size up.",
+  "techniques": [
+   {
+    "key": "CUT-SEW",
+    "display_name": "All-over synthetic",
+    "is_default": true
+   }
+  ],
+  "files": [
+   {
+    "id": "default",
+    "type": "front",
+    "title": "Front print",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "back",
+    "type": "back",
+    "title": "Back print",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "sleeve_left",
+    "type": "sleeve_left",
+    "title": "Left sleeve",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "sleeve_right",
+    "type": "sleeve_right",
+    "title": "Right sleeve",
+    "additional_price": null,
+    "options": []
+   },
+   {
+    "id": "preview",
+    "type": "mockup",
+    "title": "Mockup",
+    "additional_price": null,
+    "options": []
+   }
+  ],
+  "options": [
+   {
+    "id": "stitch_color",
+    "title": "Stitch color",
+    "type": "radio",
+    "values": {
+     "white": "White",
+     "black": "Black"
+    },
+    "additional_price": null,
+    "additional_price_breakdown": []
+   },
+   {
+    "id": "notes",
+    "title": "Printing notes",
+    "type": "text",
+    "values": null,
+    "additional_price": null,
+    "additional_price_breakdown": []
+   },
+   {
+    "id": "license_type",
+    "title": "License type",
+    "type": "multi_select",
+    "values": {
+     "CLC": "Collegiate Licensing Company",
+     "AFFINITY": "Affinity",
+     "BR": "BR",
+     "EX": "EX",
+     "NCAA": "NCAA",
+     "FAN": "Fan",
+     "BCOMPLY": "BrandComply",
+     "TAG": "Tag",
+     "DLH": "DLH",
+     "CORE81": "Core81"
+    },
+    "additional_price": null,
+    "additional_price_breakdown": []
+   }
+  ],
+  "variants": [
+   {
+    "id": 9338,
+    "size": "2XL",
+    "color": "White",
+    "price": "37.32",
+    "in_stock": true
+   },
+   {
+    "id": 9339,
+    "size": "3XL",
+    "color": "White",
+    "price": "39.32",
+    "in_stock": true
+   },
+   {
+    "id": 9336,
+    "size": "L",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   },
+   {
+    "id": 9335,
+    "size": "M",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   },
+   {
+    "id": 9334,
+    "size": "S",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   },
+   {
+    "id": 9337,
+    "size": "XL",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   },
+   {
+    "id": 9333,
+    "size": "XS",
+    "color": "White",
+    "price": "35.32",
+    "in_stock": true
+   }
+  ],
+  "printfiles": {
+   "product_id": 302,
+   "available_placements": {
+    "front": "Front print",
+    "back": "Back print",
+    "sleeve_left": "Left sleeve",
+    "sleeve_right": "Right sleeve"
+   },
+   "printfiles": [
+    {
+     "printfile_id": 94,
+     "width": 4200,
+     "height": 5400,
+     "dpi": 150,
+     "fill_mode": "cover",
+     "can_rotate": false
+    }
+   ],
+   "variant_printfiles": [
+    {
+     "variant_id": 9333,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9334,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9335,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9336,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9337,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9338,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    },
+    {
+     "variant_id": 9339,
+     "placements": {
+      "front": 94,
+      "back": 94,
+      "sleeve_left": 94,
+      "sleeve_right": 94
+     }
+    }
+   ],
+   "option_groups": [
+    "Default",
+    "Flat",
+    "Flat 2",
+    "Flat Lifestyle",
+    "Lifestyle",
+    "On Hanger",
+    "Women's 2",
+    "Women's 3",
+    "Women's 4",
+    "Women's Lifestyle"
+   ],
+   "options": [
+    "Back",
+    "Front",
+    "Left",
+    "Left Front",
+    "Left Sleeve",
+    "Right",
+    "Right Front",
+    "Right Sleeve"
+   ]
+  },
+  "templates": {
+   "version": 100,
+   "variant_mapping": [
+    {
+     "variant_id": 9333,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5965
+      },
+      {
+       "placement": "back",
+       "template_id": 5966
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5968
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5967
+      }
+     ]
+    },
+    {
+     "variant_id": 9334,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5965
+      },
+      {
+       "placement": "back",
+       "template_id": 5966
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5968
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5967
+      }
+     ]
+    },
+    {
+     "variant_id": 9335,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5965
+      },
+      {
+       "placement": "back",
+       "template_id": 5966
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5968
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5967
+      }
+     ]
+    },
+    {
+     "variant_id": 9336,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5965
+      },
+      {
+       "placement": "back",
+       "template_id": 5966
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5968
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5967
+      }
+     ]
+    },
+    {
+     "variant_id": 9337,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5965
+      },
+      {
+       "placement": "back",
+       "template_id": 5966
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5968
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5967
+      }
+     ]
+    },
+    {
+     "variant_id": 9338,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5965
+      },
+      {
+       "placement": "back",
+       "template_id": 5966
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5968
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5967
+      }
+     ]
+    },
+    {
+     "variant_id": 9339,
+     "templates": [
+      {
+       "placement": "front",
+       "template_id": 5965
+      },
+      {
+       "placement": "back",
+       "template_id": 5966
+      },
+      {
+       "placement": "sleeve_left",
+       "template_id": 5968
+      },
+      {
+       "placement": "sleeve_right",
+       "template_id": 5967
+      }
+     ]
+    }
+   ],
+   "templates": [
+    {
+     "template_id": 5965,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/cd/cdff62598184f5f4b5b98d37b72bf6cc?v=1714051385",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2332,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 334
+    },
+    {
+     "template_id": 5966,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/15/15cb5f7e40673db71b382e3c7926873b?v=1714051320",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2332,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 334
+    },
+    {
+     "template_id": 5968,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/96/9607369c0189cd61d33d5286f4eac65f?v=1714051459",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2332,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 334
+    },
+    {
+     "template_id": 5967,
+     "image_url": "https://files.cdn.printful.com/o/upload/api-template/33/33349d9e5cd60fba4811e56cad8aea22?v=1714051527",
+     "background_url": null,
+     "template_width": 3000,
+     "template_height": 3000,
+     "print_area_width": 2332,
+     "print_area_height": 3000,
+     "print_area_top": 0,
+     "print_area_left": 334
+    }
+   ]
+  }
+ }
+}
