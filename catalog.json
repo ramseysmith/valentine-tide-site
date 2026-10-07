@@ -241,37 +241,38 @@
         },
         "options": {
           "stitch_color": "black"
-        }
+        },
+        "syncProductId": 479213891
       },
       "variants": [
         {
           "size": "XS",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476823
         },
         {
           "size": "S",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476824
         },
         {
           "size": "M",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476825
         },
         {
           "size": "L",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476826
         },
         {
           "size": "XL",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476827
         },
         {
           "size": "2XL",
-          "printfulSyncVariantId": null,
+          "printfulSyncVariantId": 5559476828,
           "surchargeCents": 200
         },
         {
           "size": "3XL",
-          "printfulSyncVariantId": null,
+          "printfulSyncVariantId": 5559476833,
           "surchargeCents": 400
         }
       ],
@@ -305,37 +306,38 @@
         },
         "options": {
           "stitch_color": "black"
-        }
+        },
+        "syncProductId": 479213910
       },
       "variants": [
         {
           "size": "XS",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476863
         },
         {
           "size": "S",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476864
         },
         {
           "size": "M",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476871
         },
         {
           "size": "L",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476872
         },
         {
           "size": "XL",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476874
         },
         {
           "size": "2XL",
-          "printfulSyncVariantId": null,
+          "printfulSyncVariantId": 5559476875,
           "surchargeCents": 200
         },
         {
           "size": "3XL",
-          "printfulSyncVariantId": null,
+          "printfulSyncVariantId": 5559476879,
           "surchargeCents": 400
         }
       ],
@@ -367,37 +369,38 @@
         },
         "options": {
           "stitch_color": "black"
-        }
+        },
+        "syncProductId": 479213921
       },
       "variants": [
         {
           "size": "XS",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476916
         },
         {
           "size": "S",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476917
         },
         {
           "size": "M",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476918
         },
         {
           "size": "L",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476919
         },
         {
           "size": "XL",
-          "printfulSyncVariantId": null
+          "printfulSyncVariantId": 5559476920
         },
         {
           "size": "2XL",
-          "printfulSyncVariantId": null,
+          "printfulSyncVariantId": 5559476921,
           "surchargeCents": 200
         },
         {
           "size": "3XL",
-          "printfulSyncVariantId": null,
+          "printfulSyncVariantId": 5559476922,
           "surchargeCents": 400
         }
       ],
