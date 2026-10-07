@@ -22,7 +22,8 @@ if (!process.env.PRINTFUL_TOKEN) die("Set PRINTFUL_TOKEN");
 
 const catalog = JSON.parse(await readFile(path.join(root, "catalog.json"), "utf8"));
 const wanted = process.argv.slice(2);
-const products = catalog.products.filter((p) => p.active && p.printful?.syncProductId && (!wanted.length || wanted.includes(p.sku)));
+// Named skus are rendered even while hidden, so a new drop can get photos before it shows.
+const products = catalog.products.filter((p) => p.printful?.syncProductId && (wanted.length ? wanted.includes(p.sku) : p.active));
 const summary = [];
 
 for (const product of products) {
@@ -43,7 +44,23 @@ for (const product of products) {
   }
   console.log(`${product.sku}: blank #${blankId}, placement ${printFile.type}, styles: ${optionGroups.join(", ") || "default"}`);
 
-  if (!printFile.position) printFile.position = await positionFor(product, info, printFile.type);
+  let mockFiles;
+  if (product.printful.type === "aop") {
+    // All over print: every panel, each covering its whole canvas.
+    const sizeOf = (placement) => {
+      const id = info.variant_printfiles?.[0]?.placements?.[placement];
+      const f = (info.printfiles || []).find((x) => x.printfile_id === id);
+      return f ? { area_width: f.width, area_height: f.height, width: f.width, height: f.height, top: 0, left: 0 } : undefined;
+    };
+    mockFiles = Object.entries(product.printful.files).map(([placement, file]) => ({
+      placement,
+      image_url: `${process.env.SITE_URL || "https://valentinetide.com"}/${file}`,
+      position: sizeOf(placement),
+    }));
+  } else {
+    if (!printFile.position) printFile.position = await positionFor(product, info, printFile.type);
+    mockFiles = [{ placement: printFile.type, image_url: printFile.url, position: printFile.position }];
+  }
 
   const task = (
     await pf("POST", `/mockup-generator/create-task/${blankId}`, {
@@ -51,7 +68,8 @@ for (const product of products) {
       format: "jpg",
       width: 1600,
       option_groups: optionGroups,
-      files: [{ placement: printFile.type, image_url: printFile.url, position: printFile.position }],
+      files: mockFiles,
+      ...(product.printful.options?.stitch_color ? { options: [{ id: "stitch_color", value: product.printful.options.stitch_color }] } : {}),
     })
   ).result;
 

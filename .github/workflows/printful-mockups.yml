@@ -6,6 +6,11 @@ name: Printful mockups
 
 on:
   workflow_dispatch:
+    inputs:
+      skus:
+        description: "Only these skus (space separated); empty for every shown product"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -22,7 +27,7 @@ jobs:
         with:
           node-version: 22
       - name: Render mockups
-        run: node worker/scripts/make-mockups.mjs
+        run: node worker/scripts/make-mockups.mjs ${{ inputs.skus }}
       - name: Commit to the mockups branch
         run: |
           git config user.name "Ramsey Graysmith"
