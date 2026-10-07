@@ -26,7 +26,12 @@ for (const product of catalog.products.filter((p) => p.printful?.syncProductId))
   const blankId = store.sync_variants[0].product.product_id;
   const guide = (await pf(`/products/${blankId}/sizes?unit=inches`)).result;
   const tables = guide.size_tables || [];
-  const table = tables.find((t) => t.type === "product_measure") || tables[0];
+  // Garment measurements, unless they're labelled only with diagram letters
+  // (A, B, C...). Then the body measurement chart is the useful one.
+  const lettered = (t) => (t.measurements || []).every((m) => /^[A-Z]$/.test(String(m.type_label || "").trim()));
+  const garment = tables.find((t) => t.type === "product_measure" && !lettered(t));
+  const body = tables.find((t) => t.type === "measure_yourself" && !lettered(t));
+  const table = garment || body || tables[0];
   if (!table) {
     notes.push(`${product.sku}: no size table`);
     continue;
@@ -42,7 +47,7 @@ for (const product of catalog.products.filter((p) => p.printful?.syncProductId))
       ),
     }))
     .filter((r) => Object.keys(r.values).length);
-  product.sizeChart = { unit: table.unit || "inches", note: stripHtml(table.description || ""), rows };
+  product.sizeChart = { kind: table === garment ? "garment" : "body", unit: table.unit || "inches", note: stripHtml(table.description || ""), rows };
   notes.push(`${product.sku}: ${rows.map((r) => r.label).join(", ")}`);
 }
 

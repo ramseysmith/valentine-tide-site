@@ -236,7 +236,7 @@
     const sizes = p.variants.map((v) => v.size).filter((sz) => c.rows.some((r) => r.values[sz]));
     return `
       <details class="sizechart">
-        <summary>Size chart (${esc(c.unit)})</summary>
+        <summary>${c.kind === "body" ? "Body size chart" : "Size chart"} (${esc(c.unit)})</summary>
         <div class="sizechart__scroll">
           <table>
             <thead><tr><th scope="col"></th>${sizes.map((sz) => `<th scope="col">${esc(sz)}</th>`).join("")}</tr></thead>
@@ -245,7 +245,11 @@
             </tbody>
           </table>
         </div>
-        <p class="sizechart__note">Measured flat on the shirt and may vary by up to 2 inches. Compare with a tee you already own.</p>
+        <p class="sizechart__note">${
+          c.kind === "body"
+            ? "Your body measurements, taken with a soft tape. Between sizes? Size up."
+            : "Measured flat on the shirt and may vary by up to 2 inches. Compare with a tee you already own."
+        }</p>
       </details>`;
   }
 
