@@ -1,0 +1,84 @@
+{
+  "name": "crest",
+  "out": "assets/prints/drop003/crest",
+  "panels": [
+    {
+      "name": "rash-front",
+      "spec": "rash",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/crest-emblem.png",
+          "cx": 1500,
+          "cy": 1180,
+          "w": 600
+        }
+      ]
+    },
+    {
+      "name": "rash-back",
+      "spec": "rash",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/crest-full.png",
+          "cx": 1500,
+          "cy": 1500,
+          "w": 1220
+        }
+      ]
+    },
+    {
+      "name": "rash-sleeve-left",
+      "spec": "rash",
+      "items": [
+        {
+          "kind": "vtext",
+          "text": "Surf the Shadows",
+          "cx": 1500,
+          "cy": 1850,
+          "size": 120
+        }
+      ]
+    },
+    {
+      "name": "rash-sleeve-right",
+      "spec": "rash",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/crest-rose.png",
+          "cx": 1500,
+          "cy": 2330,
+          "w": 300
+        }
+      ]
+    },
+    {
+      "name": "swim-front",
+      "spec": "swim",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/crest-emblem.png",
+          "cx": 1500,
+          "cy": 1400,
+          "w": 760
+        }
+      ]
+    },
+    {
+      "name": "swim-back",
+      "spec": "swim",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/crest-lettering.png",
+          "cx": 1500,
+          "cy": 1990,
+          "w": 900
+        }
+      ]
+    }
+  ]
+}

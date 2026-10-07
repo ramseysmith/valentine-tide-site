@@ -1,0 +1,35 @@
+{
+  "name": "one-piece-arch",
+  "out": "print-options/one-piece-arch",
+  "skus": [
+    "vt-night-session-one-piece"
+  ],
+  "panels": [
+    {
+      "name": "swim-front",
+      "spec": "swim",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/arch-window.png",
+          "cx": 1500,
+          "cy": 1560,
+          "w": 1020
+        }
+      ]
+    },
+    {
+      "name": "swim-back",
+      "spec": "swim",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/arch-rose.png",
+          "cx": 1500,
+          "cy": 1960,
+          "w": 300
+        }
+      ]
+    }
+  ]
+}

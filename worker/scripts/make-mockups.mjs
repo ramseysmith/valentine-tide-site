@@ -8,6 +8,10 @@
 
    Usage (from the repo root):
      PRINTFUL_TOKEN=xxx node worker/scripts/make-mockups.mjs [sku ...]
+
+   Design options: MOCKUP_MANIFEST=print-options/manifest.json renders
+   each listed option ({ name, sku, files }) on its product instead,
+   with files read from FILE_BASE, into MOCKUP_OUT/<name>/.
    ========================================================= */
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
@@ -24,9 +28,15 @@ const catalog = JSON.parse(await readFile(path.join(root, "catalog.json"), "utf8
 const wanted = process.argv.slice(2);
 // Named skus are rendered even while hidden, so a new drop can get photos before it shows.
 const products = catalog.products.filter((p) => p.printful?.syncProductId && (wanted.length ? wanted.includes(p.sku) : p.active));
+const manifest = process.env.MOCKUP_MANIFEST ? JSON.parse(await readFile(path.join(root, process.env.MOCKUP_MANIFEST), "utf8")) : null;
+const jobs = manifest
+  ? manifest.map((m) => ({ name: m.name, files: m.files, product: catalog.products.find((p) => p.sku === m.sku) }))
+  : products.map((p) => ({ name: p.sku, files: p.printful.files, product: p }));
+const fileBase = process.env.FILE_BASE || process.env.SITE_URL || "https://valentinetide.com";
+const outRoot = process.env.MOCKUP_OUT || "mockups";
 const summary = [];
 
-for (const product of products) {
+for (const { name: jobName, files: jobFiles, product } of jobs) {
   const store = (await pf("GET", `/store/products/${product.printful.syncProductId}`)).result;
   // One size is enough: every size is the same color and print.
   const sv = store.sync_variants.find((v) => /\/ M$/.test(v.name)) || store.sync_variants[0];
@@ -52,9 +62,9 @@ for (const product of products) {
       const f = (info.printfiles || []).find((x) => x.printfile_id === id);
       return f ? { area_width: f.width, area_height: f.height, width: f.width, height: f.height, top: 0, left: 0 } : undefined;
     };
-    mockFiles = Object.entries(product.printful.files).map(([placement, file]) => ({
+    mockFiles = Object.entries(jobFiles).map(([placement, file]) => ({
       placement,
-      image_url: `${process.env.SITE_URL || "https://valentinetide.com"}/${file}`,
+      image_url: `${fileBase}/${file}`,
       position: sizeOf(placement),
     }));
   } else {
@@ -82,7 +92,7 @@ for (const product of products) {
   }
   if (result.status !== "completed") die(`${product.sku}: mockup task ${result.status} ${result.error || ""}`);
 
-  const dir = path.join(root, "mockups", product.sku);
+  const dir = path.join(root, outRoot, jobName);
   await mkdir(dir, { recursive: true });
   const images = [];
   for (const m of result.mockups) {
@@ -98,8 +108,8 @@ for (const product of products) {
     if (!res.ok) continue;
     await writeFile(path.join(dir, `${name}.jpg`), Buffer.from(await res.arrayBuffer()));
   }
-  summary.push(`${product.sku}: ${used.size} mockups`);
-  console.log(`${product.sku}: saved ${used.size} mockups to mockups/${product.sku}/`);
+  summary.push(`${jobName}: ${used.size} mockups`);
+  console.log(`${jobName}: saved ${used.size} mockups to ${outRoot}/${jobName}/`);
   await sleep(15000); // the mockup generator is rate limited
 }
 if (process.env.GITHUB_ACTIONS) console.log(`::notice title=Mockups::${summary.join(" | ")}`);

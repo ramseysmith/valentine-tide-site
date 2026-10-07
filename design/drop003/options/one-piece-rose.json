@@ -1,0 +1,35 @@
+{
+  "name": "one-piece-rose",
+  "out": "print-options/one-piece-rose",
+  "skus": [
+    "vt-night-session-one-piece"
+  ],
+  "panels": [
+    {
+      "name": "swim-front",
+      "spec": "swim",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/arch-rose-stem.png",
+          "cx": 1790,
+          "cy": 1800,
+          "w": 600
+        }
+      ]
+    },
+    {
+      "name": "swim-back",
+      "spec": "swim",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/arch-lettering.png",
+          "cx": 1500,
+          "cy": 2010,
+          "w": 760
+        }
+      ]
+    }
+  ]
+}

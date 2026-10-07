@@ -1,25 +1,28 @@
 #!/usr/bin/env node
 /* =========================================================
    Drop 003 swim set: renders every print panel at Printful's
-   exact canvas size into assets/prints/drop003/.
+   exact canvas size. The layout lives in a JSON file (default
+   layout.json; options/*.json hold alternatives to compare).
 
    Positions are measured on Printful's 3000 px templates and
    mapped onto each canvas (the template's print area covers the
    whole canvas). Re-run after any design change:
-     cd design/drop003/art && python3 cut.py crest-source-x4.jpg && cd ../../..
-     node design/drop003/render.mjs
+     cd design/drop003/art && python3 cut.py arch-source-x4.jpg && cd ../../..
+     node design/drop003/render.mjs [layout.json] [out dir]
    Needs Playwright with Chromium.
    ========================================================= */
 
-import { mkdir } from "node:fs/promises";
+import { mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "../..");
-// New folder per artwork, so Printful fetches fresh files instead of reusing cached ones.
-const out = path.join(root, "assets/prints/drop003/crest");
+const layoutPath = path.resolve(process.argv[2] || path.join(here, "layout.json"));
+const layout = JSON.parse(await readFile(layoutPath, "utf8"));
+// A new folder per artwork, so Printful fetches fresh files instead of reusing cached ones.
+const out = path.resolve(root, process.argv[3] || layout.out);
 const url = (p) => "file://" + path.join(root, p);
 
 const BASE = "#121212";
@@ -29,17 +32,10 @@ const BONE = "#f5f0e8";
 const RASH = { canvas: [4200, 5400], area: { left: 334, top: 0, width: 2332, height: 3000 } };
 const SWIM = { canvas: [3750, 5250], area: { left: 429, top: 0, width: 2143, height: 3000 } };
 
-/* Each panel lists graphics in template coordinates: cx, cy = center, w = width.
-   "art" pieces are cut from the Surf the Shadows crest by design/drop003/art/cut.py. */
-const ART = (name) => `design/drop003/art/crest-${name}.png`;
-const PANELS = [
-  { name: "rash-front", spec: RASH, items: [{ kind: "art", src: ART("emblem"), cx: 1500, cy: 1180, w: 600 }] },
-  { name: "rash-back", spec: RASH, items: [{ kind: "art", src: ART("full"), cx: 1500, cy: 1500, w: 1220 }] },
-  { name: "rash-sleeve-left", spec: RASH, items: [{ kind: "vtext", text: "Surf the Shadows", cx: 1500, cy: 1850, size: 120 }] },
-  { name: "rash-sleeve-right", spec: RASH, items: [{ kind: "art", src: ART("rose"), cx: 1500, cy: 2330, w: 300 }] },
-  { name: "swim-front", spec: SWIM, items: [{ kind: "art", src: ART("emblem"), cx: 1500, cy: 1400, w: 760 }] },
-  { name: "swim-back", spec: SWIM, items: [{ kind: "art", src: ART("lettering"), cx: 1500, cy: 1990, w: 900 }] },
-];
+/* Panels list graphics in template coordinates: cx, cy = center, w = width.
+   "art" pieces come from design/drop003/art/cut.py. */
+const SPECS = { rash: RASH, swim: SWIM };
+const PANELS = layout.panels.map((p) => ({ ...p, spec: SPECS[p.spec] }));
 
 /* Tonal thorns and wave crests, with a few blood red thorn tips. */
 const patternSvg = (scale) => `
@@ -71,26 +67,23 @@ function html(panel) {
   const Y = (ty) => (ty - a.top) * sy;
   const items = panel.items
     .map((it) => {
-      if (it.kind === "mark" || it.kind === "wordmark") {
-        const src = it.kind === "mark" ? url("design/drop003/skull-heart-print.png") : url("assets/wordmark.png");
-        const w = it.w * sx;
-        return `<img src="${src}" style="position:absolute;width:${w}px;left:${X(it.cx) - w / 2}px;top:${Y(it.cy)}px;transform:translateY(-50%)">`;
-      }
       if (it.kind === "art") {
         const w = it.w * sx;
-        return `<img src="${url(it.src)}" style="position:absolute;width:${w}px;left:${X(it.cx) - w / 2}px;top:${Y(it.cy)}px;transform:translateY(-50%)">`;
+        const turn = `${it.flip ? " scaleX(-1)" : ""}${it.rotate ? ` rotate(${it.rotate}deg)` : ""}`;
+        return `<img src="${url(it.src)}" style="position:absolute;width:${w}px;left:${X(it.cx) - w / 2}px;top:${Y(it.cy)}px;transform:translateY(-50%)${turn}">`;
       }
       if (it.kind === "tag") {
-        return `<div style="position:absolute;left:0;width:${W}px;top:${Y(it.cy)}px;transform:translateY(-50%);text-align:center;font:${it.size * sx}px Pirata;letter-spacing:.3em;color:${BONE};text-transform:uppercase">${it.text}</div>`;
+        return `<div style="position:absolute;left:0;width:${W}px;top:${Y(it.cy)}px;transform:translateY(-50%);text-align:center;font:${it.size * sx}px ${it.font || "Pirata"};letter-spacing:${it.spacing || ".3em"};color:${BONE};text-transform:uppercase">${it.text}</div>`;
       }
       if (it.kind === "vtext") {
-        return `<div style="position:absolute;left:${X(it.cx)}px;top:${Y(it.cy)}px;transform:translate(-50%,-50%) rotate(90deg);white-space:nowrap;font:${it.size * sx}px Pirata;letter-spacing:.32em;color:${BONE};text-transform:uppercase">${it.text}</div>`;
+        return `<div style="position:absolute;left:${X(it.cx)}px;top:${Y(it.cy)}px;transform:translate(-50%,-50%) rotate(90deg);white-space:nowrap;font:${it.size * sx}px ${it.font || "Pirata"};letter-spacing:${it.spacing || ".32em"};color:${BONE};text-transform:uppercase">${it.text}</div>`;
       }
       return "";
     })
     .join("");
   return `<!doctype html><html><head><style>
     @font-face{font-family:Pirata;src:url(${url("design/drop003/pirata-one.woff2")})}
+    @font-face{font-family:Cinzel;src:url(${url("design/drop003/cinzel-500.woff2")})}
     html,body{margin:0;width:${W}px;height:${H}px;overflow:hidden;background:${BASE}}
     .bg{position:absolute;inset:0}
   </style></head><body><div class="bg">${patternSvg(sx)}</div>${items}</body></html>`;
@@ -98,7 +91,7 @@ function html(panel) {
 
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch(process.env.CHROMIUM ? { executablePath: process.env.CHROMIUM } : {});
-for (const panel of PANELS) {
+for (const panel of PANELS.filter((p) => !process.env.ONLY || process.env.ONLY.split(",").includes(p.name))) {
   const [W, H] = panel.spec.canvas;
   const page = await browser.newPage({ viewport: { width: W, height: H } });
   const file = path.join(here, `.render-${panel.name}.html`);

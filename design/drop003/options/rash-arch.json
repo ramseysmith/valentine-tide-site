@@ -1,0 +1,64 @@
+{
+  "name": "rash-arch",
+  "out": "print-options/rash-arch",
+  "skus": [
+    "vt-night-session-rash-mens",
+    "vt-night-session-rash-womens"
+  ],
+  "panels": [
+    {
+      "name": "rash-front",
+      "spec": "rash",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/arch-window.png",
+          "cx": 1500,
+          "cy": 1200,
+          "w": 620
+        }
+      ]
+    },
+    {
+      "name": "rash-back",
+      "spec": "rash",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/arch-full.png",
+          "cx": 1500,
+          "cy": 1500,
+          "w": 1230
+        }
+      ]
+    },
+    {
+      "name": "rash-sleeve-left",
+      "spec": "rash",
+      "items": [
+        {
+          "kind": "vtext",
+          "text": "Surf the Shadows",
+          "font": "Cinzel",
+          "spacing": ".42em",
+          "cx": 1500,
+          "cy": 1780,
+          "size": 88
+        }
+      ]
+    },
+    {
+      "name": "rash-sleeve-right",
+      "spec": "rash",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/arch-rose.png",
+          "cx": 1500,
+          "cy": 2330,
+          "w": 320
+        }
+      ]
+    }
+  ]
+}

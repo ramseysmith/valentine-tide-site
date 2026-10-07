@@ -1,0 +1,36 @@
+name: Printful option mockups
+
+# Mocks up design options without touching the live store products.
+# Run it on a branch that holds print-options/ (rendered panels plus
+# manifest.json); the photos land on the "option-mockups" branch.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mockups:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      PRINTFUL_TOKEN: ${{ secrets.PRINTFUL_TOKEN }}
+      MOCKUP_MANIFEST: print-options/manifest.json
+      MOCKUP_OUT: option-mockups
+      FILE_BASE: https://raw.githubusercontent.com/${{ github.repository }}/${{ github.sha }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Render option mockups
+        run: node worker/scripts/make-mockups.mjs
+      - name: Commit to the option-mockups branch
+        run: |
+          git config user.name "Ramsey Graysmith"
+          git config user.email "smith.s.ramsey@gmail.com"
+          git checkout -B option-mockups
+          git add option-mockups
+          git commit -m "Printful mockups of design options"
+          git push -f origin option-mockups

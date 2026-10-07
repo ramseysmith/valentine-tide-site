@@ -1,0 +1,37 @@
+{
+  "name": "one-piece-wave",
+  "out": "print-options/one-piece-wave",
+  "skus": [
+    "vt-night-session-one-piece"
+  ],
+  "panels": [
+    {
+      "name": "swim-front",
+      "spec": "swim",
+      "items": [
+        {
+          "kind": "art",
+          "src": "design/drop003/art/arch-wave.png",
+          "cx": 1500,
+          "cy": 1730,
+          "w": 1120
+        }
+      ]
+    },
+    {
+      "name": "swim-back",
+      "spec": "swim",
+      "items": [
+        {
+          "kind": "tag",
+          "text": "Surf the Shadows",
+          "font": "Cinzel",
+          "spacing": ".42em",
+          "cx": 1500,
+          "cy": 1930,
+          "size": 64
+        }
+      ]
+    }
+  ]
+}
