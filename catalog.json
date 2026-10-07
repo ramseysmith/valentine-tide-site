@@ -83,6 +83,7 @@
       "drop": "001",
       "sizeHint": "Relaxed fit. Between sizes? Size down for a closer cut.",
       "sizeChart": {
+        "kind": "garment",
         "unit": "inches",
         "note": "Measurements are provided by suppliers. Product measurements may vary by up to 2\" (5 cm). Pro tip! Measure one of your products at home and compare with the measurements you see in this guide.",
         "rows": [
@@ -187,6 +188,7 @@
       ],
       "sizeHint": "Boxy and cropped. Take your usual size for a relaxed fit.",
       "sizeChart": {
+        "kind": "garment",
         "unit": "inches",
         "note": "Measurements are provided by our suppliers. Product measurements may vary by up to 2\" (5 cm).",
         "rows": [
@@ -296,67 +298,44 @@
       "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit.",
       "pickerName": "Rash Guard, Men's",
       "sizeChart": {
+        "kind": "body",
         "unit": "inches",
-        "note": "This size guide shows product measurements taken when products are laid flat. Actual product measurements may vary by up to 1\" because they&rsquo;re custom-made by hand.",
+        "note": "This size guide shows body measurements. As this product runs small and has a fitted silhouette, we recommend ordering one size up if your measurements fall between sizes.",
         "rows": [
           {
-            "label": "A",
+            "label": "Chest",
             "values": {
-              "XS": "16.93",
-              "S": "17.72",
-              "M": "18.50",
-              "L": "20.08",
-              "XL": "21.65",
-              "2XL": "23.23",
-              "3XL": "24.80"
+              "XS": "36.22",
+              "S": "37.80",
+              "M": "39.37",
+              "L": "42.52",
+              "XL": "45.67",
+              "2XL": "48.82",
+              "3XL": "51.97"
             }
           },
           {
-            "label": "B",
+            "label": "Waist",
             "values": {
-              "XS": "14.17",
-              "S": "14.96",
-              "M": "15.75",
-              "L": "17.32",
-              "XL": "18.90",
-              "2XL": "20.47",
-              "3XL": "22.05"
+              "XS": "29.92",
+              "S": "31.50",
+              "M": "33.07",
+              "L": "36.22",
+              "XL": "39.37",
+              "2XL": "42.52",
+              "3XL": "45.67"
             }
           },
           {
-            "label": "C",
+            "label": "Hips",
             "values": {
-              "XS": "27.17",
-              "S": "27.56",
-              "M": "27.95",
-              "L": "28.35",
-              "XL": "28.74",
-              "2XL": "29.13",
-              "3XL": "29.53"
-            }
-          },
-          {
-            "label": "D",
-            "values": {
-              "XS": "6.69",
-              "S": "7.09",
-              "M": "7.48",
-              "L": "8.27",
-              "XL": "9.06",
-              "2XL": "9.84",
-              "3XL": "10.63"
-            }
-          },
-          {
-            "label": "E",
-            "values": {
-              "XS": "28.74",
-              "S": "29.13",
-              "M": "29.53",
-              "L": "29.92",
-              "XL": "30.31",
-              "2XL": "30.71",
-              "3XL": "31.1"
+              "XS": "37.01",
+              "S": "38.58",
+              "M": "40.16",
+              "L": "43.31",
+              "XL": "46.46",
+              "2XL": "49.61",
+              "3XL": "52.76"
             }
           }
         ]
@@ -445,67 +424,44 @@
       "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit.",
       "pickerName": "Rash Guard, Women's",
       "sizeChart": {
+        "kind": "body",
         "unit": "inches",
-        "note": "This size guide shows product measurements taken when products are laid flat. Actual product measurements may vary by up to 1\" because they&rsquo;re custom-made by hand.",
+        "note": "This size guide shows body measurements. As this product runs small and has a fitted silhouette, we recommend ordering one size up if your measurements fall between sizes.",
         "rows": [
           {
-            "label": "A",
+            "label": "Hips",
             "values": {
-              "XS": "14.57",
-              "S": "15.35",
-              "M": "16.14",
-              "L": "17.72",
-              "XL": "19.29",
-              "2XL": "20.87",
-              "3XL": "22.44"
+              "XS": "35.43",
+              "S": "37.01",
+              "M": "38.58",
+              "L": "41.73",
+              "XL": "44.88",
+              "2XL": "48.03",
+              "3XL": "51.18"
             }
           },
           {
-            "label": "B",
+            "label": "Waist",
             "values": {
-              "XS": "13.78",
-              "S": "14.57",
-              "M": "15.35",
-              "L": "16.93",
-              "XL": "18.50",
-              "2XL": "20.08",
-              "3XL": "21.65"
-            }
-          },
-          {
-            "label": "C",
-            "values": {
-              "XS": "26.38",
+              "XS": "25.20",
               "S": "26.77",
-              "M": "27.17",
-              "L": "27.56",
-              "XL": "27.95",
-              "2XL": "28.35",
-              "3XL": "28.74"
+              "M": "28.35",
+              "L": "31.50",
+              "XL": "34.65",
+              "2XL": "37.80",
+              "3XL": "40.94"
             }
           },
           {
-            "label": "D",
+            "label": "Chest",
             "values": {
-              "XS": "5.12",
-              "S": "5.51",
-              "M": "5.91",
-              "L": "6.69",
-              "XL": "7.48",
-              "2XL": "8.27",
-              "3XL": "9.06"
-            }
-          },
-          {
-            "label": "E",
-            "values": {
-              "XS": "27.95",
-              "S": "28.35",
-              "M": "28.74",
-              "L": "29.13",
-              "XL": "29.53",
-              "2XL": "29.92",
-              "3XL": "30.31"
+              "XS": "33.07",
+              "S": "34.65",
+              "M": "36.22",
+              "L": "39.37",
+              "XL": "42.52",
+              "2XL": "45.67",
+              "3XL": "48.82"
             }
           }
         ]
@@ -592,43 +548,44 @@
       "sizeHint": "Cheeky cut with four way stretch. Take your usual swim size.",
       "pickerName": "One Piece",
       "sizeChart": {
+        "kind": "body",
         "unit": "inches",
-        "note": "This size guide shows product measurements taken when products are laid flat. Actual product measurements may vary by up to 1\" because they&rsquo;re custom-made by hand.",
+        "note": "This size guide shows body measurements. We suggest ordering a size up when your measurements are between sizes.",
         "rows": [
           {
-            "label": "A",
+            "label": "Waist",
             "values": {
-              "XS": "12.20",
-              "S": "12.99",
-              "M": "13.78",
-              "L": "14.57",
-              "XL": "16.14",
-              "2XL": "17.72",
-              "3XL": "19.29"
+              "XS": "25.20",
+              "S": "26.77",
+              "M": "28.35",
+              "L": "31.50",
+              "XL": "34.65",
+              "2XL": "37.80",
+              "3XL": "40.94"
             }
           },
           {
-            "label": "B",
+            "label": "Chest",
             "values": {
-              "XS": "13.58",
-              "S": "14.37",
-              "M": "15.16",
-              "L": "15.94",
-              "XL": "17.52",
-              "2XL": "19.09",
-              "3XL": "20.67"
+              "XS": "33.07",
+              "S": "34.65",
+              "M": "36.22",
+              "L": "39.37",
+              "XL": "42.52",
+              "2XL": "45.67",
+              "3XL": "48.82"
             }
           },
           {
-            "label": "C",
+            "label": "Hips",
             "values": {
-              "XS": "25.79",
-              "S": "26.18",
-              "M": "26.57",
-              "L": "26.97",
-              "XL": "27.76",
-              "2XL": "28.54",
-              "3XL": "29.33"
+              "XS": "35.43",
+              "S": "37.01",
+              "M": "38.58",
+              "L": "41.73",
+              "XL": "44.88",
+              "2XL": "48.03",
+              "3XL": "51.18"
             }
           }
         ]
