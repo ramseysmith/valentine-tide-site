@@ -222,7 +222,7 @@
       "drop": "003",
       "name": "Night Session Rash Guard",
       "subtitle": "Men's long sleeve rash guard in black",
-      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern, the full Surf the Shadows crest across the back: a blood moon over a breaking wave, ringed in thorns and roses. The wave emblem sits on the chest, a red rose on the right sleeve, and Surf the Shadows runs down the left.",
+      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern and the full Surf the Shadows arch across the back: a blood moon over a breaking wave, framed in thorns and roses, above the Valentine Tide lettering. The arch scene sits on the chest, a red rose on the right cuff, and Surf the Shadows runs down the left sleeve.",
       "details": [
         "Four way stretch, 78% polyester, 22% elastane",
         "Long sleeves and a longer body for sun and wind",
@@ -234,15 +234,15 @@
       "gallery": [
         {
           "src": "assets/products/drop003/rash-mens-front.jpg",
-          "alt": "Night Session Rash Guard, men's, back with the Surf the Shadows crest"
+          "alt": "Night Session Rash Guard, men's, back with the Surf the Shadows arch"
         },
         {
           "src": "assets/products/drop003/rash-mens-model-front.jpg",
-          "alt": "Worn, front, with the wave emblem on the chest"
+          "alt": "Worn, front, with the arch scene on the chest"
         },
         {
           "src": "assets/products/drop003/rash-mens-beach.jpg",
-          "alt": "On the beach with a board, crest across the back"
+          "alt": "On the beach with a board, the arch across the back"
         },
         {
           "src": "assets/products/drop003/rash-mens-model-back.jpg",
@@ -253,10 +253,10 @@
         "catalogProductId": 301,
         "type": "aop",
         "files": {
-          "front": "assets/prints/drop003/crest/rash-front.png",
-          "back": "assets/prints/drop003/crest/rash-back.png",
-          "sleeve_left": "assets/prints/drop003/crest/rash-sleeve-left.png",
-          "sleeve_right": "assets/prints/drop003/crest/rash-sleeve-right.png"
+          "front": "assets/prints/drop003/arch/rash-front.png",
+          "back": "assets/prints/drop003/arch/rash-back.png",
+          "sleeve_left": "assets/prints/drop003/arch/rash-sleeve-left.png",
+          "sleeve_right": "assets/prints/drop003/arch/rash-sleeve-right.png"
         },
         "options": {
           "stitch_color": "black"
@@ -348,7 +348,7 @@
       "drop": "003",
       "name": "Night Session Rash Guard",
       "subtitle": "Women's long sleeve rash guard in black",
-      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern, the full Surf the Shadows crest across the back: a blood moon over a breaking wave, ringed in thorns and roses. The wave emblem sits on the chest, a red rose on the right sleeve, and Surf the Shadows runs down the left.",
+      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern and the full Surf the Shadows arch across the back: a blood moon over a breaking wave, framed in thorns and roses, above the Valentine Tide lettering. The arch scene sits on the chest, a red rose on the right cuff, and Surf the Shadows runs down the left sleeve.",
       "details": [
         "Four way stretch, 78% polyester, 22% elastane",
         "Long sleeves and a longer body for sun and wind",
@@ -360,15 +360,15 @@
       "gallery": [
         {
           "src": "assets/products/drop003/rash-womens-front.jpg",
-          "alt": "Night Session Rash Guard, women's, back with the Surf the Shadows crest"
+          "alt": "Night Session Rash Guard, women's, back with the Surf the Shadows arch"
         },
         {
           "src": "assets/products/drop003/rash-womens-model-front.jpg",
-          "alt": "Worn, front, with the wave emblem on the chest"
+          "alt": "Worn, front, with the arch scene on the chest"
         },
         {
           "src": "assets/products/drop003/rash-womens-model-back.jpg",
-          "alt": "Worn, back, crest across the shoulders"
+          "alt": "Worn, back, the arch across the shoulders"
         },
         {
           "src": "assets/products/drop003/rash-womens-sleeve.jpg",
@@ -379,10 +379,10 @@
         "catalogProductId": 302,
         "type": "aop",
         "files": {
-          "front": "assets/prints/drop003/crest/rash-front.png",
-          "back": "assets/prints/drop003/crest/rash-back.png",
-          "sleeve_left": "assets/prints/drop003/crest/rash-sleeve-left.png",
-          "sleeve_right": "assets/prints/drop003/crest/rash-sleeve-right.png"
+          "front": "assets/prints/drop003/arch/rash-front.png",
+          "back": "assets/prints/drop003/arch/rash-back.png",
+          "sleeve_left": "assets/prints/drop003/arch/rash-sleeve-left.png",
+          "sleeve_right": "assets/prints/drop003/arch/rash-sleeve-right.png"
         },
         "options": {
           "stitch_color": "black"
@@ -474,7 +474,7 @@
       "drop": "003",
       "name": "Night Session One Piece",
       "subtitle": "Scoop back one piece swimsuit in black",
-      "description": "The rash guard's other half. Near black with the same thorn and wave pattern, the blood moon wave emblem on the front, and the Valentine Tide lettering across the low back.",
+      "description": "The rash guard's other half. Near black with the same thorn and wave pattern, a thorned red rose climbing the hip, and the Valentine Tide lettering under the low scoop back.",
       "details": [
         "Four way stretch, chlorine resistant",
         "Double layer front",
@@ -486,7 +486,7 @@
       "gallery": [
         {
           "src": "assets/products/drop003/one-piece-front.jpg",
-          "alt": "Night Session One Piece, front with the blood moon wave emblem"
+          "alt": "Night Session One Piece, front, with a thorned red rose on the hip"
         },
         {
           "src": "assets/products/drop003/one-piece-model-front.jpg",
@@ -505,8 +505,8 @@
         "catalogProductId": 272,
         "type": "aop",
         "files": {
-          "front": "assets/prints/drop003/crest/swim-front.png",
-          "back": "assets/prints/drop003/crest/swim-back.png"
+          "front": "assets/prints/drop003/arch/swim-front.png",
+          "back": "assets/prints/drop003/arch/swim-back.png"
         },
         "options": {
           "stitch_color": "black"

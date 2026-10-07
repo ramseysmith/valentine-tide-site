@@ -1,6 +1,6 @@
 {
-  "name": "crest",
-  "out": "assets/prints/drop003/crest",
+  "name": "arch",
+  "out": "assets/prints/drop003/arch",
   "panels": [
     {
       "name": "rash-front",
@@ -8,10 +8,10 @@
       "items": [
         {
           "kind": "art",
-          "src": "design/drop003/art/crest-emblem.png",
+          "src": "design/drop003/art/arch-window.png",
           "cx": 1500,
-          "cy": 1180,
-          "w": 600
+          "cy": 1200,
+          "w": 620
         }
       ]
     },
@@ -21,10 +21,10 @@
       "items": [
         {
           "kind": "art",
-          "src": "design/drop003/art/crest-full.png",
+          "src": "design/drop003/art/arch-full.png",
           "cx": 1500,
           "cy": 1500,
-          "w": 1220
+          "w": 1230
         }
       ]
     },
@@ -35,9 +35,11 @@
         {
           "kind": "vtext",
           "text": "Surf the Shadows",
+          "font": "Cinzel",
+          "spacing": ".42em",
           "cx": 1500,
-          "cy": 1850,
-          "size": 120
+          "cy": 1780,
+          "size": 88
         }
       ]
     },
@@ -47,10 +49,10 @@
       "items": [
         {
           "kind": "art",
-          "src": "design/drop003/art/crest-rose.png",
+          "src": "design/drop003/art/arch-rose.png",
           "cx": 1500,
           "cy": 2330,
-          "w": 300
+          "w": 320
         }
       ]
     },
@@ -60,10 +62,10 @@
       "items": [
         {
           "kind": "art",
-          "src": "design/drop003/art/crest-emblem.png",
-          "cx": 1500,
-          "cy": 1400,
-          "w": 760
+          "src": "design/drop003/art/arch-rose-stem.png",
+          "cx": 1790,
+          "cy": 1740,
+          "w": 600
         }
       ]
     },
@@ -73,10 +75,10 @@
       "items": [
         {
           "kind": "art",
-          "src": "design/drop003/art/crest-lettering.png",
+          "src": "design/drop003/art/arch-lettering.png",
           "cx": 1500,
-          "cy": 1990,
-          "w": 900
+          "cy": 2010,
+          "w": 760
         }
       ]
     }
