@@ -92,7 +92,10 @@ for (const v of product.variants) {
   if (id) v.printfulSyncVariantId = id;
 }
 await writeFile(catalogPath, JSON.stringify(catalog, null, 2) + "\n");
-console.log(`${sku}: saved ${idByExternal.size} variant IDs`);
+const current = full.sync_variants.filter((sv) => !wantFiles(sv)).length;
+const note = `${sku}: ${updated} sizes updated, ${current} of ${full.sync_variants.length} sizes on the catalog files`;
+console.log(note);
+if (process.env.GITHUB_ACTIONS) console.log(`::notice title=Printful files::${note}`);
 
 async function pfTry(p) {
   const res = await fetch(API + p, { headers });

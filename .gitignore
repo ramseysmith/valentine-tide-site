@@ -15,3 +15,4 @@ node_modules/
 
 # The X agent lives in its own private repo (see x-agent/README.md)
 x-agent/
+__pycache__/
