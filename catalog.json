@@ -212,6 +212,196 @@
           }
         ]
       }
+    },
+    {
+      "sku": "vt-night-session-rash-mens",
+      "active": false,
+      "comingSoon": true,
+      "drop": "003",
+      "name": "Night Session Rash Guard",
+      "subtitle": "Men's long sleeve rash guard in black",
+      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern, the skull in heart on the chest, the wordmark across the back, and Surf the Shadows down the left sleeve.",
+      "details": [
+        "Four way stretch, 78% polyester, 22% elastane",
+        "Long sleeves and a longer body for sun and wind",
+        "Flat seams that won't rub on the board",
+        "Black stitching, printed edge to edge"
+      ],
+      "priceCents": 6400,
+      "image": "assets/products/drop003/rash-mens-front.jpg",
+      "gallery": [],
+      "printful": {
+        "catalogProductId": 301,
+        "type": "aop",
+        "files": {
+          "front": "assets/prints/drop003/rash-front.png",
+          "back": "assets/prints/drop003/rash-back.png",
+          "sleeve_left": "assets/prints/drop003/rash-sleeve-left.png",
+          "sleeve_right": "assets/prints/drop003/rash-sleeve-right.png"
+        },
+        "options": {
+          "stitch_color": "black"
+        }
+      },
+      "variants": [
+        {
+          "size": "XS",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "S",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "M",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "L",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "XL",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "2XL",
+          "printfulSyncVariantId": null,
+          "surchargeCents": 200
+        },
+        {
+          "size": "3XL",
+          "printfulSyncVariantId": null,
+          "surchargeCents": 400
+        }
+      ],
+      "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit."
+    },
+    {
+      "sku": "vt-night-session-rash-womens",
+      "active": false,
+      "comingSoon": true,
+      "drop": "003",
+      "name": "Night Session Rash Guard",
+      "subtitle": "Women's long sleeve rash guard in black",
+      "description": "Built for the dark water. Near black with a tonal thorn and wave pattern, the skull in heart on the chest, the wordmark across the back, and Surf the Shadows down the left sleeve.",
+      "details": [
+        "Four way stretch, 78% polyester, 22% elastane",
+        "Long sleeves and a longer body for sun and wind",
+        "Flat seams that won't rub on the board",
+        "Black stitching, printed edge to edge"
+      ],
+      "priceCents": 6400,
+      "image": "assets/products/drop003/rash-womens-front.jpg",
+      "gallery": [],
+      "printful": {
+        "catalogProductId": 302,
+        "type": "aop",
+        "files": {
+          "front": "assets/prints/drop003/rash-front.png",
+          "back": "assets/prints/drop003/rash-back.png",
+          "sleeve_left": "assets/prints/drop003/rash-sleeve-left.png",
+          "sleeve_right": "assets/prints/drop003/rash-sleeve-right.png"
+        },
+        "options": {
+          "stitch_color": "black"
+        }
+      },
+      "variants": [
+        {
+          "size": "XS",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "S",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "M",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "L",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "XL",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "2XL",
+          "printfulSyncVariantId": null,
+          "surchargeCents": 200
+        },
+        {
+          "size": "3XL",
+          "printfulSyncVariantId": null,
+          "surchargeCents": 400
+        }
+      ],
+      "sizeHint": "Runs small and fitted, like a second skin. Size up for a relaxed fit."
+    },
+    {
+      "sku": "vt-night-session-one-piece",
+      "active": false,
+      "comingSoon": true,
+      "drop": "003",
+      "name": "Night Session One Piece",
+      "subtitle": "Scoop back one piece swimsuit in black",
+      "description": "The rash guard's other half. Near black with the same thorn and wave pattern, a small skull in heart at the hip, and the wordmark across the low back.",
+      "details": [
+        "Four way stretch, chlorine resistant",
+        "Double layer front",
+        "Scoop neck and low scoop back, cheeky fit",
+        "Black stitching, printed edge to edge"
+      ],
+      "priceCents": 5800,
+      "image": "assets/products/drop003/one-piece-front.jpg",
+      "gallery": [],
+      "printful": {
+        "catalogProductId": 272,
+        "type": "aop",
+        "files": {
+          "front": "assets/prints/drop003/swim-front.png",
+          "back": "assets/prints/drop003/swim-back.png"
+        },
+        "options": {
+          "stitch_color": "black"
+        }
+      },
+      "variants": [
+        {
+          "size": "XS",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "S",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "M",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "L",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "XL",
+          "printfulSyncVariantId": null
+        },
+        {
+          "size": "2XL",
+          "printfulSyncVariantId": null,
+          "surchargeCents": 200
+        },
+        {
+          "size": "3XL",
+          "printfulSyncVariantId": null,
+          "surchargeCents": 400
+        }
+      ],
+      "sizeHint": "Cheeky cut with four way stretch. Take your usual swim size."
     }
   ]
 }

@@ -29,8 +29,12 @@ jobs:
       - name: Create products
         run: |
           [ -n "$PRINTFUL_TOKEN" ] || { echo "::error title=Missing secret::Add PRINTFUL_TOKEN in repo settings"; exit 1; }
-          for sku in $(node -e "console.log(require('./catalog.json').products.filter(p=>p.active).map(p=>p.sku).join(' '))"); do
+          # Every product with Printful details, shown or not; re-runs reuse existing store products.
+          for sku in $(node -e "console.log(require('./catalog.json').products.filter(p=>p.printful && p.printful.type!=='aop').map(p=>p.sku).join(' '))"); do
             node worker/scripts/setup-printful-product.mjs "$sku" ${{ inputs.dry_run && '--dry-run' || '' }}
+          done
+          for sku in $(node -e "console.log(require('./catalog.json').products.filter(p=>p.printful && p.printful.type==='aop').map(p=>p.sku).join(' '))"); do
+            node worker/scripts/setup-aop-product.mjs "$sku" ${{ inputs.dry_run && '--dry-run' || '' }}
           done
       - name: Save variant IDs
         if: ${{ !inputs.dry_run }}

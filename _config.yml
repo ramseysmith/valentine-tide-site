@@ -5,3 +5,5 @@ exclude:
   - worker
   - x-agent
   - mockups
+  - design
+  - research
