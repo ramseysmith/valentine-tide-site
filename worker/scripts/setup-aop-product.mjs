@@ -96,6 +96,10 @@ const current = full.sync_variants.filter((sv) => !wantFiles(sv)).length;
 const note = `${sku}: ${updated} sizes updated, ${current} of ${full.sync_variants.length} sizes on the catalog files`;
 console.log(note);
 if (process.env.GITHUB_ACTIONS) console.log(`::notice title=Printful files::${note}`);
+if (process.env.GITHUB_ACTIONS && current < full.sync_variants.length) {
+  const f = (full.sync_variants[0].files || []).map((x) => `${x.type} ${x.status} ${x.filename} ${x.url}`).join(" | ");
+  console.log(`::notice title=Printful files debug::${sku} ${f.slice(0, 900)}`);
+}
 
 async function pfTry(p) {
   const res = await fetch(API + p, { headers });
