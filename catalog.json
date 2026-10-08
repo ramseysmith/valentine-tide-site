@@ -218,7 +218,7 @@
     {
       "sku": "vt-night-session-rash-mens",
       "active": true,
-      "comingSoon": true,
+      "comingSoon": false,
       "drop": "003",
       "name": "Night Session Rash Guard",
       "subtitle": "Men's long sleeve rash guard in black",
@@ -344,7 +344,7 @@
     {
       "sku": "vt-night-session-rash-womens",
       "active": true,
-      "comingSoon": true,
+      "comingSoon": false,
       "drop": "003",
       "name": "Night Session Rash Guard",
       "subtitle": "Women's long sleeve rash guard in black",
@@ -470,7 +470,7 @@
     {
       "sku": "vt-night-session-one-piece",
       "active": true,
-      "comingSoon": true,
+      "comingSoon": false,
       "drop": "003",
       "name": "Night Session One Piece",
       "subtitle": "Scoop back one piece swimsuit in black",
