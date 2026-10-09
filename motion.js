@@ -38,7 +38,9 @@
         io.unobserve(entry.target);
       });
     },
-    { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+    // Any part on screen counts. A ratio threshold never fires for something
+    // taller than the screen, like the stacked shop grid on a phone.
+    { rootMargin: "0px 0px -8% 0px", threshold: 0 }
   );
 
   targets.forEach((el) => {
