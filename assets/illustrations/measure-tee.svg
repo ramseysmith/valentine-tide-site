@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none">
+  <title>Lay a tee flat: chest across, length down from the collar</title>
+  <path d="M84 30 30 56l18 40 18-8v122h108V88l18 8 18-40-54-26c-4 14-16 22-30 22s-26-8-30-22z" stroke="#f5f0e8" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M96 33c6 8 14 12 24 12s18-4 24-12" stroke="#f5f0e8" stroke-width="1.5" opacity=".6"/>
+  <g stroke="#e5534f" stroke-width="2" stroke-linecap="round">
+    <path d="M70 100h100" stroke-dasharray="5 4"/>
+    <path d="M70 100l7-5M70 100l7 5M170 100l-7-5M170 100l-7 5"/>
+    <path d="M196 46v164" stroke-dasharray="5 4"/>
+    <path d="M196 46l-5 7M196 46l5 7M196 210l-5-7M196 210l5-7"/>
+  </g>
+  <g fill="#f5f0e8" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="12" font-weight="600">
+    <text x="92" y="92">Chest, flat</text>
+    <text x="203" y="132" transform="rotate(90 203 132)">Length</text>
+  </g>
+</svg>

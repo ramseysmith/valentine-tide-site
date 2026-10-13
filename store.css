@@ -1619,3 +1619,429 @@ h3 {
     padding-bottom: 4.75rem;
   }
 }
+
+/* =========================================================
+   SIZING: guide button, fit line, guide panel, quick add
+   ========================================================= */
+.sizes__guide {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  background-color: rgba(139, 0, 0, 0.22);
+  border: 1px solid rgba(229, 83, 79, 0.6);
+  border-radius: 999px;
+  color: var(--bone);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 650;
+  font-stretch: 82%;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.sizes__guide:hover {
+  background-color: var(--blood);
+  border-color: var(--blood);
+}
+
+.sizes__guide .icon {
+  color: var(--ember);
+}
+
+.sizes__guide:hover .icon {
+  color: var(--bone);
+}
+
+.sizes__top {
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.15rem;
+}
+
+.sizes__fit {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  background-color: rgba(245, 240, 232, 0.05);
+  border-left: 2px solid var(--ember);
+  font-size: 0.95rem;
+  color: var(--bone);
+}
+
+.sizes__fit .icon,
+.sizes__hint .icon {
+  flex: none;
+  margin-top: 0.2rem;
+  color: var(--ember);
+}
+
+.sizes__hint {
+  align-items: flex-start;
+}
+
+.acc__finder {
+  justify-self: start;
+}
+
+/* Card button for touch screens, where hover quick add is not available */
+.card__add {
+  position: relative;
+  z-index: 2;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.5rem;
+  background: none;
+  border: 1px solid rgba(245, 240, 232, 0.35);
+  color: var(--bone);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 650;
+  font-stretch: 82%;
+  cursor: pointer;
+}
+
+.card__add:hover {
+  background-color: var(--blood);
+  border-color: var(--blood);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .card__add {
+    display: inline-flex;
+  }
+}
+
+/* Set builder size guide links */
+.set__guide {
+  grid-column: 1 / -1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--bone-dim);
+  font: inherit;
+  font-size: 0.92rem;
+  font-stretch: 85%;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: var(--ember);
+  cursor: pointer;
+}
+
+.set__guide:hover {
+  color: var(--bone);
+}
+
+.set__guide .icon {
+  color: var(--ember);
+}
+
+/* Side panel (bottom sheet on phones) */
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.sheet[hidden] {
+  display: none;
+}
+
+.sheet__scrim {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.sheet__panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 30rem);
+  background-color: var(--near-black);
+  border-left: 1px solid var(--line);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+@media (max-width: 40rem) {
+  .sheet__panel {
+    top: auto;
+    left: 0;
+    width: 100%;
+    max-height: 92vh;
+    max-height: 92dvh;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    transform: translateY(100%);
+  }
+}
+
+.sheet.is-open .sheet__scrim {
+  opacity: 1;
+}
+
+.sheet.is-open .sheet__panel {
+  transform: none;
+}
+
+.sheet__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.sheet__title {
+  font-size: 1.9rem;
+}
+
+.sheet__body {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.1rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom));
+  overflow-y: auto;
+}
+
+.guide__for {
+  font-weight: 650;
+  font-stretch: 85%;
+}
+
+.guide__hint,
+.guide__policy {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  font-size: 0.92rem;
+  color: var(--bone-dim);
+}
+
+.guide__hint .icon,
+.guide__policy .icon {
+  flex: none;
+  margin-top: 0.2rem;
+  color: var(--ember);
+}
+
+.guide__policy a {
+  color: var(--bone);
+  text-decoration: underline;
+  text-decoration-color: var(--ember);
+}
+
+.guide__find {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  background-color: #1b1b1b;
+}
+
+.guide__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.guide__h {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-stretch: 85%;
+}
+
+.guide__how {
+  font-size: 0.92rem;
+  color: var(--bone-dim);
+}
+
+.guide__inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.75rem;
+}
+
+.guide__field {
+  position: relative;
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-stretch: 85%;
+}
+
+.guide__field small {
+  font-weight: 400;
+  color: var(--bone-dim);
+}
+
+.guide__field input {
+  width: 100%;
+  padding: 0.65rem 2.4rem 0.65rem 0.75rem;
+  background-color: var(--near-black);
+  border: 1px solid rgba(245, 240, 232, 0.3);
+  border-radius: 0;
+  color: var(--bone);
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 500;
+  -moz-appearance: textfield;
+}
+
+.guide__field input:focus {
+  border-color: var(--ember);
+  outline: none;
+}
+
+.guide__field em {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.7rem;
+  font-style: normal;
+  color: var(--bone-dim);
+}
+
+.guide__result {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding: 0.75rem;
+  background-color: rgba(139, 0, 0, 0.3);
+  border: 1px solid rgba(229, 83, 79, 0.5);
+  font-size: 0.95rem;
+}
+
+.guide__result[hidden] {
+  display: none;
+}
+
+.guide__result .icon {
+  flex: none;
+  margin-top: 0.2rem;
+  color: var(--bone);
+}
+
+.guide__measure {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.guide__measure img {
+  width: 100%;
+  height: auto;
+}
+
+.guide__measure ul {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.92rem;
+  color: var(--bone-dim);
+}
+
+.guide__measure strong {
+  color: var(--bone);
+}
+
+.guide__chart {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.sizechart__table .is-pick {
+  background-color: rgba(139, 0, 0, 0.4);
+  color: var(--bone);
+  font-weight: 650;
+}
+
+.sizechart__table thead .is-pick {
+  box-shadow: inset 0 2px 0 var(--ember);
+}
+
+.guide__foot {
+  position: sticky;
+  bottom: calc(-1.25rem - env(safe-area-inset-bottom));
+  display: grid;
+  gap: 0.6rem;
+  margin: 0 -1.25rem calc(-1.25rem - env(safe-area-inset-bottom));
+  padding: 0.9rem 1.25rem calc(0.9rem + env(safe-area-inset-bottom));
+  background-color: rgba(22, 22, 22, 0.97);
+  border-top: 1px solid var(--line);
+}
+
+.seg--small span {
+  padding: 0.3rem 0.65rem;
+  font-size: 0.88rem;
+}
+
+.quick__top {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.quick__top img {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  background-color: var(--paper);
+}
+
+.quick__name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-stretch: 85%;
+}
+
+.quick__sub {
+  font-size: 0.9rem;
+  color: var(--bone-dim);
+}
+
+.quick__price {
+  margin-top: 0.3rem;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.quick__more {
+  justify-self: center;
+  font-size: 0.92rem;
+  color: var(--bone-dim);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.sheet .sizes {
+  margin-top: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet__panel,
+  .sheet__scrim {
+    transition: none;
+  }
+}

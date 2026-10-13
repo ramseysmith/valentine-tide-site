@@ -94,6 +94,7 @@
         <h3 class="card__name"><a href="${urlOf(p)}">${esc(p.name)}</a></h3>
         <p class="card__sub">${esc(p.subtitle)}</p>
         <p class="card__price">${ready ? money(p.priceCents) : "Coming soon"}</p>
+        ${ready ? `<button class="card__add" type="button">${icon("bag")}Choose size</button>` : ""}
       </div>
       ${
         ready
@@ -105,6 +106,8 @@
             </div>`
           : ""
       }`;
+    const addBtn = el.querySelector(".card__add");
+    if (addBtn) addBtn.addEventListener("click", () => openQuickAdd(p, addBtn));
     el.querySelectorAll(".card__size").forEach((b) =>
       b.addEventListener("click", () => {
         Bag.add(p.sku, b.dataset.size, 1);
@@ -208,6 +211,15 @@
       status.textContent = a || b ? `A bag holds up to ${MAX_UNITS} pieces, ${MAX_EACH} of any one size.` : "";
       Bag.open(form.querySelector("button[type=submit]"));
     });
+
+    form.querySelectorAll("[data-set-guide]").forEach((b) =>
+      b.addEventListener("click", () => {
+        const isRash = b.dataset.setGuide === "rash";
+        const p = isRash ? rash() : piece;
+        const sel = isRash ? rashSel : swimSel;
+        openGuide(p, { selected: sel.value, from: b, onChoose: (s) => ((sel.value = s), update()) });
+      })
+    );
   }
 
   /* =========================================================
@@ -265,7 +277,7 @@
           <fieldset class="sizes">
             <div class="sizes__top">
               <legend class="sizes__legend">Size</legend>
-              ${p.sizeChart && p.sizeChart.rows && p.sizeChart.rows.length ? `<a class="sizes__guide" href="#size-guide">${icon("ruler")}Size guide</a>` : ""}
+              ${hasChart(p) ? `<button class="sizes__guide" type="button">${icon("ruler")}Size guide and fit finder</button>` : ""}
             </div>
             <div class="sizes__list">
               ${p.variants
@@ -278,13 +290,14 @@
                 )
                 .join("")}
             </div>
-            ${p.sizeHint ? `<p class="sizes__hint">${icon("ruler")}${esc(p.sizeHint)}</p>` : ""}
+            ${hasChart(p) ? `<p class="sizes__fit" data-fit aria-live="polite"></p>` : ""}
+            ${p.sizeHint ? `<p class="sizes__hint">${icon("stretch")}${esc(p.sizeHint)}</p>` : ""}
           </fieldset>
 
           <div class="pdp__buy">
             ${
               ready
-                ? `<button class="btn btn--wide pdp__add" type="button">${icon("bag")}Add to bag</button>
+                ? `<button class="btn btn--wide pdp__add" type="button">${icon("bag")}<span data-add-label>Add to bag</span></button>
                    <button class="btn btn--ghost btn--wide pdp__now" type="button">Buy it now</button>`
                 : `<a class="btn btn--wide" href="/#signup">Get an email when it drops</a>`
             }
@@ -310,7 +323,7 @@
               p.sizeChart && p.sizeChart.rows && p.sizeChart.rows.length
                 ? `<details id="size-guide">
                     <summary>${icon("ruler")}Size guide</summary>
-                    <div class="acc__body">${sizeChart(p)}</div>
+                    <div class="acc__body">${sizeChart(p)}<button class="btn btn--ghost btn--small acc__finder" type="button">${icon("ruler")}Find my size</button></div>
                   </details>`
                 : ""
             }
@@ -341,23 +354,28 @@
           ? `${icon("truck")}<span>With this piece your order ships free.</span>`
           : `${icon("truck")}<span>Add this and ${money(free - after)} more for free US shipping.</span>`;
     };
+    const fitEl = root.querySelector("[data-fit]");
+    const addLabel = root.querySelector("[data-add-label]");
     const update = () => {
       priceEl.textContent = money(unitCents(p, size()));
+      if (fitEl) fitEl.innerHTML = `${icon("ruler")}<span>${fitLine(p, size())}</span>`;
+      if (addLabel) addLabel.textContent = `Add size ${size()} to bag`;
       updateShip();
     };
     root.querySelectorAll('input[name="size"]').forEach((r) => r.addEventListener("change", update));
     document.addEventListener("vt:bag", updateShip);
     update();
 
-    // The size guide link opens its panel before jumping to it.
-    const guide = root.querySelector(".sizes__guide");
-    if (guide)
-      guide.addEventListener("click", (e) => {
-        e.preventDefault();
-        const panel = document.getElementById("size-guide");
-        panel.open = true;
-        panel.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
+    // The size guide opens in a side panel; choosing a size there picks it here.
+    const choose = (s) => {
+      const r = root.querySelector(`input[name="size"][value="${CSS.escape(s)}"]`);
+      if (!r) return;
+      r.checked = true;
+      r.dispatchEvent(new Event("change"));
+    };
+    root.querySelectorAll(".sizes__guide, .acc__finder").forEach((b) =>
+      b.addEventListener("click", () => openGuide(p, { selected: size(), onChoose: choose, from: b }))
+    );
 
     if (ready) {
       const addBtn = root.querySelector(".pdp__add");
@@ -448,7 +466,10 @@
     bar.querySelector(".buybar__name").textContent = p.name;
     const price = bar.querySelector(".buybar__price");
     const btn = bar.querySelector(".buybar__btn");
-    const sync = () => (price.textContent = `Size ${size()}, ${money(unitCents(p, size()))}`);
+    const sync = () => {
+      price.textContent = `Size ${size()}, ${money(unitCents(p, size()))}`;
+      btn.textContent = `Add size ${size()}`;
+    };
     document.querySelectorAll('input[name="size"]').forEach((r) => r.addEventListener("change", sync));
     sync();
     btn.addEventListener("click", () => add(btn));
@@ -477,6 +498,285 @@
       status.dataset.state = "error";
       status.textContent = "Checkout did not open. Check your connection and try again.";
     }
+  }
+
+  /* =========================================================
+     Sizing: fit line, size guide panel with a fit finder, quick add sheet
+     ========================================================= */
+  const hasChart = (p) => !!(p.sizeChart && p.sizeChart.rows && p.sizeChart.rows.length);
+  const num = (v) => Number(inches(v));
+  const rowOf = (p, label) => hasChart(p) && p.sizeChart.rows.find((r) => r.label === label);
+  const chartSizes = (p) => p.variants.map((v) => v.size).filter((sz) => p.sizeChart.rows.some((r) => r.values[sz]));
+  const inUnit = (n, unit) => (unit === "cm" ? String(Math.round(n * 2.54)) : String(Math.round(n * 10) / 10));
+
+  /* One plain sentence about the chosen size, shown under the size buttons. */
+  function fitLine(p, size) {
+    if (!hasChart(p)) return "";
+    const v = (label) => {
+      const r = rowOf(p, label);
+      return r && r.values[size] ? inches(r.values[size]) : null;
+    };
+    if (p.sizeChart.kind === "body") {
+      const parts = [["chest", v("Chest")], ["waist", v("Waist")], ["hips", v("Hips")]].filter(([, x]) => x);
+      if (!parts.length) return "";
+      const list = parts.map(([k, x]) => `${x} in ${k}`);
+      return `Size ${esc(size)} fits a ${list.slice(0, -1).join(", ")}${list.length > 1 ? " and " : ""}${list[list.length - 1]}.`;
+    }
+    const w = v("Width");
+    const l = v("Length");
+    return `Size ${esc(size)} measures ${w ? `${w} in across the chest` : ""}${w && l ? " and " : ""}${l ? `${l} in long` : ""}, laid flat.`;
+  }
+
+  /* Picks a size from what the shopper measured (inches). Body charts: the
+     smallest size that covers every measurement. Garment charts: the closest
+     chest width to a tee they already like. */
+  function recommend(p, m) {
+    const sizes = chartSizes(p);
+    if (p.sizeChart.kind === "body") {
+      let pick = -1;
+      let over = false;
+      for (const [label, val] of [["Chest", m.chest], ["Hips", m.hips]]) {
+        const r = rowOf(p, label);
+        if (!r || !val) continue;
+        let i = sizes.findIndex((s) => num(r.values[s]) >= val - 0.5);
+        if (i < 0) (i = sizes.length - 1), (over = true);
+        pick = Math.max(pick, i);
+      }
+      return pick < 0 ? null : { size: sizes[pick], over };
+    }
+    const r = rowOf(p, "Width");
+    if (!r || !m.chest) return null;
+    let best = 0;
+    sizes.forEach((s, i) => {
+      if (Math.abs(num(r.values[s]) - m.chest) < Math.abs(num(r.values[sizes[best]]) - m.chest)) best = i;
+    });
+    return { size: sizes[best], over: false };
+  }
+
+  const Sheet = (() => {
+    let root, title, body, lastFocus;
+    function build() {
+      root = document.createElement("div");
+      root.className = "sheet";
+      root.hidden = true;
+      root.innerHTML = `
+        <div class="sheet__scrim" data-close></div>
+        <aside class="sheet__panel" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+          <div class="sheet__head">
+            <h2 class="sheet__title" id="sheet-title"></h2>
+            <button class="bag__close" type="button" data-close aria-label="Close">${icon("close", "icon")}</button>
+          </div>
+          <div class="sheet__body"></div>
+        </aside>`;
+      document.body.append(root);
+      title = root.querySelector(".sheet__title");
+      body = root.querySelector(".sheet__body");
+      root.querySelectorAll("[data-close]").forEach((b) => b.addEventListener("click", close));
+      document.addEventListener("keydown", (e) => {
+        if (root.hidden) return;
+        if (e.key === "Escape") close();
+        if (e.key === "Tab") {
+          const f = [...root.querySelectorAll("button:not([disabled]), a[href], input, select")].filter((el) => el.offsetParent);
+          if (e.shiftKey && document.activeElement === f[0]) (e.preventDefault(), f[f.length - 1].focus());
+          else if (!e.shiftKey && document.activeElement === f[f.length - 1]) (e.preventDefault(), f[0].focus());
+        }
+      });
+    }
+    function open(heading, html, from) {
+      if (!root) build();
+      if (root.hidden) lastFocus = from || document.activeElement;
+      title.textContent = heading;
+      body.innerHTML = html;
+      body.scrollTop = 0;
+      root.hidden = false;
+      document.documentElement.classList.add("bag-is-open");
+      requestAnimationFrame(() => root.classList.add("is-open"));
+      root.querySelector(".bag__close").focus();
+      return body;
+    }
+    function close(keepFocus) {
+      if (!root || root.hidden) return;
+      root.classList.remove("is-open");
+      document.documentElement.classList.remove("bag-is-open");
+      setTimeout(() => (root.hidden = true), 250);
+      if (keepFocus !== true && lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    return { open, close };
+  })();
+
+  function openGuide(p, { selected, onChoose, from, back } = {}) {
+    const c = p.sizeChart;
+    const body = c.kind === "body";
+    const sizes = chartSizes(p);
+    const ORDER = ["Chest", "Width", "Waist", "Hips", "Length", "Sleeve length"];
+    const rank = (r) => ORDER.indexOf(r.label) + 1 || 99;
+    const rows = [...c.rows].sort((a, b) => rank(a) - rank(b));
+    let unit = "in";
+    let pick = selected;
+
+    const el = Sheet.open(
+      "Size guide",
+      `
+      <p class="guide__for">${esc(p.name)}, ${esc(p.subtitle.replace(/ in black$/i, ""))}</p>
+      ${p.sizeHint ? `<p class="guide__hint">${icon("stretch")}<span>${esc(p.sizeHint)}</span></p>` : ""}
+
+      <section class="guide__find" aria-labelledby="find-title">
+        <div class="guide__row">
+          <h3 class="guide__h" id="find-title">Find your size</h3>
+          <div class="seg seg--small" role="radiogroup" aria-label="Units">
+            <label><input type="radio" name="guide-unit" value="in" checked /><span>in</span></label>
+            <label><input type="radio" name="guide-unit" value="cm" /><span>cm</span></label>
+          </div>
+        </div>
+        <p class="guide__how">${
+          body
+            ? "Measure yourself with a soft tape, snug but not tight."
+            : "Lay a tee you love flat and measure straight across the chest, armpit to armpit."
+        }</p>
+        <div class="guide__inputs">
+          <label class="guide__field"><span>${body ? "Chest" : "Chest of your tee, flat"}</span>
+            <input type="number" inputmode="decimal" min="10" max="200" step="0.5" data-m="chest" placeholder="${body ? "38" : "21"}" /><em data-u>in</em></label>
+          ${
+            body && rowOf(p, "Hips")
+              ? `<label class="guide__field"><span>Hips <small>(optional)</small></span>
+                  <input type="number" inputmode="decimal" min="10" max="200" step="0.5" data-m="hips" placeholder="40" /><em data-u>in</em></label>`
+              : ""
+          }
+        </div>
+        <div class="guide__result" aria-live="polite" hidden></div>
+      </section>
+
+      <section class="guide__measure">
+        <img src="assets/illustrations/${body ? "measure-body" : "measure-tee"}.svg" alt="" width="${body ? 220 : 240}" height="${body ? 300 : 240}" />
+        <ul>
+          ${
+            body
+              ? `<li><strong>Chest:</strong> around the fullest part, under the arms.</li>
+                 <li><strong>Waist:</strong> around your natural waist, above the belly button.</li>
+                 <li><strong>Hips:</strong> around the fullest part of your hips.</li>`
+              : `<li><strong>Chest:</strong> straight across, one armpit seam to the other.</li>
+                 <li><strong>Length:</strong> from the top of the collar down to the hem.</li>`
+          }
+        </ul>
+      </section>
+
+      <section class="guide__chart">
+        <h3 class="guide__h">${body ? "Body measurements" : "Garment measurements"}</h3>
+        <div class="sizechart__scroll"><table class="sizechart__table" data-table></table></div>
+        <p class="sizechart__note">${
+          body ? "Between two sizes? Take the larger one." : "Measured flat on the garment and may vary by up to 2 inches."
+        }</p>
+      </section>
+
+      <p class="guide__policy">${icon("print")}<span>Every piece is printed for you, so we cannot swap sizes after it ships. Unsure? <a href="help.html#contact">Ask us</a> before you order.</span></p>
+      ${onChoose ? `<div class="guide__foot"><button class="btn btn--wide" type="button" data-choose></button></div>` : ""}`,
+      from
+    );
+
+    const table = el.querySelector("[data-table]");
+    const result = el.querySelector(".guide__result");
+    const chooseBtn = el.querySelector("[data-choose]");
+    const draw = () => {
+      table.innerHTML = `
+        <thead><tr><th scope="col">${unit}</th>${sizes.map((s) => `<th scope="col" class="${s === pick ? "is-pick" : ""}">${esc(s)}</th>`).join("")}</tr></thead>
+        <tbody>${rows
+          .map(
+            (r) =>
+              `<tr><th scope="row">${esc(LABELS[r.label] || r.label)}</th>${sizes
+                .map((s) => `<td class="${s === pick ? "is-pick" : ""}">${r.values[s] ? inUnit(num(r.values[s]), unit) : ""}</td>`)
+                .join("")}</tr>`
+          )
+          .join("")}</tbody>`;
+      if (chooseBtn) chooseBtn.textContent = `Choose size ${pick}`;
+    };
+    const read = () => {
+      const m = {};
+      el.querySelectorAll("[data-m]").forEach((i) => {
+        const v = parseFloat(i.value);
+        if (v > 0) m[i.dataset.m] = unit === "cm" ? v / 2.54 : v;
+      });
+      const rec = m.chest || m.hips ? recommend(p, m) : null;
+      result.hidden = !rec;
+      if (rec) {
+        pick = rec.size;
+        result.innerHTML = rec.over
+          ? `${icon("ruler")}<span>Your measurements run past our largest size. <strong>${esc(rec.size)}</strong> is the closest, and it will fit snug.</span>`
+          : `${icon("check")}<span>Your size is <strong>${esc(rec.size)}</strong>. ${fitLine(p, rec.size).replace(/^Size \S+ /, "It ")}</span>`;
+      }
+      draw();
+    };
+    el.querySelectorAll("[data-m]").forEach((i) => i.addEventListener("input", read));
+    el.querySelectorAll('input[name="guide-unit"]').forEach((r) =>
+      r.addEventListener("change", () => {
+        const next = r.value;
+        el.querySelectorAll("[data-m]").forEach((i) => {
+          const v = parseFloat(i.value);
+          if (v > 0) i.value = next === "cm" ? Math.round(v * 2.54) : Math.round((v / 2.54) * 2) / 2;
+        });
+        el.querySelectorAll("[data-u]").forEach((u) => (u.textContent = next));
+        unit = next;
+        read();
+      })
+    );
+    if (chooseBtn)
+      chooseBtn.addEventListener("click", () => {
+        onChoose(pick);
+        if (back) back(pick);
+        else Sheet.close();
+      });
+    draw();
+  }
+
+  /* Quick add on phones (and anywhere a card's Choose size button shows). */
+  function openQuickAdd(p, from, preset) {
+    let pick = preset || defaultSize(p);
+    const el = Sheet.open(
+      "Choose your size",
+      `
+      <div class="quick__top">
+        <img src="${p.image}" alt="" width="96" height="96" />
+        <div>
+          <p class="quick__name">${esc(p.name)}</p>
+          <p class="quick__sub">${esc(p.subtitle)}</p>
+          <p class="quick__price" data-qprice></p>
+        </div>
+      </div>
+      <fieldset class="sizes">
+        <div class="sizes__top">
+          <legend class="sizes__legend">Size</legend>
+          ${hasChart(p) ? `<button class="sizes__guide" type="button">${icon("ruler")}Size guide</button>` : ""}
+        </div>
+        <div class="sizes__list">
+          ${p.variants.map((v) => `<label class="size"><input type="radio" name="qsize" value="${esc(v.size)}" ${v.size === pick ? "checked" : ""} /><span>${esc(v.size)}</span></label>`).join("")}
+        </div>
+        ${hasChart(p) ? `<p class="sizes__fit" data-qfit></p>` : ""}
+        ${p.sizeHint ? `<p class="sizes__hint">${icon("stretch")}${esc(p.sizeHint)}</p>` : ""}
+      </fieldset>
+      <div class="guide__foot">
+        <button class="btn btn--wide" type="button" data-qadd></button>
+        <a class="quick__more" href="${urlOf(p)}">See photos and details</a>
+      </div>`,
+      from
+    );
+    const sync = () => {
+      pick = el.querySelector('input[name="qsize"]:checked').value;
+      el.querySelector("[data-qprice]").textContent = money(unitCents(p, pick));
+      const fit = el.querySelector("[data-qfit]");
+      if (fit) fit.innerHTML = `${icon("ruler")}<span>${fitLine(p, pick)}</span>`;
+      el.querySelector("[data-qadd]").innerHTML = `${icon("bag")}Add size ${esc(pick)} to bag`;
+    };
+    el.querySelectorAll('input[name="qsize"]').forEach((r) => r.addEventListener("change", sync));
+    sync();
+    const guide = el.querySelector(".sizes__guide");
+    if (guide)
+      guide.addEventListener("click", () =>
+        openGuide(p, { selected: pick, onChoose: () => {}, back: (s) => openQuickAdd(p, null, s) })
+      );
+    el.querySelector("[data-qadd]").addEventListener("click", () => {
+      Bag.add(p.sku, pick, 1);
+      Sheet.close(true);
+      setTimeout(() => Bag.open(from), 260);
+    });
   }
 
   const LABELS = { Width: "Chest (flat)", Length: "Length", "Sleeve length": "Sleeve" };
@@ -683,7 +983,13 @@
       const pool = products.filter((p) => !inBag.has(p.sku) && isReady(p));
       // Never suggest the other cut of a rash guard someone already chose.
       const filtered = pool.filter((p) => !(/rash/.test(p.sku) && [...inBag].some((s) => /rash/.test(s))));
-      return filtered.find((p) => drops.has(p.drop)) || filtered[0] || null;
+      // Someone shopping women's cuts sees the women's rash guard first, and the reverse.
+      const bagText = items.map((i) => `${i.sku} ${find(i.sku, i.size).product.subtitle}`).join(" ").toLowerCase();
+      const leansWomen = /women's|one-piece|crop/.test(bagText);
+      const leansMen = /\bmen's/.test(bagText) && !leansWomen;
+      const score = (p) => (leansWomen && /\bmen's/i.test(p.subtitle) ? 1 : 0) + (leansMen && /women's/i.test(p.subtitle) ? 1 : 0);
+      const ranked = [...filtered].sort((a, b) => score(a) - score(b));
+      return ranked.find((p) => drops.has(p.drop)) || ranked[0] || null;
     }
 
     function render() {
