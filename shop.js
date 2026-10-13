@@ -24,7 +24,7 @@
 
   /* ---------- Catalog helpers ---------- */
   const slugOf = (p) => p.slug || p.sku.replace(/^vt-/, "").replace(/-black$/, "");
-  const urlOf = (p) => `product.html?p=${slugOf(p)}`;
+  const urlOf = (p) => `/shop/${slugOf(p)}/`;
   const categoryOf = (p) => p.category || (/rash|one-piece|swim/.test(p.sku) ? "swim" : "tees");
   const galleryOf = (p) => (p.gallery && p.gallery.length ? p.gallery : [{ src: p.image, alt: `${p.name}, ${p.subtitle}` }]);
   // Sellable only when checkout is connected and Printful knows the product.
@@ -215,8 +215,13 @@
      ========================================================= */
   function initProductPage() {
     const root = document.getElementById("pdp");
-    const key = new URLSearchParams(location.search).get("p") || "";
+    // Built pages carry data-sku; product.html?p=<slug> still works and moves to the built page.
+    const key = root.dataset.sku || new URLSearchParams(location.search).get("p") || "";
     const p = products.find((x) => slugOf(x) === key || x.sku === key);
+    if (p && !root.dataset.sku && /product\.html$/.test(location.pathname)) {
+      location.replace(urlOf(p));
+      return;
+    }
     if (!p) {
       root.innerHTML = `
         <div class="pdp__missing">
@@ -230,7 +235,7 @@
     const ready = isReady(p);
     const cat = categoryOf(p);
 
-    setMeta(p);
+    if (!root.dataset.sku) setMeta(p);
     root.innerHTML = `
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="/#shop">Shop</a><span aria-hidden="true">/</span>
@@ -333,8 +338,8 @@
       const after = Bag.subtotal() + unitCents(p, size());
       shipEl.innerHTML =
         after >= free
-          ? `${icon("truck")}With this piece your order ships free.`
-          : `${icon("truck")}Add this and ${money(free - after)} more for free US shipping.`;
+          ? `${icon("truck")}<span>With this piece your order ships free.</span>`
+          : `${icon("truck")}<span>Add this and ${money(free - after)} more for free US shipping.</span>`;
     };
     const update = () => {
       priceEl.textContent = money(unitCents(p, size()));
@@ -346,7 +351,13 @@
 
     // The size guide link opens its panel before jumping to it.
     const guide = root.querySelector(".sizes__guide");
-    if (guide) guide.addEventListener("click", () => (document.getElementById("size-guide").open = true));
+    if (guide)
+      guide.addEventListener("click", (e) => {
+        e.preventDefault();
+        const panel = document.getElementById("size-guide");
+        panel.open = true;
+        panel.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
 
     if (ready) {
       const addBtn = root.querySelector(".pdp__add");
@@ -361,7 +372,7 @@
       wireBuybar(p, addBtn, add, size);
     }
 
-    addProductData([p]);
+    if (!root.dataset.sku) addProductData([p]);
     renderPairs(p);
   }
 
@@ -382,7 +393,7 @@
     const title = `${p.name} | Valentine Tide`;
     const desc = `${p.subtitle}. ${p.description}`.slice(0, 300);
     const img = `${location.origin}/${p.image}`;
-    const url = `${location.origin}/${urlOf(p)}`;
+    const url = `${location.origin}${urlOf(p)}`;
     document.title = title;
     const set = (sel, attr, val) => {
       let el = document.head.querySelector(sel);
@@ -515,7 +526,7 @@
       brand: { "@type": "Brand", name: "Valentine Tide" },
       offers: {
         "@type": "Offer",
-        url: `${location.origin}/${urlOf(p)}`,
+        url: `${location.origin}${urlOf(p)}`,
         priceCurrency: String(catalog.currency || "usd").toUpperCase(),
         price: (p.priceCents / 100).toFixed(2),
         availability: isReady(p) ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
@@ -736,8 +747,8 @@
         meter.parentElement.hidden = false;
         meter.style.width = `${Math.min(100, (sub / ship.freeOverCents) * 100)}%`;
         nudge.innerHTML = free
-          ? `${icon("check")}Your order ships free.`
-          : `${icon("truck")}You are <strong>${money(ship.freeOverCents - sub)}</strong> away from free US shipping.`;
+          ? `${icon("check")}<span>Your order ships free.</span>`
+          : `${icon("truck")}<span>You are <strong>${money(ship.freeOverCents - sub)}</strong> away from free US shipping.</span>`;
       }
 
       const s = n < MAX_UNITS ? suggestion() : null;

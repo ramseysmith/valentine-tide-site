@@ -9,4 +9,8 @@ window.VT_CONFIG = {
   // Until the worker is live, signups are emailed here through FormSubmit
   // (formsubmit.co). The first signup triggers a one time activation email.
   SIGNUP_FALLBACK_EMAIL: "graysmithlabs@gmail.com",
+  // Cloudflare Web Analytics site token (free, no cookies). Paste it here to
+  // turn on visitor and page counts: Cloudflare dashboard, Analytics & Logs,
+  // Web Analytics, Add a site, valentinetide.com, copy the token from the snippet.
+  CF_ANALYTICS_TOKEN: "",
 };

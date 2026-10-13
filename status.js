@@ -22,3 +22,14 @@ window.VT_SHOP_STATUS = (async function () {
   document.documentElement.dataset.shop = live ? "live" : "soon";
   return live ? "live" : "soon";
 })();
+
+/* Cloudflare Web Analytics, only once a token is set in config.js. */
+(function () {
+  const token = (window.VT_CONFIG || {}).CF_ANALYTICS_TOKEN;
+  if (!token) return;
+  const s = document.createElement("script");
+  s.defer = true;
+  s.src = "https://static.cloudflareinsights.com/beacon.min.js";
+  s.dataset.cfBeacon = JSON.stringify({ token });
+  document.head.appendChild(s);
+})();

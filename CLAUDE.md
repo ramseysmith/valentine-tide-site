@@ -42,3 +42,12 @@ Pages load `styles.css` and the scripts with a `?v=` stamp so visitors never
 see new HTML with old styles. When you change `styles.css` or any `.js` file,
 bump the stamp in every page (`index.html`, `vision.html`, `help.html`,
 `success.html`, `404.html`) to the current date and time.
+
+## Shop pages are built from catalog.json
+
+Each product has a static page at `shop/<slug>/index.html`, plus `feed.xml`
+(Google Merchant Center) and `sitemap.xml`. They are generated, so never edit
+them by hand. After any change to `catalog.json` or `product.html`, run
+`node tools/build-shop.mjs` and commit the result. When a product is added or
+renamed, also run `node tools/og-cards.mjs` first to draw its link preview card
+in `assets/og/`. Link to products as `https://valentinetide.com/shop/<slug>/`.
