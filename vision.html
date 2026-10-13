@@ -30,28 +30,41 @@
   <meta name="twitter:image" content="https://valentinetide.com/assets/og-image.jpg?v=2" />
   <meta name="twitter:image:alt" content="Valentine Tide, gothic surf clothing. Surf the Shadows." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  <link rel="preload" href="assets/fonts/pirata-one.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="styles.css?v=202610082020" />
+  <link rel="stylesheet" href="styles.css?v=202610131600" />
+
+  <link rel="stylesheet" href="store.css?v=202610131600" />
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
 
+  <div class="announce">
+    <p class="announce__inner">
+      <span class="announce__item"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#truck" /></svg>Free US shipping over $75</span>
+      <a class="announce__item announce__item--link" href="product.html?p=night-session-one-piece"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#moon" /></svg>The Night Session swim set is out now</a>
+    </p>
+  </div>
   <nav class="nav" aria-label="Main">
     <a class="nav__brand" href="/" aria-label="Valentine Tide home">
       <img src="assets/wordmark.png" alt="" width="2097" height="331" />
     </a>
     <ul class="nav__links">
       <li><a href="/#shop">Shop</a></li>
+      <li class="nav__wide"><a href="/#shop-swim">Swim</a></li>
+      <li class="nav__wide"><a href="/#shop-tees">Tees</a></li>
+      <li class="nav__wide"><a href="/#lookbook">Lookbook</a></li>
       <li><a href="vision.html" aria-current="page">Vision</a></li>
       <li><a href="help.html">Help</a></li>
     </ul>
+    <button class="nav__bag" type="button" data-bag-open aria-label="Open bag">
+      <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#bag" /></svg>
+      <span class="nav__bag-label">Bag</span>
+      <span class="nav__count" data-bag-count hidden>0</span>
+    </button>
   </nav>
+
 
   <main id="content">
     <!-- ============================================================
@@ -264,14 +277,7 @@
   <footer class="footer">
     <div class="footer__grid">
       <div class="footer__brand">
-        <img
-          class="footer__wordmark"
-          src="assets/wordmark.png"
-          alt="Valentine Tide"
-          width="2097"
-          height="331"
-          loading="lazy"
-        />
+        <img class="footer__wordmark" src="assets/wordmark.png" alt="Valentine Tide" width="2097" height="331" loading="lazy" />
         <p class="footer__tag">Goth surf apparel. Surf the shadows.</p>
         <a class="footer__social" href="https://x.com/valentinetide" target="_blank" rel="noopener noreferrer">
           <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#x-logo" /></svg>
@@ -280,17 +286,20 @@
       </div>
       <nav class="footer__col" aria-label="Shop">
         <h2 class="footer__head">Shop</h2>
-        <a href="/#shop">The drops</a>
-        <a href="vision.html">Vision</a>
+        <a href="/#shop-swim">Swim</a>
+        <a href="/#shop-tees">Tees</a>
+        <a href="/#set">The Night Session set</a>
+        <a href="/#lookbook">Lookbook</a>
         <a href="/#signup">Join the cult</a>
-        <a href="help.html#giving">Our 10% promise</a>
       </nav>
       <nav class="footer__col" aria-label="Help">
         <h2 class="footer__head">Help</h2>
         <a href="help.html#shipping">Shipping</a>
         <a href="help.html#returns">Returns</a>
         <a href="help.html#sizing">Sizing</a>
+        <a href="help.html#giving">Our 10% promise</a>
         <a href="help.html#contact">Contact</a>
+        <a href="vision.html">Vision</a>
       </nav>
     </div>
     <div class="footer__base">
@@ -305,8 +314,9 @@
       <p class="footer__copy">© 2026 Graysmith Labs LLC. All rights reserved.</p>
     </div>
   </footer>
-  <script src="config.js?v=202610082020"></script>
-  <script src="status.js?v=202610082020"></script>
-  <script src="motion.js?v=202610082020"></script>
+  <script src="config.js?v=202610131600"></script>
+  <script src="status.js?v=202610131600"></script>
+  <script src="shop.js?v=202610131600"></script>
+  <script src="motion.js?v=202610131600"></script>
 </body>
 </html>

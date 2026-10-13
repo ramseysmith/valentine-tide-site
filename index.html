@@ -4,9 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Valentine Tide | Surf the Shadows</title>
-  <meta name="description" content="Valentine Tide. Gothic surf clothing. Heavyweight black tees for night surfers, printed to order. 10% of profits go to suicide prevention." />
+  <title>Valentine Tide | Gothic surf clothing and swimwear</title>
+  <meta name="description" content="Valentine Tide is gothic surf clothing: the Night Session rash guards and one piece, plus heavyweight black tees. Printed to order, free US shipping over $75, 10% of profits to suicide prevention." />
   <meta name="theme-color" content="#161616" />
+  <link rel="canonical" href="https://valentinetide.com/" />
 
   <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192" />
@@ -29,15 +30,13 @@
   <meta name="twitter:image" content="https://valentinetide.com/assets/og-image.jpg?v=2" />
   <meta name="twitter:image:alt" content="Valentine Tide, gothic surf clothing. Surf the Shadows." />
 
-  <!-- Fonts: Pirata One (display) + Inter (body) from Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Inter:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Fonts are self hosted (assets/fonts): Pirata One for display, Archivo for everything else -->
+  <link rel="preload" href="assets/fonts/pirata-one.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/lifestyle/rash-guard-dusk.jpg" as="image" />
 
-  <link rel="stylesheet" href="styles.css?v=202610082020" />
+  <link rel="stylesheet" href="styles.css?v=202610131600" />
+  <link rel="stylesheet" href="store.css?v=202610131600" />
 
   <script type="application/ld+json">
     {
@@ -47,111 +46,229 @@
       "url": "https://valentinetide.com/",
       "logo": "https://valentinetide.com/assets/avatar.png",
       "slogan": "Surf the Shadows",
-      "description": "Gothic surf clothing. Heavyweight black tees for night surfers, printed to order.",
+      "description": "Gothic surf clothing and swimwear for night surfers, printed to order.",
       "sameAs": ["https://x.com/valentinetide"],
       "parentOrganization": { "@type": "Organization", "name": "Graysmith Labs LLC" }
     }
   </script>
 </head>
-<body>
-  <!-- Skip link: first focusable element, jumps keyboard users to the shop -->
+<body class="home">
   <a class="skip-link" href="#shop">Skip to the shop</a>
 
+  <!-- site chrome: announce + nav (kept identical on every page) -->
+  <div class="announce">
+    <p class="announce__inner">
+      <span class="announce__item"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#truck" /></svg>Free US shipping over $75</span>
+      <a class="announce__item announce__item--link" href="product.html?p=night-session-one-piece"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#moon" /></svg>The Night Session swim set is out now</a>
+    </p>
+  </div>
   <nav class="nav" aria-label="Main">
     <a class="nav__brand" href="/" aria-label="Valentine Tide home">
       <img src="assets/wordmark.png" alt="" width="2097" height="331" />
     </a>
     <ul class="nav__links">
       <li><a href="/#shop">Shop</a></li>
+      <li class="nav__wide"><a href="/#shop-swim">Swim</a></li>
+      <li class="nav__wide"><a href="/#shop-tees">Tees</a></li>
+      <li class="nav__wide"><a href="/#lookbook">Lookbook</a></li>
       <li><a href="vision.html">Vision</a></li>
       <li><a href="help.html">Help</a></li>
     </ul>
+    <button class="nav__bag" type="button" data-bag-open aria-label="Open bag">
+      <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#bag" /></svg>
+      <span class="nav__bag-label">Bag</span>
+      <span class="nav__count" data-bag-count hidden>0</span>
+    </button>
   </nav>
 
   <main>
     <!-- ============================================================
-         HERO
-         Wordmark renders from the transparent PNG. If the image is
-         missing/fails, the onerror handler reveals the styled
-         Pirata One text fallback (see .wordmark--fallback in CSS).
+         HERO: the current drop, framed in the thorn and rose arch
          ============================================================ -->
-    <header class="hero" id="top">
-      <img class="hero__art" src="assets/illustrations/moon-tide.svg" alt="" aria-hidden="true" />
-      <div class="hero__inner">
-        <h1 class="wordmark">
-          <img
-            class="wordmark__img"
-            src="assets/wordmark.png"
-            alt="Valentine Tide"
-            width="2097"
-            height="331"
-            onerror="this.closest('.wordmark').classList.add('wordmark--fallback')"
-          />
-          <!-- Styled fallback (hidden unless the image fails) -->
-          <span class="wordmark__text" aria-hidden="true">
-            <span class="wordmark__valentine">Valentine</span>
-            <span class="wordmark__tide">Tide</span>
-          </span>
-        </h1>
-
-        <p class="hero__tagline">Surf the Shadows</p>
-        <p class="hero__drop"><span data-when="live">Drops 001 and 002 are live.</span><span data-when="soon">Drops 001 and 002 land soon.</span></p>
-        <div class="hero__actions">
-          <a class="btn" href="#shop"><span data-when="live">Shop the drops</span><span data-when="soon">See the drops</span></a>
-          <a class="btn btn--ghost" href="vision.html">Our vision</a>
+    <header class="lead" id="top">
+      <div class="lead__inner">
+        <div class="lead__copy">
+          <p class="pill"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#moon" /></svg>Drop 003, Night Session</p>
+          <h1 class="lead__title">Swim the dark water.</h1>
+          <p class="lead__body">
+            Rash guards and a one piece printed edge to edge with the Surf the Shadows arch:
+            a blood moon over a breaking wave, framed in thorns and roses. Four way stretch,
+            flat seams, made to order for you.
+          </p>
+          <div class="lead__actions">
+            <a class="btn" href="#shop-swim">Shop the swim set</a>
+            <a class="btn btn--ghost" href="#shop">Shop everything</a>
+          </div>
+          <ul class="lead__picks" aria-label="In this drop">
+            <li>
+              <a href="product.html?p=night-session-rash-womens">
+                <img src="assets/products/drop003/rash-womens-front.jpg" alt="" width="1200" height="1200" />
+                <span class="lead__pick-name">Rash guard, women's</span>
+                <span class="lead__pick-price" data-price-of="vt-night-session-rash-womens">$64</span>
+              </a>
+            </li>
+            <li>
+              <a href="product.html?p=night-session-rash-mens">
+                <img src="assets/products/drop003/rash-mens-front.jpg" alt="" width="1200" height="1200" />
+                <span class="lead__pick-name">Rash guard, men's</span>
+                <span class="lead__pick-price" data-price-of="vt-night-session-rash-mens">$64</span>
+              </a>
+            </li>
+            <li>
+              <a href="product.html?p=night-session-one-piece">
+                <img src="assets/products/drop003/one-piece-front.jpg" alt="" width="1200" height="1200" />
+                <span class="lead__pick-name">One piece</span>
+                <span class="lead__pick-price" data-price-of="vt-night-session-one-piece">$58</span>
+              </a>
+            </li>
+          </ul>
         </div>
-      </div>
-      <a class="hero__cue" href="#shop" aria-label="Scroll to the shop">
-        <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron" /></svg>
-      </a>
-    </header>
 
-    <!-- ============================================================
-         TICKER  (decorative; the same facts appear in the trust strip)
-         ============================================================ -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker__track">
-        <span class="ticker__item">Surf the Shadows<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Drop 003 swim set out now<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item"><span data-when="live">Three drops live now</span><span data-when="soon">Drops landing soon</span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Free US shipping over $75<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Printed to order<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">10% of profits to suicide prevention<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Made for night surfers<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span>
-        <span class="ticker__item">Surf the Shadows<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Drop 003 swim set out now<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item"><span data-when="live">Three drops live now</span><span data-when="soon">Drops landing soon</span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Free US shipping over $75<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Printed to order<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">10% of profits to suicide prevention<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span><span class="ticker__item">Made for night surfers<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg></span>
+        <a class="lead__art" href="product.html?p=night-session-rash-womens" aria-label="Shop the Night Session Rash Guard">
+          <span class="arch">
+            <img class="arch__photo" src="assets/lifestyle/rash-guard-dusk.jpg" alt="A surfer at dusk on black rocks, wearing a black rash guard with the Surf the Shadows arch print across the back" width="840" height="1030" fetchpriority="high" />
+            <img class="arch__frame" src="assets/illustrations/hero-arch.svg" alt="" width="400" height="540" />
+          </span>
+          <span class="tag">
+            <span class="tag__name">Night Session Rash Guard</span>
+            <span class="tag__price" data-price-of="vt-night-session-rash-womens">$64</span>
+            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#arrow" /></svg>
+          </span>
+        </a>
       </div>
-    </div>
+    </header>
 
     <!-- ============================================================
          TRUST STRIP
          ============================================================ -->
     <section class="trust" aria-label="Why buy from Valentine Tide">
-      <ul class="trust__list" data-reveal-group>
+      <ul class="trust__list">
         <li class="trust__item">
           <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#truck" /></svg>
           <span><strong>Free US shipping</strong> on orders over $75</span>
         </li>
         <li class="trust__item">
-          <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#print" /></svg>
-          <span><strong>Printed to order</strong> so nothing goes to waste</span>
-        </li>
-        <li class="trust__item">
-          <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#heart" /></svg>
-          <span><strong>10% of profits</strong> to suicide prevention</span>
-        </li>
-        <li class="trust__item">
           <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#return" /></svg>
-          <span><strong>Misprint or damage?</strong> Free replacement</span>
+          <span><strong>Misprint or damage?</strong> We replace it free</span>
+        </li>
+        <li class="trust__item">
+          <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#lock" /></svg>
+          <span><strong>Secure checkout</strong> through Stripe</span>
+        </li>
+        <li class="trust__item">
+          <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#crest" /></svg>
+          <span><strong>10% of profits</strong> to suicide prevention</span>
         </li>
       </ul>
     </section>
 
     <!-- ============================================================
-         SHOP
-         Products render from catalog.json (see shop.js). Checkout runs
-         through the shop worker in /worker (Stripe + Printful).
+         SHOP: product cards render from catalog.json (shop.js)
          ============================================================ -->
-    <section class="shop" id="shop" aria-labelledby="shop-heading">
-      <div class="shop__inner">
-        <h2 class="shop__heading" id="shop-heading" data-reveal>The Drops</h2>
-        <p class="shop__sub" id="shop-shipping">Printed to order. Ships in 5 to 10 business days.</p>
-        <div class="shop__grid" id="shop-grid" data-reveal>
-          <p class="shop__empty">Loading the drop…</p>
+    <section class="store" id="shop" aria-labelledby="shop-heading">
+      <div class="store__head">
+        <div>
+          <h2 class="store__title" id="shop-heading">Shop the drops</h2>
+          <p class="store__sub" id="shop-shipping">Printed to order and shipped in 5 to 10 business days.</p>
         </div>
+        <div class="filters" role="tablist" aria-label="Filter products">
+          <button class="filter is-active" type="button" role="tab" aria-selected="true" data-filter="all">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#sparkle" /></svg>All<span class="filter__n" data-count="all"></span>
+          </button>
+          <button class="filter" type="button" role="tab" aria-selected="false" data-filter="swim">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#onepiece" /></svg>Swim<span class="filter__n" data-count="swim"></span>
+          </button>
+          <button class="filter" type="button" role="tab" aria-selected="false" data-filter="tees">
+            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#tee" /></svg>Tees<span class="filter__n" data-count="tees"></span>
+          </button>
+        </div>
+      </div>
+      <div class="cards" id="shop-grid" aria-live="polite">
+        <p class="store__empty">Loading the drops…</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BUILD THE SET: rash guard + one piece in one add
+         ============================================================ -->
+    <section class="set" id="set" aria-labelledby="set-heading">
+      <div class="set__inner">
+        <div class="set__art" aria-hidden="true">
+          <span class="set__arch set__arch--back"><img src="assets/products/drop003/rash-womens-model-back.jpg" alt="" width="1200" height="1200" loading="lazy" /></span>
+          <span class="set__arch set__arch--front"><img src="assets/products/drop003/one-piece-model-back.jpg" alt="" width="1200" height="1200" loading="lazy" /></span>
+        </div>
+        <div class="set__copy">
+          <img class="set__rule" src="assets/illustrations/rose-rule.svg" alt="" aria-hidden="true" width="400" height="40" loading="lazy" />
+          <h2 class="set__title" id="set-heading">Wear the whole Night Session.</h2>
+          <p class="set__body">
+            The rash guard and the one piece share one print, so they were made to be worn together.
+            Take both and your order ships free.
+          </p>
+          <form class="set__form" id="set-builder" novalidate>
+            <fieldset class="set__row">
+              <legend class="set__label"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#rashguard" /></svg>Rash guard</legend>
+              <div class="seg" role="radiogroup" aria-label="Rash guard cut">
+                <label><input type="radio" name="set-cut" value="vt-night-session-rash-womens" checked /><span>Women's</span></label>
+                <label><input type="radio" name="set-cut" value="vt-night-session-rash-mens" /><span>Men's</span></label>
+              </div>
+              <label class="visually-hidden" for="set-rash-size">Rash guard size</label>
+              <select class="select" id="set-rash-size" data-set-size="rash"></select>
+            </fieldset>
+            <fieldset class="set__row">
+              <legend class="set__label"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#onepiece" /></svg>One piece</legend>
+              <label class="visually-hidden" for="set-swim-size">One piece size</label>
+              <select class="select" id="set-swim-size" data-set-size="vt-night-session-one-piece"></select>
+            </fieldset>
+            <button class="btn btn--wide" type="submit">Add the set to bag<span class="btn__price" data-set-total></span></button>
+            <p class="set__note">Free US shipping included. Sizes run fitted, so size up if you are between two.</p>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         LOOKBOOK: tiles that show a piece link straight to it
+         ============================================================ -->
+    <section class="looks" id="lookbook" aria-labelledby="lookbook-heading">
+      <div class="looks__head">
+        <h2 class="looks__title" id="lookbook-heading">Made for the ones who paddle out in black.</h2>
+        <p class="looks__sub">Scenes from the world the clothes come from. Tap a tagged look to shop it.</p>
+      </div>
+      <div class="looks__grid">
+        <figure class="look look--tall">
+          <img src="assets/lifestyle/rash-guard-dusk.jpg" alt="A surfer at dusk on black rocks in a rash guard with the arch print on the back" width="840" height="1030" loading="lazy" style="object-position: 50% 30%" />
+          <figcaption class="look__cap">
+            <span class="look__title">Last light on the rocks</span>
+            <a class="look__shop" href="product.html?p=night-session-rash-womens"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#rashguard" /></svg>Shop the rash guard</a>
+          </figcaption>
+        </figure>
+        <figure class="look">
+          <img src="assets/lifestyle/cold-water-board.jpg" alt="A surfer in a black wetsuit and cape beside a red Valentine Tide board on a stormy beach" width="768" height="1152" loading="lazy" style="object-position: 50% 35%" />
+          <figcaption class="look__cap"><span class="look__title">Cold water, red board</span></figcaption>
+        </figure>
+        <figure class="look">
+          <img src="assets/lifestyle/beach-goth-surfer.jpg" alt="A goth surfer in a skull and heart crop top holding a red surfboard on the beach" width="1152" height="864" loading="lazy" style="object-position: 40% 30%" />
+          <figcaption class="look__cap">
+            <span class="look__title">Heartbreak at high tide</span>
+            <a class="look__shop" href="product.html?p=heartbreak-crop"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#tee" /></svg>Shop the crop tee</a>
+          </figcaption>
+        </figure>
+        <figure class="look">
+          <img src="assets/lifestyle/red-moon-paddle.jpg" alt="A surfer in silhouette walking into dark surf under a blood red sun" width="1200" height="1200" loading="lazy" />
+          <figcaption class="look__cap"><span class="look__title">Paddle out under a red moon</span></figcaption>
+        </figure>
+        <figure class="look">
+          <img src="assets/lifestyle/storm-coast-portrait.jpg" alt="A goth woman in a black laced top and chains on a stormy coastline" width="768" height="1152" loading="lazy" style="object-position: 50% 18%" />
+          <figcaption class="look__cap"><span class="look__title">Dressed for the storm</span></figcaption>
+        </figure>
+        <figure class="look look--wide">
+          <img src="assets/products/drop003/rash-mens-beach.jpg" alt="A surfer from behind in the men's Night Session Rash Guard, holding a white board at the shoreline" width="1200" height="1200" loading="lazy" style="object-position: 50% 40%" />
+          <figcaption class="look__cap">
+            <span class="look__title">Dawn patrol, black on white</span>
+            <a class="look__shop" href="product.html?p=night-session-rash-mens"><svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#rashguard" /></svg>Shop the men's rash guard</a>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -161,13 +278,12 @@
          tragedy detail, help line always alongside.
          ============================================================ -->
     <section class="giving" id="giving" aria-labelledby="giving-heading">
-      <div class="giving__inner" data-reveal>
+      <div class="giving__inner">
         <div class="giving__art" aria-hidden="true">
           <img class="giving__mark" src="assets/skull-heart-lg.png" alt="" width="560" height="560" loading="lazy" />
         </div>
         <div class="giving__text">
-          <p class="eyebrow">The 10% promise</p>
-          <h2 class="section-heading giving__heading" id="giving-heading">Nobody Paddles Out Alone</h2>
+          <h2 class="section-heading giving__heading" id="giving-heading">Nobody paddles out alone.</h2>
           <p class="giving__body">
             Ten percent of the profit from every order goes to the
             <a href="https://afsp.org" target="_blank" rel="noopener noreferrer">American Foundation for Suicide Prevention</a>.
@@ -186,148 +302,29 @@
     </section>
 
     <!-- ============================================================
-         HOW IT'S MADE
+         HOW IT'S MADE (a real sequence, so it is numbered)
          ============================================================ -->
     <section class="process" aria-labelledby="process-heading">
       <div class="process__inner">
         <img class="divider" src="assets/illustrations/divider.svg" alt="" aria-hidden="true" width="320" height="32" />
-        <h2 class="section-heading" id="process-heading" data-reveal>From the Deep to Your Door</h2>
-        <ol class="process__steps" data-reveal-group>
+        <h2 class="section-heading" id="process-heading">From the deep to your door.</h2>
+        <ol class="process__steps">
           <li class="process__step">
             <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#pen" /></svg></span>
             <h3 class="process__title">Original art</h3>
-            <p>Every graphic is made for Valentine Tide and nobody else. No stock art, no clip art, ever.</p>
+            <p>Every graphic is drawn for Valentine Tide and nobody else. No stock art, no clip art.</p>
           </li>
           <li class="process__step">
             <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#print" /></svg></span>
-            <h3 class="process__title">Printed on demand</h3>
-            <p>Your piece is printed after you order it, on heavyweight blanks. No overstock, no landfill of unsold shirts.</p>
+            <h3 class="process__title">Printed for your order</h3>
+            <p>Your piece is printed after you buy it, so there is no overstock and no landfill of unsold shirts.</p>
           </li>
           <li class="process__step">
             <span class="process__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#box" /></svg></span>
             <h3 class="process__title">Shipped with tracking</h3>
-            <p>Out the door in 5 to 10 business days, with a tracking link sent straight to your inbox.</p>
+            <p>Out the door in 5 to 10 business days, with a tracking link sent to your inbox.</p>
           </li>
         </ol>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         LOOKBOOK  (square tiles)
-         ============================================================ -->
-    <section class="lookbook" aria-labelledby="lookbook-heading">
-      <div class="lookbook__inner">
-        <p class="eyebrow lookbook__eyebrow" data-reveal>
-          <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#skull" /></svg>
-          The lookbook
-        </p>
-        <h2 class="section-heading" id="lookbook-heading" data-reveal>Made for the Ones Who Paddle Out in Black</h2>
-        <div class="lookbook__grid" data-reveal-group>
-          <figure class="tile">
-            <img
-              src="assets/lifestyle/storm-coast-portrait.jpg"
-              alt="A goth woman in a black laced top, studded belts, and chains, standing on a stormy coastline"
-              width="768"
-              height="1152"
-              loading="lazy"
-              style="object-position: 50% 18%"
-            />
-            <figcaption class="tile__cap">
-              <span class="tile__kicker">The look</span>
-              <span class="tile__title">Dressed for the Storm</span>
-            </figcaption>
-          </figure>
-          <figure class="tile">
-            <img
-              src="assets/lifestyle/beach-goth-surfer.jpg"
-              alt="A goth surfer in a skull and heart crop top holding a red surfboard on the beach"
-              width="1152"
-              height="864"
-              loading="lazy"
-              style="object-position: 50% 30%"
-            />
-            <figcaption class="tile__cap">
-              <span class="tile__kicker">On the sand</span>
-              <span class="tile__title">Heartbreak at High Tide</span>
-            </figcaption>
-          </figure>
-          <figure class="tile">
-            <img
-              src="assets/lifestyle/black-boards.jpg"
-              alt="Black and white surfboards with red filigree and a skull and crossbones, racked on black volcanic rock"
-              width="768"
-              height="1152"
-              loading="lazy"
-              style="object-position: 50% 45%"
-            />
-            <figcaption class="tile__cap">
-              <span class="tile__kicker">The world</span>
-              <span class="tile__title">Black Sand, Black Boards</span>
-            </figcaption>
-          </figure>
-          <figure class="tile">
-            <img
-              src="assets/lifestyle/red-moon-paddle.jpg"
-              alt="A surfer in silhouette walking into dark surf under a blood red sun, the Valentine Tide wordmark above"
-              width="1200"
-              height="1200"
-              loading="lazy"
-              style="object-position: 50% 50%"
-            />
-            <figcaption class="tile__cap">
-              <span class="tile__kicker">After dark</span>
-              <span class="tile__title">Paddle Out Under a Red Moon</span>
-            </figcaption>
-          </figure>
-          <figure class="tile">
-            <img
-              src="assets/lifestyle/blood-moon-surfer.jpg"
-              alt="A woman in silhouette carrying a surfboard toward a red sunset sea, under the Valentine Tide wordmark"
-              width="1200"
-              height="1200"
-              loading="lazy"
-              style="object-position: 50% 50%"
-            />
-            <figcaption class="tile__cap">
-              <span class="tile__kicker">The ritual</span>
-              <span class="tile__title">Last Light, First Wave</span>
-            </figcaption>
-          </figure>
-          <figure class="tile tile--art">
-            <img
-              src="assets/lifestyle/skeleton-surfer-poster.jpg"
-              alt="Valentine Tide poster art: a skeleton surfer with a board beside a breaking wave and a red sun, framed by roses and thorns"
-              width="1200"
-              height="1200"
-              loading="lazy"
-            />
-          </figure>
-        </div>
-        <div class="lookbook__cta" data-reveal>
-          <a class="btn" href="#shop">Shop the drops</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================================================
-         VISION TEASER  (full story lives on vision.html)
-         ============================================================ -->
-    <section class="story" aria-labelledby="story-heading">
-      <div class="story__inner" data-reveal>
-        <img class="story__art" src="assets/illustrations/pillar-night.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
-        <div>
-          <p class="eyebrow">The vision</p>
-          <h2 class="story__heading" id="story-heading">The Tide Comes in Black</h2>
-          <p class="story__body">
-            Valentine Tide is surf for the after hours, born where the last light
-            fades and the water turns to ink. No sun bleached clichés. No pastel
-            postcards. Just heavy threads cut for restless souls.
-          </p>
-          <a class="text-link" href="vision.html">
-            Read the vision
-            <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#arrow" /></svg>
-          </a>
-        </div>
       </div>
     </section>
 
@@ -338,11 +335,11 @@
          SIGNUP_FALLBACK_EMAIL (config.js).
          ============================================================ -->
     <section class="signup" id="signup" aria-labelledby="signup-heading">
-      <div class="signup__inner" data-reveal>
+      <div class="signup__inner">
         <img class="signup__art" src="assets/illustrations/message-bottle.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
-        <h2 class="signup__heading" id="signup-heading">Join the cult</h2>
+        <h2 class="signup__heading" id="signup-heading">Join the cult.</h2>
         <p class="signup__sub">
-          Send us your email and the tide brings word back. No noise, only the drops.
+          Get first look at every drop and a note when sold out sizes come back. Only the drops, never noise.
         </p>
         <ul class="perks">
           <li><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#eye" /></svg>First look at every drop</li>
@@ -369,28 +366,16 @@
 
           <input type="hidden" name="interest" id="signup-interest" value="" />
           <p class="signup__interest" id="signup-interest-note" hidden></p>
-          <!-- Live region: validation + result messages announce here -->
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
-
   </main>
 
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
   <footer class="footer">
     <div class="footer__grid">
       <div class="footer__brand">
-        <img
-          class="footer__wordmark"
-          src="assets/wordmark.png"
-          alt="Valentine Tide"
-          width="2097"
-          height="331"
-          loading="lazy"
-        />
+        <img class="footer__wordmark" src="assets/wordmark.png" alt="Valentine Tide" width="2097" height="331" loading="lazy" />
         <p class="footer__tag">Goth surf apparel. Surf the shadows.</p>
         <a class="footer__social" href="https://x.com/valentinetide" target="_blank" rel="noopener noreferrer">
           <svg class="icon icon--sm" aria-hidden="true"><use href="assets/icons.svg#x-logo" /></svg>
@@ -399,17 +384,20 @@
       </div>
       <nav class="footer__col" aria-label="Shop">
         <h2 class="footer__head">Shop</h2>
-        <a href="/#shop">The drops</a>
-        <a href="vision.html">Vision</a>
+        <a href="/#shop-swim">Swim</a>
+        <a href="/#shop-tees">Tees</a>
+        <a href="/#set">The Night Session set</a>
+        <a href="/#lookbook">Lookbook</a>
         <a href="/#signup">Join the cult</a>
-        <a href="help.html#giving">Our 10% promise</a>
       </nav>
       <nav class="footer__col" aria-label="Help">
         <h2 class="footer__head">Help</h2>
         <a href="help.html#shipping">Shipping</a>
         <a href="help.html#returns">Returns</a>
         <a href="help.html#sizing">Sizing</a>
+        <a href="help.html#giving">Our 10% promise</a>
         <a href="help.html#contact">Contact</a>
+        <a href="vision.html">Vision</a>
       </nav>
     </div>
     <div class="footer__base">
@@ -425,10 +413,10 @@
     </div>
   </footer>
 
-  <script src="config.js?v=202610082020"></script>
-  <script src="status.js?v=202610082020"></script>
-  <script src="script.js?v=202610082020"></script>
-  <script src="shop.js?v=202610082020"></script>
-  <script src="motion.js?v=202610082020"></script>
+  <script src="config.js?v=202610131600"></script>
+  <script src="status.js?v=202610131600"></script>
+  <script src="script.js?v=202610131600"></script>
+  <script src="shop.js?v=202610131600"></script>
+  <script src="motion.js?v=202610131600"></script>
 </body>
 </html>
