@@ -4,7 +4,7 @@
    Needs Playwright with Chromium (present in Claude cloud sessions):
      node tools/og-cards.mjs && node tools/build-shop.mjs */
 
-import { readFileSync, mkdirSync } from "node:fs";
+import { readFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join, extname } from "node:path";
 import { createServer } from "node:http";
 import { fileURLToPath, pathToFileURL } from "node:url";
@@ -38,10 +38,17 @@ const server = createServer((req, res) => {
 const base = `http://localhost:${server.address().port}`;
 const file = (rel) => `${base}/${rel}`;
 
+// Square product crops whose full portrait lives under another name.
+const PORTRAITS = { "rash-womens-rocks.jpg": "assets/lifestyle/rash-guard-dusk.jpg" };
+
 const card = (p) => {
   const g = p.gallery && p.gallery.length ? p.gallery : [{ src: p.image }];
-  // A worn photo reads better small than a flat product shot.
-  const photo = (g.find((x) => /model-front|model-1|model\.jpg/.test(x.src)) || g[0]).src;
+  // A worn photo reads better small than a flat product shot; the shoreline shots most of all.
+  let photo = (g.find((x) => /lifestyle-/.test(x.src)) || g.find((x) => /model-front|model-1|model\.jpg/.test(x.src)) || g[0]).src;
+  // Prefer the uncropped portrait of a shoreline shot, so heads clear the arch.
+  const m = photo.match(/lifestyle-(.+\.jpg)$/);
+  const tall = m && [`assets/lifestyle/${m[1]}`, ...(PORTRAITS[m[1]] ? [PORTRAITS[m[1]]] : [])].find((f) => existsSync(join(ROOT, f)));
+  if (tall) photo = tall;
   return `<!doctype html><html><head><style>
   @font-face { font-family: Pirata; src: url(${file("assets/fonts/pirata-one.woff2")}); }
   @font-face { font-family: Archivo; src: url(${file("assets/fonts/archivo-var.woff2")}); font-weight: 100 900; font-stretch: 62% 125%; }
@@ -49,7 +56,7 @@ const card = (p) => {
   body { width: 1200px; height: 630px; overflow: hidden; background: #161616; color: #f5f0e8; font-family: Archivo;
     background: radial-gradient(520px 420px at 300px 330px, rgba(139,0,0,.45), transparent 70%), #161616; display: flex; align-items: center; }
   .arch { position: relative; width: 420px; height: 567px; margin: 30px 50px 0 90px; flex: none; }
-  .arch img.photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; background: #f3eee6;
+  .arch img.photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 6%; background: #f3eee6;
     -webkit-mask: url(${file("assets/illustrations/arch-mask.svg")}) center / 100% 100% no-repeat; }
   .arch img.frame { position: absolute; inset: 0; width: 100%; height: 100%; }
   .copy { flex: 1; padding-right: 70px; }
