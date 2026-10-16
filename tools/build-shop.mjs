@@ -161,6 +161,7 @@ function sitemap() {
     [`${SITE}/`, "weekly", "1.0"],
     ...products.map((p) => [`${SITE}/shop/${slugOf(p)}/`, "weekly", "0.9"]),
     [`${SITE}/vision.html`, "monthly", "0.6"],
+    [`${SITE}/gifts.html`, "weekly", "0.7"],
     [`${SITE}/help.html`, "monthly", "0.5"],
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
