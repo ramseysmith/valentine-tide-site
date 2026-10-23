@@ -35,9 +35,9 @@
   <link rel="preload" href="assets/fonts/pirata-one.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin />
 
-  <link rel="stylesheet" href="styles.css?v=202610140840" />
+  <link rel="stylesheet" href="styles.css?v=202610231300" />
 
-  <link rel="stylesheet" href="store.css?v=202610140840" />
+  <link rel="stylesheet" href="store.css?v=202610231300" />
 </head>
 <body>
   <a class="skip-link" href="#content">Skip to content</a>
@@ -160,6 +160,39 @@
         </p>
       </section>
     </div>
+
+    <!-- Gift guide signup: same form ids as the homepage, handled by script.js.
+         The interest value tags these signups "notify: gift guide" in the worker. -->
+    <section class="signup" id="signup" aria-labelledby="signup-heading">
+      <div class="signup__inner">
+        <img class="signup__art" src="assets/illustrations/message-bottle.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
+        <h2 class="signup__heading" id="signup-heading">Get the last call.</h2>
+        <p class="signup__sub">
+          Still deciding? Leave your email and we will send one reminder before the December 3 order by date, plus first look at the next drop. Only the drops, never noise.
+        </p>
+
+        <form class="signup__form" id="signup-form" data-success="You're in. We'll email you before the December 3 order by date." novalidate>
+          <label class="visually-hidden" for="email">Email address</label>
+          <div class="field">
+            <input
+              class="field__input"
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+              inputmode="email"
+              required
+              aria-describedby="form-status"
+            />
+            <button class="btn" type="submit">Remind me</button>
+          </div>
+
+          <input type="hidden" name="interest" id="signup-interest" value="gift guide" />
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
@@ -203,9 +236,10 @@
       <p class="footer__copy">© 2026 Graysmith Labs LLC. All rights reserved.</p>
     </div>
   </footer>
-  <script src="config.js?v=202610140840"></script>
-  <script src="status.js?v=202610140840"></script>
-  <script src="shop.js?v=202610140840"></script>
-  <script src="motion.js?v=202610140840"></script>
+  <script src="config.js?v=202610231300"></script>
+  <script src="status.js?v=202610231300"></script>
+  <script src="shop.js?v=202610231300"></script>
+  <script src="motion.js?v=202610231300"></script>
+  <script src="script.js?v=202610231300"></script>
 </body>
 </html>

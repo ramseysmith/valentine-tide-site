@@ -117,9 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
       form.reset();
       form.classList.add("is-done");
       setStatus(
-        interest
+        form.dataset.success ||
+        (interest
           ? "You're in. You'll hear the moment it drops."
-          : "You're in. Watch the horizon for the next drop.",
+          : "You're in. Watch the horizon for the next drop."),
         "success"
       );
     } catch (error) {
