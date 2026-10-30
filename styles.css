@@ -1969,6 +1969,10 @@ p .text-link {
   color: var(--blood-bright);
 }
 
+.footer__social + .footer__social {
+  margin-left: 1.25rem;
+}
+
 /* ---------- Help contact illustration ---------- */
 .help__art {
   float: right;
