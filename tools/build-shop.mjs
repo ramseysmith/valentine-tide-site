@@ -163,6 +163,7 @@ function sitemap() {
     [`${SITE}/vision.html`, "monthly", "0.6"],
     [`${SITE}/gifts.html`, "weekly", "0.7"],
     [`${SITE}/help.html`, "monthly", "0.5"],
+    [`${SITE}/privacy.html`, "yearly", "0.3"],
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
