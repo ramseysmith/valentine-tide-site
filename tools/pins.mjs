@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-/* Renders 1000x1500 Pinterest pins into assets/pins/<name>.jpg: one per tee and
-   one for the gift guide. Pin copy (titles, descriptions, links) lives in
+/* Renders 1000x1500 Pinterest pins into assets/pins/<name>.jpg: one per product, one for
+   the gift guide and one for the swim set. Pass names to render only those. Pin copy (titles, descriptions, links) lives in
    graysmith_labs_agent docs/valentine-tide/pinterest-pins.md.
    Needs Playwright with Chromium (present in Claude cloud sessions):
      node tools/pins.mjs */
@@ -84,12 +84,27 @@ const pins = [
   <p class="sub">Black tees and swimwear, printed to order. Free US shipping over ${free}.</p>
   <p class="tag">Order by Dec 3 for Christmas</p>`),
   ],
+  ["rash-womens", tee(bySku("vt-night-session-rash-womens"), "assets/lifestyle/rash-guard-dusk.jpg")],
+  ["rash-mens", tee(bySku("vt-night-session-rash-mens"), "assets/lifestyle/rash-mens-rocks.jpg")],
+  ["one-piece", tee(bySku("vt-night-session-one-piece"), "assets/lifestyle/one-piece-rocks.jpg")],
+  [
+    "swim-set",
+    page(`<div class="pair">${arch("assets/lifestyle/rash-mens-rocks.jpg", 420, 567)}${arch("assets/lifestyle/one-piece-rocks.jpg", 420, 567)}</div>
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>Night Session swim</h1>
+  <p class="sub">Rash guards and a one piece for the goth who paddles out all year. Printed to order.</p>
+  <p class="tag">Order by Dec 3 for Christmas</p>`),
+  ],
 ];
+
+// Pass pin names to render only those: node tools/pins.mjs one-piece swim-set
+const only = process.argv.slice(2);
+const todo = only.length ? pins.filter(([n]) => only.includes(n)) : pins;
 
 mkdirSync(join(ROOT, "assets/pins"), { recursive: true });
 const browser = await chromium.launch();
 const tab = await browser.newPage({ viewport: { width: 1000, height: 1500 } });
-for (const [name, html] of pins) {
+for (const [name, html] of todo) {
   const tmp = join(ROOT, "assets/pins", `.${name}.html`);
   writeFileSync(tmp, html);
   await tab.goto(file(`assets/pins/.${name}.html`));
