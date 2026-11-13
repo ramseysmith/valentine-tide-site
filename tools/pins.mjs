@@ -2,7 +2,9 @@
 /* Renders 1000x1500 Pinterest pins into assets/pins/<name>.jpg: one per product, one for
    the gift guide and one for the swim set. Pass names to render only those. Pin copy (titles, descriptions, links) lives in
    graysmith_labs_agent docs/valentine-tide/pinterest-pins.md.
-   Needs Playwright with Chromium (present in Claude cloud sessions):
+   Needs Playwright with Chromium (present in Claude cloud sessions). On the Mac, point it at a
+   Playwright install and the system Chrome:
+     PLAYWRIGHT_PATH=/tmp/pw/node_modules/playwright PW_CHANNEL=chrome node tools/pins.mjs
      node tools/pins.mjs */
 
 import { readFileSync, writeFileSync, unlinkSync, mkdirSync } from "node:fs";
@@ -14,7 +16,7 @@ import { createRequire } from "node:module";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
 let chromium;
-for (const p of ["playwright", "/opt/npm-tools/node_modules/playwright"]) {
+for (const p of [process.env.PLAYWRIGHT_PATH, "playwright", "/opt/npm-tools/node_modules/playwright"].filter(Boolean)) {
   try {
     ({ chromium } = require(p));
     break;
@@ -58,8 +60,8 @@ const style = `
   .url { position: absolute; left: 0; right: 0; bottom: 46px; font-size: 28px; letter-spacing: .14em; color: rgba(245,240,232,.62); font-stretch: 85%; }
 `;
 
-const arch = (photo, w, h) =>
-  `<div class="arch" style="width:${w}px;height:${h}px"><img class="photo" src="${file(photo)}"><img class="frame" src="${file("assets/illustrations/hero-arch.svg")}"></div>`;
+const arch = (photo, w, h, pos) =>
+  `<div class="arch" style="width:${w}px;height:${h}px"><img class="photo" src="${file(photo)}"${pos ? ` style="object-position:${pos}"` : ""}><img class="frame" src="${file("assets/illustrations/hero-arch.svg")}"></div>`;
 
 const page = (inner) => `<!doctype html><html><head><style>${style}</style></head><body>${inner}<p class="url">VALENTINETIDE.COM</p></body></html>`;
 
@@ -95,6 +97,30 @@ const pins = [
   <p class="sub">Rash guards and a one piece for the goth who paddles out all year. Printed to order.</p>
   <p class="tag">Order by Dec 3 for Christmas</p>`),
   ],
+  [
+    "gifts-him",
+    page(`<div class="pair">${arch("assets/lifestyle/wordmark-tee-rocks.jpg", 420, 567)}${arch("assets/lifestyle/rash-mens-rocks.jpg", 420, 567)}</div>
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>Gifts for him, the goth who surfs</h1>
+  <p class="sub">A heavyweight black tee or a rash guard for winter sessions. Printed to order.</p>
+  <p class="tag">Order by Dec 3 for Christmas</p>`),
+  ],
+  [
+    "gifts-her",
+    page(`<div class="pair">${arch("assets/lifestyle/heartbreak-crop-rocks.jpg", 420, 567)}${arch("assets/lifestyle/one-piece-rocks.jpg", 420, 567)}</div>
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>Gifts for her, the goth who surfs</h1>
+  <p class="sub">A skull and bleeding heart crop tee or a black rose one piece. Printed to order.</p>
+  <p class="tag">Order by Dec 3 for Christmas</p>`),
+  ],
+  [
+    "two-weeks",
+    page(`${arch("assets/lifestyle/cold-water-board.jpg", 600, 810, "50% 40%")}
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>Two weeks to order for Christmas</h1>
+  <p class="sub">Every piece is printed to order. Free US shipping over ${free}.</p>
+  <p class="tag">Order by Dec 3</p>`),
+  ],
 ];
 
 // Pass pin names to render only those: node tools/pins.mjs one-piece swim-set
@@ -102,7 +128,7 @@ const only = process.argv.slice(2);
 const todo = only.length ? pins.filter(([n]) => only.includes(n)) : pins;
 
 mkdirSync(join(ROOT, "assets/pins"), { recursive: true });
-const browser = await chromium.launch();
+const browser = await chromium.launch(process.env.PW_CHANNEL ? { channel: process.env.PW_CHANNEL } : {});
 const tab = await browser.newPage({ viewport: { width: 1000, height: 1500 } });
 for (const [name, html] of todo) {
   const tmp = join(ROOT, "assets/pins", `.${name}.html`);
