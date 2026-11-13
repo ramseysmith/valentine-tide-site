@@ -33,3 +33,21 @@ window.VT_SHOP_STATUS = (async function () {
   s.dataset.cfBeacon = JSON.stringify({ token });
   document.head.appendChild(s);
 })();
+
+/* Christmas order by date in the announce bar. The static copy says order by
+   Dec 3. From Dec 4 it says the piece arrives after Christmas, and from Dec 26
+   the item hides. Dates are US Mountain time, the shop's own clock. */
+(function () {
+  const items = document.querySelectorAll("[data-gift-cutoff]");
+  if (!items.length) return;
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Denver" }).format(new Date());
+  const md = today.slice(5);
+  if (md >= "12-26" || md < "11-01") {
+    items.forEach((el) => { el.hidden = true; });
+  } else if (md >= "12-04") {
+    items.forEach((el) => {
+      const t = el.querySelector("[data-gift-cutoff-text]");
+      if (t) t.textContent = "Ordered now, it arrives after Christmas";
+    });
+  }
+})();

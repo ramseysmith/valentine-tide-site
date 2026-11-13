@@ -180,9 +180,22 @@ h3 {
   text-decoration-color: var(--bone);
 }
 
+.announce__item[hidden] {
+  display: none;
+}
+
 @media (max-width: 40rem) {
   .announce__item--link {
     display: none;
+  }
+
+  /* On phones the Christmas order by date wins the one slot over shipping. */
+  .announce__inner:has([data-gift-cutoff]:not([hidden])) .announce__item:not([data-gift-cutoff]) {
+    display: none;
+  }
+
+  .announce__item--link[data-gift-cutoff]:not([hidden]) {
+    display: inline-flex;
   }
 }
 
