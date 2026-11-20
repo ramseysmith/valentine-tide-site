@@ -121,6 +121,30 @@ const pins = [
   <p class="sub">Every piece is printed to order. Free US shipping over ${free}.</p>
   <p class="tag">Order by Dec 3</p>`),
   ],
+  [
+    "black-friday",
+    page(`${arch("assets/lifestyle/beach-goth-surfer.jpg", 600, 810, "50% 30%")}
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>Black Friday, for the goth who surfs</h1>
+  <p class="sub">Black tees and swimwear, printed to order. Free US shipping over ${free}.</p>
+  <p class="tag">Order by Dec 3 for Christmas</p>`),
+  ],
+  [
+    "cyber-monday",
+    page(`<div class="pair">${arch("assets/lifestyle/rash-guard-dusk.jpg", 420, 567)}${arch("assets/lifestyle/heartbreak-crop-rocks.jpg", 420, 567)}</div>
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>Cyber Monday goth surf gifts</h1>
+  <p class="sub">Every piece is on valentinetide.com and in our Etsy shop. Printed to order.</p>
+  <p class="tag">Order by Dec 3 for Christmas</p>`),
+  ],
+  [
+    "last-days",
+    page(`${arch("assets/lifestyle/storm-coast-portrait.jpg", 600, 810, "50% 30%")}
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>Last days to order for Christmas</h1>
+  <p class="sub">Printed to order, so the cutoff is real. Free US shipping over ${free}.</p>
+  <p class="tag">Order by Thursday, Dec 3</p>`),
+  ],
 ];
 
 // Pass pin names to render only those: node tools/pins.mjs one-piece swim-set
