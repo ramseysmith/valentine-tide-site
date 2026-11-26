@@ -145,6 +145,30 @@ const pins = [
   <p class="sub">Printed to order, so the cutoff is real. Free US shipping over ${free}.</p>
   <p class="tag">Order by Thursday, Dec 3</p>`),
   ],
+  [
+    "vday-guide",
+    page(`<div class="pair">${arch("assets/lifestyle/heartbreak-crop-rocks.jpg", 420, 567)}${arch("assets/lifestyle/wordmark-tee-rocks.jpg", 420, 567)}</div>
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>Goth Valentine's Day gifts</h1>
+  <p class="sub">Bleeding hearts, black roses and blood red on black. Printed to order.</p>
+  <p class="tag">Order by Jan 21 for Valentine's Day</p>`),
+  ],
+  [
+    "vday-her",
+    page(`${arch("assets/lifestyle/heartbreak-crop-rocks.jpg", 600, 810, "50% 20%")}
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>A goth Valentine's gift for her</h1>
+  <p class="sub">A cracked skull inside a bleeding heart, on a washed black crop tee.</p>
+  <p class="tag">Order by Jan 21 for Valentine's Day</p>`),
+  ],
+  [
+    "vday-matching",
+    page(`<div class="pair">${arch("assets/lifestyle/rash-guard-dusk.jpg", 420, 567)}${arch("assets/lifestyle/rash-mens-rocks.jpg", 420, 567)}</div>
+  <img class="wm" src="${file("assets/wordmark.png")}">
+  <h1>Matching goth surf for two</h1>
+  <p class="sub">The Night Session rash guard in a women's and a men's cut. Printed to order.</p>
+  <p class="tag">Order by Jan 21 for Valentine's Day</p>`),
+  ],
 ];
 
 // Pass pin names to render only those: node tools/pins.mjs one-piece swim-set

@@ -73,7 +73,8 @@
       <div class="page-hero__inner">
         <p class="eyebrow">Gifts</p>
         <h1 class="page-hero__title">Gifts for the Ones Who Surf at Night</h1>
-        <p class="page-hero__lede">Black tees and swimwear for the goth who surfs, printed to order, from $34. For Christmas in the US, order by December 3.</p>
+        <p class="page-hero__lede" data-season="christmas">Black tees and swimwear for the goth who surfs, printed to order, from $34. For Christmas in the US, order by December 3.</p>
+        <p class="page-hero__lede" data-season="valentines" hidden style="display:none">Black tees and swimwear for the goth who surfs, printed to order, from $34. For Valentine's Day in the US, order by January 21; the <a href="/valentines-gifts.html">Valentine's gift guide</a> has the picks.</p>
       </div>
     </header>
 
@@ -81,9 +82,15 @@
       <ul class="help__toc" aria-label="On this page" data-reveal-group>
         <li><a href="#tees"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#heart" /></svg>Tees</a></li>
         <li><a href="#swim"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#moon" /></svg>Swim</a></li>
-        <li><a href="#order-by"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#truck" /></svg>Order by</a></li>
+        <li data-season="christmas"><a href="#order-by"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#truck" /></svg>Order by</a></li>
         <li><a href="#questions"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#mail" /></svg>Questions</a></li>
       </ul>
+
+      <section class="help__section" data-season="valentines" hidden style="display:none" id="valentines" aria-labelledby="valentines-heading">
+        <h2 class="help__heading" id="valentines-heading">Valentine's Day, order by January 21</h2>
+        <p>A skull and bleeding heart crop tee, a black rose one piece and matching rash guards for the two of you. Every piece is printed to order, so order by Thursday, January 21 for US delivery by Valentine's Day.</p>
+        <p><a class="btn" href="/valentines-gifts.html">See the Valentine's gift guide</a></p>
+      </section>
 
       <section class="help__section" data-reveal id="tees" aria-labelledby="tees-heading">
         <h2 class="help__heading" id="tees-heading">Tees, the easy pick</h2>
@@ -127,7 +134,7 @@
         <p>The men's rash guard is <a href="/shop/night-session-rash-mens/">here</a> (and <a href="https://valentinetide.etsy.com/listing/4608311983" target="_blank" rel="noopener noreferrer">on Etsy</a>). Rash guards run small, the one piece takes their usual swim size, and every product page has its size chart.</p>
       </section>
 
-      <section class="help__section" data-reveal id="order-by" aria-labelledby="order-by-heading">
+      <section class="help__section" data-reveal data-season="christmas" id="order-by" aria-labelledby="order-by-heading">
         <h2 class="help__heading" id="order-by-heading">Order by December 3 for Christmas</h2>
         <p>
           Every piece is printed to order, so it needs a little lead time. Orders
@@ -175,11 +182,14 @@
       <div class="signup__inner">
         <img class="signup__art" src="assets/illustrations/message-bottle.svg" alt="" aria-hidden="true" width="240" height="240" loading="lazy" />
         <h2 class="signup__heading" id="signup-heading">Get the last call.</h2>
-        <p class="signup__sub">
+        <p class="signup__sub" data-season="christmas">
           Still deciding? Leave your email and we will send one reminder before the December 3 order by date, plus first look at the next drop. Only the drops, never noise.
         </p>
+        <p class="signup__sub" data-season="valentines" hidden style="display:none">
+          Still deciding? Leave your email and we will send one reminder before the January 21 Valentine's order by date, plus first look at the next drop. Only the drops, never noise.
+        </p>
 
-        <form class="signup__form" id="signup-form" data-success="You're in. We'll email you before the December 3 order by date." novalidate>
+        <form class="signup__form" id="signup-form" data-success="You're in. We'll email you before the December 3 order by date." data-success-valentines="You're in. We'll email you before the January 21 order by date." novalidate>
           <label class="visually-hidden" for="email">Email address</label>
           <div class="field">
             <input
@@ -222,6 +232,7 @@
         <a href="/#set">The Night Session set</a>
         <a href="/#lookbook">Lookbook</a>
         <a href="/gifts.html">Gifts</a>
+        <a href="/valentines-gifts.html">Valentine's gifts</a>
         <a href="/#signup">Join the cult</a>
       </nav>
       <nav class="footer__col" aria-label="Help">
@@ -248,7 +259,7 @@
     </div>
   </footer>
   <script src="config.js?v=202610231300"></script>
-  <script src="status.js?v=202611131000"></script>
+  <script src="status.js?v=202611261000"></script>
   <script src="shop.js?v=202610231300"></script>
   <script src="motion.js?v=202610231300"></script>
   <script src="script.js?v=202610231300"></script>
